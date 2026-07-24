@@ -12,24 +12,26 @@
  */
 
 export const site = {
-  /** Nombre comercial. PLACEHOLDER: sustituir por el definitivo. */
-  name: "Casa Aljarafe",
+  /** Nombre comercial (provisional). */
+  name: "Sem²a",
   /** Descriptor corto que acompana al nombre. */
   tagline: "Servicios e inversion inmobiliaria",
-  /** Dominio de produccion (para SEO, sitemap y metadatos). */
-  url: "https://www.casaaljarafe.es",
+  /** Persona de contacto principal. */
+  contactPerson: "Pepe Serrano Maestro",
+  /** Dominio de produccion (para SEO, sitemap y metadatos). PLACEHOLDER. */
+  url: "https://www.sem2a.es",
   /** Descripcion por defecto para metadatos SEO. */
   description:
     "Valoramos, mejoramos y vendemos tu vivienda con una estrategia personalizada en Sevilla y el Aljarafe. Valoracion gratuita, asesoramiento a propietarios e inversion inmobiliaria.",
 
-  // --- Contacto (PLACEHOLDERS) ---
+  // --- Contacto (PLACEHOLDERS: sustituir por los datos reales) ---
   /** Telefono en formato internacional para enlaces tel:. */
   phone: "+34600000000",
   /** Telefono formateado para mostrar. */
   phoneDisplay: "600 00 00 00",
   /** Numero de WhatsApp en formato internacional sin signos ni espacios. */
   whatsapp: "34600000000",
-  email: "hola@casaaljarafe.es",
+  email: "hola@sem2a.es",
 
   // --- Ubicacion (base real proporcionada) ---
   base: "Castilleja de Guzman, Sevilla",

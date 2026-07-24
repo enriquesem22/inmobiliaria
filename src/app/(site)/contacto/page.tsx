@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, UserRound } from "lucide-react";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Section } from "@/components/ui/Section";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
@@ -38,6 +38,15 @@ export default function ContactoPage() {
           <div className="lg:col-span-2">
             <h2 className="text-2xl text-pine-900">Datos de contacto</h2>
             <ul className="mt-6 space-y-5">
+              <li className="flex items-start gap-4">
+                <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-pine-50 text-pine-700">
+                  <UserRound className="h-5 w-5" aria-hidden />
+                </span>
+                <div>
+                  <p className="text-sm text-stone-500">Persona de contacto</p>
+                  <p className="font-medium text-pine-900">{site.contactPerson}</p>
+                </div>
+              </li>
               <li className="flex items-start gap-4">
                 <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-pine-50 text-pine-700">
                   <Phone className="h-5 w-5" aria-hidden />

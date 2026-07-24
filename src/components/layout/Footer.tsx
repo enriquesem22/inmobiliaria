@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, UserRound } from "lucide-react";
 import { site, whatsappLink } from "@/data/site";
 import { zonas } from "@/data/zonas";
 import { services } from "@/data/services";
@@ -21,6 +21,10 @@ export function Footer() {
               Valoracion, estrategia, reforma y venta en Sevilla y el Aljarafe.
             </p>
             <ul className="mt-6 space-y-3 text-sm">
+              <li className="flex items-start gap-3">
+                <UserRound className="mt-0.5 h-4 w-4 shrink-0 text-clay-300" aria-hidden />
+                <span>{site.contactPerson}</span>
+              </li>
               <li className="flex items-start gap-3">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-clay-300" aria-hidden />
                 <span>{site.address}</span>

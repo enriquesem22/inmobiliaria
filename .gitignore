@@ -28,6 +28,12 @@ yarn-error.log*
 .env*.local
 .env
 
+# base de datos local del CRM (SQLite)
+/data
+*.db
+*.db-journal
+*.sqlite
+
 # vercel
 .vercel
 

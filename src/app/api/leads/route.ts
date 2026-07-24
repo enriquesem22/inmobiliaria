@@ -1,4 +1,9 @@
 import { NextResponse } from "next/server";
+import { createLead } from "@/lib/crm";
+
+// El CRM usa SQLite (modulo nativo): esta ruta corre en runtime Node.
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 /**
  * RECEPCION DE LEADS
@@ -6,10 +11,11 @@ import { NextResponse } from "next/server";
  * Punto unico de entrada para todos los formularios de la web
  * (valoracion, venta, inversores, colaboradores, contacto).
  *
- * Ahora mismo valida los datos y los registra en el log del servidor.
- * Para conectarlo a un CRM / hoja de calculo / email, define la variable
- * de entorno LEADS_WEBHOOK_URL (por ejemplo, un webhook de tu CRM,
- * Make/Zapier, o un endpoint propio). El lead se reenviara automaticamente.
+ * Cada lead se guarda en el CRM (base de datos SQLite) y puede consultarse
+ * en el panel de administracion (/admin).
+ *
+ * Ademas, si defines la variable de entorno LEADS_WEBHOOK_URL, el lead se
+ * reenvia tambien a ese webhook (CRM externo, Make/Zapier, endpoint propio).
  *
  * Ejemplo (.env.local):
  *   LEADS_WEBHOOK_URL=https://hooks.tu-crm.com/xxxx
@@ -74,35 +80,42 @@ export async function POST(request: Request) {
     );
   }
 
-  const lead = {
-    type,
-    data,
-    meta: {
-      ...(body.meta ?? {}),
-      receivedAt: new Date().toISOString(),
-      userAgent: request.headers.get("user-agent") ?? undefined,
-    },
-  };
+  const meta = (body.meta ?? {}) as Record<string, unknown>;
+  const userAgent = request.headers.get("user-agent") ?? undefined;
+  const sourcePath =
+    typeof meta.path === "string" ? meta.path : undefined;
 
-  // Reenvio al CRM/webhook si esta configurado.
+  // 1) Guardar el lead en el CRM (base de datos).
+  try {
+    createLead({ type, data, sourcePath, userAgent });
+  } catch (err) {
+    console.error("[leads] Error guardando el lead en el CRM:", err);
+    return NextResponse.json(
+      { ok: false, error: "No se pudo registrar la solicitud. Intentalo de nuevo." },
+      { status: 500 },
+    );
+  }
+
+  // 2) Reenvio opcional a un webhook externo (CRM, Make/Zapier...).
   const webhook = process.env.LEADS_WEBHOOK_URL;
   if (webhook) {
     try {
       const res = await fetch(webhook, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(lead),
+        body: JSON.stringify({
+          type,
+          data,
+          meta: { ...meta, receivedAt: new Date().toISOString(), userAgent },
+        }),
       });
       if (!res.ok) {
         console.error("[leads] Error reenviando al webhook:", res.status);
       }
     } catch (err) {
       console.error("[leads] Fallo al contactar con el webhook:", err);
-      // No bloqueamos al usuario por un fallo de integracion.
+      // No bloqueamos al usuario por un fallo de integracion externa.
     }
-  } else {
-    // Sin webhook configurado: dejamos constancia en el log del servidor.
-    console.info("[leads] Nuevo lead recibido:", JSON.stringify(lead));
   }
 
   return NextResponse.json({ ok: true });

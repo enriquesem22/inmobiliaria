@@ -13,8 +13,13 @@ su valor."**
 - [Next.js 14](https://nextjs.org/) (App Router) + TypeScript
 - [Tailwind CSS](https://tailwindcss.com/) para el diseno
 - [react-hook-form](https://react-hook-form.com/) + [zod](https://zod.dev/) para formularios
+- **CRM propio** con base de datos SQLite ([better-sqlite3](https://github.com/WiseLibs/better-sqlite3)) y panel en `/admin`
 - Blog en Markdown (`gray-matter` + `react-markdown`)
 - SEO: metadatos, `sitemap.xml`, `robots.txt` y datos estructurados (JSON-LD)
+
+El sitio esta organizado en dos grupos de rutas: `(site)` para la web
+publica (con cabecera, pie y WhatsApp) y `(admin)` para el panel del CRM
+(con su propio layout, sin la cabecera comercial).
 
 ## Puesta en marcha
 
@@ -34,8 +39,8 @@ Antes de publicar, revisa y completa estos puntos:
 
 Todo esta centralizado en **`src/data/site.ts`**. Cambia:
 
-- `name` — nombre comercial definitivo (actualmente es un **marcador de
-  posicion**: "Casa Aljarafe").
+- `name` — nombre comercial (actualmente **"Sem²a"**, provisional).
+- `contactPerson` — persona de contacto (actualmente "Pepe Serrano Maestro").
 - `phone`, `phoneDisplay`, `whatsapp`, `email` — datos de contacto reales
   (ahora son marcadores de posicion).
 - `url` — dominio de produccion (afecta a SEO, sitemap y metadatos).
@@ -52,19 +57,35 @@ orientativas** con campos entre corchetes (`[Razon social]`, `[NIF/CIF]`,
 etc.). Complétalas con los datos reales, revisalas con un profesional y
 elimina el aviso `LegalNotice` de cada pagina.
 
-### 3. Formularios y CRM
+### 3. CRM y formularios
 
 Todos los formularios envian los datos a la ruta **`/api/leads`**
-(`src/app/api/leads/route.ts`). Por defecto, los leads se registran en el
-log del servidor. Para conectarlos a tu CRM, hoja de calculo o email, define
-la variable de entorno:
+(`src/app/api/leads/route.ts`), que **guarda cada lead en el CRM** (base de
+datos SQLite) y lo deja disponible en el panel de administracion.
+
+**Panel de administracion:** `/admin`
+
+- Protegido con contrasena. Define la variable de entorno **`ADMIN_PASSWORD`**
+  para habilitarlo (sin ella nadie puede entrar). Ver `.env.example`.
+- Lista de leads con buscador y filtros por tipo y por estado.
+- Ficha de cada lead con todos los datos, botones de contacto (telefono,
+  WhatsApp, email) y gestion de **estado** (nuevo, contactado, en proceso,
+  ganado, perdido) y **notas internas**.
+- Exportacion a **CSV** de los leads (respetando los filtros activos).
+
+**Base de datos:** por defecto SQLite en `data/crm.db` (fuera de git;
+configurable con `CRM_DATABASE_PATH`). Requiere un disco persistente. La
+capa de datos esta en `src/lib/crm.ts` y `src/lib/db.ts`, pensada para poder
+cambiar a Postgres/Turso si se despliega en serverless.
+
+**Reenvio externo (opcional):** ademas de guardarse en el CRM, cada lead
+puede reenviarse a un webhook externo (otro CRM, Make/Zapier, etc.) definiendo:
 
 ```
 LEADS_WEBHOOK_URL=https://hooks.tu-crm.com/xxxx
 ```
 
-(ver `.env.example`). El lead se reenvia como JSON con la forma
-`{ type, data, meta }`.
+El lead se envia como JSON con la forma `{ type, data, meta }`.
 
 ### 4. Contenido de zonas y blog
 
@@ -80,10 +101,15 @@ LEADS_WEBHOOK_URL=https://hooks.tu-crm.com/xxxx
 ```
 src/
   app/                 # Rutas (App Router)
-    api/leads/         # Recepcion de formularios (preparada para CRM)
-    zonas/[slug]/      # Paginas de SEO local por municipio
-    blog/[slug]/       # Articulos del blog
-    ...
+    (site)/            # Web publica (layout con cabecera, pie, WhatsApp)
+      zonas/[slug]/    # Paginas de SEO local por municipio
+      blog/[slug]/     # Articulos del blog
+      ...
+    (admin)/           # Panel del CRM (layout propio)
+      admin/           # /admin, /admin/login, /admin/leads/[id], /admin/export
+      actions.ts       # Server actions (login, logout, actualizar lead)
+    api/leads/         # Recepcion de formularios (guarda en el CRM)
+    layout.tsx         # Layout raiz (fuentes, metadatos globales)
   components/
     layout/            # Header, Footer, WhatsApp, cookies
     sections/          # Secciones reutilizables (hero, servicios, proceso...)
@@ -92,7 +118,8 @@ src/
     seo/               # Datos estructurados JSON-LD
   content/blog/        # Articulos en Markdown
   data/                # Datos centralizados (site, servicios, zonas, proceso)
-  lib/                 # Utilidades y lectura del blog
+  lib/                 # Utilidades, blog, y CRM (db.ts, crm.ts, auth.ts)
+data/                  # Base de datos SQLite del CRM (generada, fuera de git)
 ```
 
 ## Paginas incluidas
@@ -127,5 +154,12 @@ La arquitectura esta lista para incorporar, mas adelante:
 ## Despliegue
 
 El proyecto es una app estandar de Next.js y puede desplegarse en cualquier
-plataforma compatible (Vercel, Node, contenedor). Recuerda configurar las
-variables de entorno en el proveedor.
+plataforma compatible. Recuerda configurar las variables de entorno
+(`ADMIN_PASSWORD`, y opcionalmente `LEADS_WEBHOOK_URL`, `CRM_DATABASE_PATH`).
+
+> **Importante:** el CRM usa SQLite, que necesita un **disco persistente**
+> (VPS, servidor propio o contenedor con volumen). En plataformas serverless
+> sin disco persistente (p. ej. Vercel) los datos del CRM no se conservarian;
+> en ese caso, sustituye la capa de `src/lib/db.ts` por una base de datos
+> gestionada (Postgres, Turso, etc.), manteniendo la interfaz de
+> `src/lib/crm.ts`.
