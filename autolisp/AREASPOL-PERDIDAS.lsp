@@ -261,7 +261,7 @@
 ;;; y genera la tabla resumen por tipo.
 ;;; --------------------------------------------------------------------------
 (defun c:AREASPOL-PERD
-  (/ doc espacio altura ss i n-total obj
+  (/ doc espacio altura umbral ss i n-total obj
      area-real vr delta delta2 col mag capa
      minPt maxPt centro etiqueta texto
      acc n-rojos n-verdes)
@@ -291,6 +291,13 @@
   (setq altura (getdist "\nIndica la altura del texto de las etiquetas <0.25>: "))
   (if (null altura) (setq altura 0.25))
 
+  ;; Umbral minimo (m2) a partir del cual se considera perdida o ganancia.
+  ;;   Solo se marcan (color + etiqueta) y se cuentan en la tabla las diferencias
+  ;;   con  |diferencia| >= umbral.  Las menores se tratan como "sin diferencia".
+  (initget 4)   ; no admite valores negativos (0 = marcar cualquier diferencia)
+  (setq umbral (getreal "\nUmbral minimo para considerar perdida/ganancia (m2) <0.01>: "))
+  (if (null umbral) (setq umbral 0.01))
+
   ;; Seleccion de polilineas cerradas: LOS MISMOS poligonos que AREASPOL.
   (princ "\nSelecciona las polilineas cerradas a analizar: ")
   (setq ss (ssget (list '(0 . "LWPOLYLINE") '(-4 . "&") '(70 . 1))))
@@ -316,17 +323,17 @@
     (setq delta  (- vr area-real))
     (setq delta2 (BS-Redondear2 delta))
 
-    ;; Acumular para la tabla por tipo.
+    ;; Acumular para la tabla por tipo (solo cuenta a partir del umbral).
     (setq acc
       (BS-AccAdd acc vr 1
-        (if (> delta2 0.0) delta2 0.0)      ; ganado (positivo)
-        (if (< delta2 0.0) delta2 0.0)))    ; perdido (negativo)
+        (if (and (> delta2 0.0) (>= delta2 umbral))    delta2 0.0)   ; ganado (positivo)
+        (if (and (< delta2 0.0) (>= (- delta2) umbral)) delta2 0.0)))  ; perdido (negativo)
 
-    ;; Decidir color/capa/etiqueta segun el signo de la diferencia.
+    ;; Decidir color/capa/etiqueta segun el signo de la diferencia y el umbral.
     (cond
-      ((> delta2 0.0)                                                        ; GANANCIA -> verde
+      ((and (> delta2 0.0) (>= delta2 umbral))                              ; GANANCIA -> verde
         (setq col 3 mag delta2     capa *BS-CAPA-GANANCIAS* n-verdes (1+ n-verdes)))
-      ((< delta2 0.0)                                                        ; PERDIDA  -> rojo
+      ((and (< delta2 0.0) (>= (- delta2) umbral))                         ; PERDIDA  -> rojo
         (setq col 1 mag (- delta2) capa *BS-CAPA-PERDIDAS*  n-rojos  (1+ n-rojos)))
       (T (setq col nil))
     )
@@ -370,7 +377,8 @@
     (setq i (1+ i))
   )
 
-  (princ (strcat "\nPoligonos analizados: " (itoa n-total)
+  (princ (strcat "\nUmbral: " (BS-FormatoPerdida umbral) " m2"
+                 "  |  Poligonos analizados: " (itoa n-total)
                  "  |  ganan (verde): " (itoa n-verdes)
                  "  |  pierden (rojo): " (itoa n-rojos)))
 
