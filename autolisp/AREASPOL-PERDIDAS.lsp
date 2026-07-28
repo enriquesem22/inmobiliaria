@@ -15,15 +15,18 @@
 ;;;
 ;;;   - Si el redondeo hace PERDER superficie (redondeada < real):
 ;;;        * pone el poligono en color ROJO
-;;;        * inserta en el centro una etiqueta ROJA con los m2 perdidos.
+;;;        * inserta en el centro una etiqueta con los m2 perdidos, en la
+;;;          capa "BS-91-Box losses" (color de capa ROJO).
 ;;;   - Si el redondeo hace GANAR superficie (redondeada > real):
 ;;;        * pone el poligono en color VERDE
-;;;        * inserta en el centro una etiqueta VERDE con los m2 ganados.
+;;;        * inserta en el centro una etiqueta con los m2 ganados, en la
+;;;          capa "BS-91-Box gains" (color de capa VERDE).
 ;;;   - Si no hay diferencia apreciable: no cambia color ni anade etiqueta.
 ;;;
 ;;; La etiqueta muestra unicamente el valor (p.ej.  2,35 m2 ); el color (rojo
-;;; o verde) indica si es perdida o ganancia. SOLO se modifica el color y se
-;;; anade texto: NUNCA se toca la geometria de los poligonos.
+;;; o verde), heredado de su capa, indica si es perdida o ganancia. Las capas
+;;; se crean automaticamente si no existen. SOLO se modifica el color del
+;;; poligono y se anade texto: NUNCA se toca la geometria de los poligonos.
 ;;;
 ;;; Al terminar dibuja una TABLA RESUMEN por tipo (tamano redondeado) con:
 ;;;       Tipo | N | Ganado(+) | Perdido(-) | Neto
@@ -146,6 +149,28 @@
 )
 
 ;;; --------------------------------------------------------------------------
+;;; Capas para las etiquetas (nombres en ingles).
+;;;   - Perdidas   -> "BS-91-Box losses"    (color de capa ROJO)
+;;;   - Ganancias  -> "BS-91-Box gains"     (color de capa VERDE)
+;;; --------------------------------------------------------------------------
+(setq *BS-CAPA-PERDIDAS*  "BS-91-Box losses")
+(setq *BS-CAPA-GANANCIAS* "BS-91-Box gains")
+
+;; Asegura que la capa 'nombre' existe; si hay que crearla, le pone el color
+;; ACI 'aci'. Si ya existe, respeta su color actual. Devuelve el nombre.
+(defun BS-AsegurarCapaColor (nombre aci doc / layers res)
+  (setq layers (vla-get-Layers doc))
+  (setq res (vl-catch-all-apply 'vla-Item (list layers nombre)))
+  (if (vl-catch-all-error-p res)
+    (progn
+      (setq res (vla-Add layers nombre))
+      (vl-catch-all-apply 'vla-put-Color (list res aci))
+    )
+  )
+  nombre
+)
+
+;;; --------------------------------------------------------------------------
 ;;; Acumulador por tipo (tamano redondeado).
 ;;;   acc = lista de entradas (tipo cnt ganado perdido)
 ;;;     ganado  >= 0  (suma de diferencias positivas)
@@ -237,7 +262,7 @@
 ;;; --------------------------------------------------------------------------
 (defun c:AREASPOL-PERD
   (/ doc espacio altura ss i n-total obj
-     area-real vr delta delta2 col mag
+     area-real vr delta delta2 col mag capa
      minPt maxPt centro etiqueta texto
      acc n-rojos n-verdes)
 
@@ -297,17 +322,22 @@
         (if (> delta2 0.0) delta2 0.0)      ; ganado (positivo)
         (if (< delta2 0.0) delta2 0.0)))    ; perdido (negativo)
 
-    ;; Decidir color/etiqueta segun el signo de la diferencia.
+    ;; Decidir color/capa/etiqueta segun el signo de la diferencia.
     (cond
-      ((> delta2 0.0) (setq col 3 mag delta2       n-verdes (1+ n-verdes)))  ; verde
-      ((< delta2 0.0) (setq col 1 mag (- delta2)   n-rojos  (1+ n-rojos)))   ; rojo
-      (T              (setq col nil))
+      ((> delta2 0.0)                                                        ; GANANCIA -> verde
+        (setq col 3 mag delta2     capa *BS-CAPA-GANANCIAS* n-verdes (1+ n-verdes)))
+      ((< delta2 0.0)                                                        ; PERDIDA  -> rojo
+        (setq col 1 mag (- delta2) capa *BS-CAPA-PERDIDAS*  n-rojos  (1+ n-rojos)))
+      (T (setq col nil))
     )
 
     (if col
       (progn
         ;; Color del poligono (SOLO color: no se toca la geometria).
         (vl-catch-all-apply 'vla-put-Color (list obj col))
+
+        ;; Asegurar la capa de la etiqueta (con su color rojo/verde).
+        (BS-AsegurarCapaColor capa col doc)
 
         ;; Centro aproximado (caja envolvente), igual que AREASPOL.
         (vla-GetBoundingBox obj 'minPt 'maxPt)
@@ -323,14 +353,17 @@
           )
         )
 
-        ;; Etiqueta: SOLO el valor + unidad, coma decimal, en el mismo color.
+        ;; Etiqueta: SOLO el valor + unidad, coma decimal.
+        ;;   Se coloca en su capa dedicada y toma el color de la capa (ByLayer):
+        ;;   rojo en "BS-91-Box losses", verde en "BS-91-Box gains".
         ;;   (chr 178) es el "2" en superindice de "m2". Si tu estilo de texto
         ;;   no lo dibuja, cambia (chr 178) por "2".
         (setq etiqueta (strcat (BS-FormatoPerdida mag) " m" (chr 178)))
         (setq texto (vla-AddText espacio etiqueta centro altura))
         (vla-put-Alignment texto 10)              ; acAlignmentMiddleCenter
         (vla-put-TextAlignmentPoint texto centro)
-        (vla-put-Color texto col)
+        (vla-put-Layer texto capa)                ; capa dedicada de la etiqueta
+        (vla-put-Color texto 256)                 ; ByLayer -> color rojo/verde de la capa
       )
     )
 
