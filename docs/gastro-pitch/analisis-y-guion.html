@@ -1,0 +1,888 @@
+<title>El plato, no el restaurante</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&family=Karla:ital,wght@0,300..800;1,400..600&display=swap">
+
+<style>
+:root{
+  --paper:#F1F3EF;
+  --surface:#FBFCFA;
+  --surface-2:#E5EAE4;
+  --ink:#121A18;
+  --ink-2:#3B4A46;
+  --ink-3:#6E7C77;
+  --rule:#CFD8D1;
+  --rule-2:#DFE5DD;
+  --accent:#0F6257;
+  --accent-2:#0B4A41;
+  --accent-soft:#DEEBE6;
+  --gold:#9C6B12;
+  --gold-soft:#F2E6CB;
+  --red:#9E3529;
+  --red-soft:#F0DCD8;
+  --shadow:0 1px 2px rgba(18,26,24,.05), 0 8px 24px -12px rgba(18,26,24,.18);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0C1211;
+    --surface:#131B19;
+    --surface-2:#1B2523;
+    --ink:#E3EAE6;
+    --ink-2:#AFBDB8;
+    --ink-3:#7C8B86;
+    --rule:#27332F;
+    --rule-2:#1F2A27;
+    --accent:#57B9A8;
+    --accent-2:#7FCFC0;
+    --accent-soft:#11302B;
+    --gold:#DDAF57;
+    --gold-soft:#30260F;
+    --red:#DE8073;
+    --red-soft:#331915;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0C1211;
+  --surface:#131B19;
+  --surface-2:#1B2523;
+  --ink:#E3EAE6;
+  --ink-2:#AFBDB8;
+  --ink-3:#7C8B86;
+  --rule:#27332F;
+  --rule-2:#1F2A27;
+  --accent:#57B9A8;
+  --accent-2:#7FCFC0;
+  --accent-soft:#11302B;
+  --gold:#DDAF57;
+  --gold-soft:#30260F;
+  --red:#DE8073;
+  --red-soft:#331915;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.7);
+}
+
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Karla","Helvetica Neue",Arial,sans-serif;
+  font-size:17px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{margin:0;text-wrap:balance;font-weight:400;}
+p{margin:0;}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--rule);}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px;}
+
+.serif{font-family:"Instrument Serif",Georgia,"Times New Roman",serif;font-weight:400;letter-spacing:-.01em;}
+.mono{font-family:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;}
+
+.eyebrow{
+  font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--accent);font-weight:500;
+}
+
+/* ---------- shell ---------- */
+.wrap{width:min(100% - 2.5rem, 680px);margin-inline:auto;}
+.wide{width:min(100% - 2.5rem, 1060px);margin-inline:auto;}
+section{padding-block:clamp(3rem,7vw,5.5rem);}
+.stack{display:flex;flex-direction:column;}
+.gap-s{gap:.75rem;} .gap-m{gap:1.25rem;} .gap-l{gap:2rem;} .gap-xl{gap:3rem;}
+
+/* ---------- nav ---------- */
+nav.bar{
+  position:sticky;top:0;z-index:20;
+  background:color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--rule-2);
+}
+nav.bar .inner{
+  display:flex;gap:1.5rem;align-items:center;
+  overflow-x:auto;scrollbar-width:none;
+  padding-block:.7rem;
+}
+nav.bar .inner::-webkit-scrollbar{display:none;}
+nav.bar a{
+  border:0;white-space:nowrap;color:var(--ink-3);
+  font-family:"JetBrains Mono",monospace;font-size:.72rem;
+  letter-spacing:.08em;text-transform:uppercase;
+}
+nav.bar a:hover{color:var(--accent);}
+
+/* ---------- hero ---------- */
+.hero{
+  border-bottom:1px solid var(--rule);
+  padding-block:clamp(3rem,9vw,6.5rem) clamp(3rem,7vw,5rem);
+}
+.hero-grid{display:grid;gap:clamp(2.5rem,5vw,4rem);grid-template-columns:1fr;align-items:start;}
+@media(min-width:900px){.hero-grid{grid-template-columns:1.15fr .85fr;}}
+.hero h1{font-size:clamp(2.9rem,7.5vw,4.7rem);line-height:.98;}
+.hero h1 em{font-style:italic;color:var(--accent);}
+.deck{font-size:1.12rem;color:var(--ink-2);max-width:34ch;}
+.meta{display:flex;flex-wrap:wrap;gap:.4rem .5rem;}
+.tag{
+  font-family:"JetBrains Mono",monospace;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;
+  border:1px solid var(--rule);border-radius:100px;padding:.3rem .65rem;color:var(--ink-3);
+}
+
+/* ---------- ticket ---------- */
+.ticket{
+  background:var(--surface);
+  border:1px solid var(--rule);
+  box-shadow:var(--shadow);
+  padding:1.4rem 1.3rem 1.1rem;
+  font-family:"JetBrains Mono",monospace;
+  font-size:.83rem;line-height:1.5;
+  --notch:8px;
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 6px),
+    95% 100%,90% calc(100% - 6px),85% 100%,80% calc(100% - 6px),75% 100%,70% calc(100% - 6px),
+    65% 100%,60% calc(100% - 6px),55% 100%,50% calc(100% - 6px),45% 100%,40% calc(100% - 6px),
+    35% 100%,30% calc(100% - 6px),25% 100%,20% calc(100% - 6px),15% 100%,10% calc(100% - 6px),
+    5% 100%,0 calc(100% - 6px));
+}
+.ticket .t-head{text-align:center;display:flex;flex-direction:column;gap:.15rem;padding-bottom:.9rem;}
+.ticket .t-name{letter-spacing:.16em;text-transform:uppercase;font-weight:700;font-size:.78rem;}
+.ticket .t-sub{color:var(--ink-3);font-size:.7rem;letter-spacing:.06em;}
+.ticket hr{border:0;border-top:1px dashed var(--rule);margin:0;}
+.ticket .t-body{display:flex;flex-direction:column;gap:.5rem;padding-block:.9rem;}
+.line{display:flex;align-items:baseline;gap:.45rem;}
+.line .lbl{white-space:nowrap;}
+.line .lead{flex:1;border-bottom:1px dotted var(--rule);transform:translateY(-.3em);min-width:1rem;}
+.line .amt{font-variant-numeric:tabular-nums;white-space:nowrap;}
+.score{color:var(--accent);font-size:.72rem;}
+.ticket .t-total{display:flex;align-items:baseline;justify-content:space-between;padding-top:.9rem;gap:1rem;}
+.ticket .t-total .k{letter-spacing:.14em;text-transform:uppercase;font-size:.7rem;color:var(--ink-3);}
+.ticket .t-total .v{font-size:1.5rem;font-weight:700;color:var(--gold);font-variant-numeric:tabular-nums;}
+.ticket .t-foot{text-align:center;color:var(--ink-3);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;padding-top:.6rem;}
+
+/* ---------- generic blocks ---------- */
+h2.sec{font-size:clamp(1.9rem,4.2vw,2.9rem);line-height:1.06;}
+h3.sub{font-size:1.28rem;line-height:1.25;}
+.lede{font-size:1.14rem;color:var(--ink-2);}
+.small{font-size:.9rem;color:var(--ink-3);}
+.rule{border:0;border-top:1px solid var(--rule);margin:0;}
+
+.pull{
+  border-left:3px solid var(--accent);
+  padding:.15rem 0 .15rem 1.15rem;
+  font-family:"Instrument Serif",Georgia,serif;
+  font-size:clamp(1.4rem,3vw,1.85rem);line-height:1.22;
+}
+.callout{
+  background:var(--accent-soft);
+  border:1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+  border-radius:3px;padding:1.1rem 1.2rem;
+  display:flex;flex-direction:column;gap:.45rem;
+}
+.callout .k{font-family:"JetBrains Mono",monospace;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);}
+
+/* ---------- decisions ---------- */
+.dec{display:grid;grid-template-columns:auto 1fr;gap:1rem 1.15rem;align-items:start;padding-block:1.6rem;border-top:1px solid var(--rule-2);}
+.dec:first-of-type{border-top:0;}
+.dec .num{
+  font-family:"JetBrains Mono",monospace;font-size:.78rem;font-weight:700;
+  color:var(--accent);border:1px solid var(--accent);border-radius:100px;
+  width:2rem;height:2rem;display:grid;place-items:center;margin-top:.15rem;
+  font-variant-numeric:tabular-nums;
+}
+.dec .body{display:flex;flex-direction:column;gap:.6rem;min-width:0;}
+.dec h3{font-size:1.22rem;line-height:1.25;font-family:"Instrument Serif",Georgia,serif;}
+
+/* ---------- compare cards ---------- */
+.compare{display:grid;gap:1rem;grid-template-columns:1fr;}
+@media(min-width:720px){.compare{grid-template-columns:1fr 1fr;}}
+.card{
+  background:var(--surface);border:1px solid var(--rule);border-radius:3px;
+  padding:1.35rem;display:flex;flex-direction:column;gap:.7rem;
+}
+.card.muted{background:transparent;border-style:dashed;color:var(--ink-3);}
+.card .cap{font-family:"JetBrains Mono",monospace;font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);}
+.stars{font-size:1.85rem;line-height:1;color:var(--ink-3);font-family:"JetBrains Mono",monospace;}
+.dish{font-family:"Instrument Serif",Georgia,serif;font-size:1.6rem;line-height:1.1;}
+.price{font-family:"JetBrains Mono",monospace;font-size:1.5rem;font-weight:700;color:var(--gold);font-variant-numeric:tabular-nums;}
+
+/* ---------- badges ---------- */
+.badges{display:flex;flex-wrap:wrap;gap:.6rem;}
+.badge{
+  font-family:"JetBrains Mono",monospace;font-size:.7rem;letter-spacing:.06em;
+  padding:.42rem .75rem;border-radius:3px;border:1px solid;display:inline-flex;gap:.45rem;align-items:center;
+}
+.badge.v{background:var(--accent-soft);border-color:color-mix(in srgb,var(--accent) 40%,transparent);color:var(--accent);}
+.badge.a{background:var(--gold-soft);border-color:color-mix(in srgb,var(--gold) 40%,transparent);color:var(--gold);}
+.badge.c{background:var(--surface-2);border-color:var(--rule);color:var(--ink-2);}
+
+/* ---------- table ---------- */
+.tablewrap{overflow-x:auto;border:1px solid var(--rule);border-radius:3px;background:var(--surface);}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:.92rem;}
+th,td{text-align:left;padding:.8rem .95rem;border-bottom:1px solid var(--rule-2);vertical-align:top;}
+thead th{
+  font-family:"JetBrains Mono",monospace;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:500;background:var(--surface-2);
+}
+tbody tr:last-child td{border-bottom:0;}
+td.us{background:var(--accent-soft);color:var(--ink);}
+th.us{background:var(--accent);color:var(--paper);}
+.yes{color:var(--accent);font-weight:700;}
+.no{color:var(--ink-3);}
+
+/* ---------- flywheel ---------- */
+.figure{display:flex;flex-direction:column;gap:.9rem;align-items:center;}
+.figure svg{width:100%;height:auto;max-width:700px;display:block;}
+.figcap{font-size:.86rem;color:var(--ink-3);text-align:center;max-width:52ch;}
+.fw-node{fill:var(--surface);stroke:var(--accent);stroke-width:1.5;}
+.fw-ring{fill:none;stroke:var(--rule);stroke-width:1.5;}
+.fw-arrow{fill:var(--accent);}
+.fw-label{font-family:"Karla",sans-serif;font-size:15px;fill:var(--ink);}
+.fw-num{font-family:"JetBrains Mono",monospace;font-size:13px;font-weight:700;fill:var(--accent);}
+.fw-center{font-family:"JetBrains Mono",monospace;font-size:13px;letter-spacing:.14em;fill:var(--ink-3);}
+
+/* ---------- ladder ---------- */
+.ladder{display:grid;gap:.6rem;grid-template-columns:1fr;}
+@media(min-width:760px){.ladder{grid-template-columns:repeat(4,1fr);align-items:end;}}
+.step{
+  background:var(--surface);border:1px solid var(--rule);border-radius:3px;
+  padding:1rem;display:flex;flex-direction:column;gap:.35rem;
+}
+.step .lv{font-family:"JetBrains Mono",monospace;font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);}
+.step .nm{font-family:"Instrument Serif",Georgia,serif;font-size:1.25rem;}
+.step .ds{font-size:.86rem;color:var(--ink-2);}
+@media(min-width:760px){
+  .step.s1{min-height:120px;} .step.s2{min-height:155px;}
+  .step.s3{min-height:190px;} .step.s4{min-height:225px;}
+}
+
+/* ---------- slides ---------- */
+.slide{
+  background:var(--surface);border:1px solid var(--rule);border-radius:3px;
+  border-left:3px solid var(--accent);
+  padding:1.5rem 1.5rem 1.6rem;display:flex;flex-direction:column;gap:1.1rem;
+}
+.slide-head{display:flex;gap:.9rem;align-items:baseline;flex-wrap:wrap;}
+.slide-head .n{font-family:"JetBrains Mono",monospace;font-size:.8rem;font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums;}
+.slide-head h3{font-family:"Instrument Serif",Georgia,serif;font-size:clamp(1.5rem,3vw,2rem);line-height:1.08;flex:1;min-width:12rem;}
+.msg{font-size:1.05rem;color:var(--ink);border-bottom:1px solid var(--rule-2);padding-bottom:1.1rem;}
+.fields{display:grid;gap:1rem 1.6rem;grid-template-columns:1fr;}
+@media(min-width:780px){.fields{grid-template-columns:1fr 1fr;}}
+.field{display:flex;flex-direction:column;gap:.35rem;min-width:0;}
+.field .k{font-family:"JetBrains Mono",monospace;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);}
+.field p, .field ul{font-size:.94rem;color:var(--ink-2);}
+.field ul{margin:0;padding-left:1.05rem;display:flex;flex-direction:column;gap:.25rem;}
+.onscreen{
+  background:var(--surface-2);border-radius:3px;padding:.85rem 1rem;
+  display:flex;flex-direction:column;gap:.3rem;
+}
+.onscreen .k{font-family:"JetBrains Mono",monospace;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-3);}
+.onscreen p{font-size:.94rem;}
+
+/* ---------- misc lists ---------- */
+ul.clean{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.55rem;}
+ul.clean li{display:grid;grid-template-columns:auto 1fr;gap:.7rem;align-items:baseline;}
+ul.clean li::before{content:"—";color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:.8rem;}
+ul.plain{margin:0;padding-left:1.15rem;display:flex;flex-direction:column;gap:.4rem;}
+ol.narrative{margin:0;padding:0;list-style:none;counter-reset:n;display:flex;flex-direction:column;gap:.85rem;}
+ol.narrative li{counter-increment:n;display:grid;grid-template-columns:auto 1fr;gap:.85rem;align-items:baseline;}
+ol.narrative li::before{
+  content:counter(n);font-family:"JetBrains Mono",monospace;font-size:.72rem;font-weight:700;
+  color:var(--accent);
+}
+.two{display:grid;gap:1.4rem;grid-template-columns:1fr;}
+@media(min-width:820px){.two{grid-template-columns:1fr 1fr;}}
+.three{display:grid;gap:1rem;grid-template-columns:1fr;}
+@media(min-width:760px){.three{grid-template-columns:repeat(3,1fr);}}
+.strike{text-decoration:line-through;color:var(--ink-3);}
+
+footer{border-top:1px solid var(--rule);padding-block:2.5rem 3.5rem;}
+</style>
+
+<nav class="bar">
+  <div class="wide inner">
+    <a href="#diagnostico">Diagnóstico</a>
+    <a href="#decisiones">10 decisiones</a>
+    <a href="#narrativa">Narrativa</a>
+    <a href="#flywheel">Flywheel</a>
+    <a href="#negocio">Negocio</a>
+    <a href="#deck">Las 15 diapositivas</a>
+    <a href="#anexos">Anexos</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wide hero-grid">
+    <div class="stack gap-l">
+      <div class="stack gap-m">
+        <span class="eyebrow">Estrategia de producto · Guion de pitch</span>
+        <h1 class="serif">El plato,<br>no <em>el restaurante</em>.</h1>
+      </div>
+      <p class="deck">Análisis de la idea y estructura completa de una presentación de 15 diapositivas para una red social gastronómica.</p>
+      <div class="meta">
+        <span class="tag">Análisis crítico</span>
+        <span class="tag">Narrativa</span>
+        <span class="tag">15 diapositivas</span>
+        <span class="tag">Sin cifras inventadas</span>
+      </div>
+    </div>
+
+    <div class="ticket" role="img" aria-label="Ticket de ejemplo: cena de Carlos, 52 euros para dos personas, con los platos valorados uno a uno">
+      <div class="t-head">
+        <span class="t-name">Lo que hoy no existe</span>
+        <span class="t-sub">Carlos · Sáb 21:40 · 2 personas</span>
+      </div>
+      <hr>
+      <div class="t-body">
+        <div class="line"><span class="lbl">Steak tartar <span class="score">9/10</span></span><span class="lead"></span><span class="amt">18,00</span></div>
+        <div class="line"><span class="lbl">Croquetas <span class="score">8/10</span></span><span class="lead"></span><span class="amt">10,00</span></div>
+        <div class="line"><span class="lbl">Vino de la casa</span><span class="lead"></span><span class="amt">24,00</span></div>
+      </div>
+      <hr>
+      <div class="t-total"><span class="k">Total</span><span class="v">52,00 €</span></div>
+      <div class="t-foot">26 € / persona · repetiría el tartar</div>
+    </div>
+  </div>
+</header>
+
+<section id="diagnostico">
+  <div class="wrap stack gap-l">
+    <div class="stack gap-m">
+      <span class="eyebrow">01 — El diagnóstico</span>
+      <h2 class="sec serif">La idea es buena. La narrativa vende cuatro productos.</h2>
+    </div>
+    <p class="lede">Tal como está contada ahora, la propuesta son cuatro cosas: red social, base de datos de cartas, recomendación por IA y plataforma B2B. Quien lo escucha entiende <em>proyecto enorme, foco cero</em>.</p>
+    <p>Hay una única reordenación que lo arregla, y de ella cuelga todo lo demás:</p>
+    <div class="pull">La unidad del producto no es el restaurante. Es el plato con su precio.</div>
+    <p>Ese cambio de eje resuelve cuatro problemas a la vez:</p>
+    <ul class="clean">
+      <li><span>Es lo único que <strong>no tiene absolutamente nadie</strong>. Google, TripAdvisor, TheFork e Instagram puntúan sitios, no platos.</span></li>
+      <li><span>Es <strong>lo que hace posible la IA</strong>. Sin datos a nivel de plato, «¿Qué pedimos?» es un truco de demo.</span></li>
+      <li><span>Es <strong>lo que un amigo quiere saber de verdad</strong>. Nadie pregunta «¿cuánto le pones a ese sitio?»; pregunta «¿qué pediste?».</span></li>
+      <li><span>Es <strong>el activo B2B</strong>. Un restaurante no paga por reseñas. Paga por saber qué platos se consultan, se guardan y se piden.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wide stack gap-m">
+    <span class="eyebrow">El contraste que abre el pitch</span>
+    <div class="compare">
+      <div class="card muted">
+        <span class="cap">Lo que te dan hoy</span>
+        <span class="stars">★★★★☆</span>
+        <p style="font-size:1.05rem;">4,2 · 1.240 reseñas · €€</p>
+        <p class="small">Una nota media de gente que no conoces, sobre un local entero, sin un solo precio real.</p>
+      </div>
+      <div class="card">
+        <span class="cap">Lo que necesitas</span>
+        <span class="dish serif">Steak tartar</span>
+        <span class="price">18,00 €</span>
+        <p style="font-size:1.05rem;">9/10 · «lo volvería a pedir» — Carlos</p>
+        <p class="small">Un plato, su precio, la nota de alguien de quien te fías y una decisión tomada.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="decisiones" style="background:var(--surface-2);border-block:1px solid var(--rule);">
+  <div class="wrap stack gap-l">
+    <div class="stack gap-m">
+      <span class="eyebrow">02 — Ordenadas por impacto</span>
+      <h2 class="sec serif">Diez decisiones que cambian el pitch</h2>
+      <p class="lede">Las tres primeras son las que de verdad mueven la aguja. Si solo cambias tres cosas, cambia esas.</p>
+    </div>
+
+    <div>
+      <article class="dec">
+        <span class="num">1</span>
+        <div class="body">
+          <h3>El plato es la unidad, no el restaurante</h3>
+          <p>La ficha deja de responder «¿está bien este sitio?» y pasa a responder <strong>«¿qué pido aquí?»</strong>. Es un cambio de posicionamiento, no de funcionalidad: el producto que describes ya lo hace, pero el pitch no lo dice.</p>
+        </div>
+      </article>
+
+      <article class="dec">
+        <span class="num">2</span>
+        <div class="body">
+          <h3>El ticket real es el gancho, y ahora está enterrado</h3>
+          <p>«Precio medio» y «€€» existen en todas partes y no significan nada. Lo que no existe en ningún sitio es <em>4 personas, 137 €, y esto es exactamente lo que pidieron</em>.</p>
+          <p>Los precios de restaurante son una ansiedad universal que nadie ha resuelto. Ese dato provoca una reacción inmediata: debe estar en la portada, no escondido en la diapositiva social.</p>
+        </div>
+      </article>
+
+      <article class="dec">
+        <span class="num">3</span>
+        <div class="body">
+          <h3>Registrar una comida tiene que ser una foto, no un formulario</h3>
+          <p>Este es <strong>el mayor riesgo de todo el producto</strong>. La lista actual de campos —restaurante, platos, precio de cada plato, total, comensales, fotos, valoración por plato, comentarios, qué repetirías— es un formulario largo. Nadie rellena eso después de cenar y con vino. Y si el registro no ocurre, no hay datos, sin datos no hay IA, y sin IA no hay negocio.</p>
+          <p><strong>Propuesta:</strong> el registro empieza por una foto del ticket. La IA extrae restaurante, platos, precios y total; el usuario solo puntúa con un toque y marca lo que repetiría. Quince segundos.</p>
+          <p>Y hay un efecto secundario enorme: <strong>el ticket es la verdad sobre el precio</strong>, mejor incluso que la carta, porque refleja lo que se cobró. Es el mismo motor de visión que digitaliza cartas, aplicado al doble de valor.</p>
+          <div class="callout">
+            <span class="k">Decir esto en el deck</span>
+            <p>El ticket se procesa para extraer platos y precios. No se publica, y no se guardan datos de pago.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="dec">
+        <span class="num">4</span>
+        <div class="body">
+          <h3>La app tiene que ser útil con cero amigos</h3>
+          <p>El primer usuario de cualquier app social abre un feed vacío y se va. Instagram lo resolvió con los filtros, Strava con el GPS: ambas eran útiles en solitario antes de ser sociales.</p>
+          <p>Aquí la versión «single-player» ya está dentro de la idea, solo hay que ascenderla: <strong>«¿Qué pido?» en modo individual</strong>. Estoy sentado, tengo la carta delante, no conozco a nadie en la app, y funciona igual. Es además un argumento muy sólido en una reunión: <em>la app aporta valor antes de tener red social</em>.</p>
+        </div>
+      </article>
+
+      <article class="dec">
+        <span class="num">5</span>
+        <div class="body">
+          <h3>El modo grupo no es una funcionalidad: es el canal de adquisición</h3>
+          <p>Para crear la cena de ocho hay que invitar a siete personas, en el momento exacto en el que sí instalan: sentados, con hambre y decidiendo. Es el bucle viral más barato del producto y hoy aparece como una feature más. Tiene que aparecer en la diapositiva de crecimiento, con nombre propio.</p>
+        </div>
+      </article>
+
+      <article class="dec">
+        <span class="num">6</span>
+        <div class="body">
+          <h3>Las etiquetas de origen del dato son posicionamiento, no letra pequeña</h3>
+          <p>Tu intuición sobre los alérgenos es correcta y conviene convertirla en ventaja visible. Tres etiquetas, siempre presentes, en cada dato:</p>
+          <div class="badges">
+            <span class="badge v">✓ Verificado por el restaurante</span>
+            <span class="badge a">◐ Detectado por IA</span>
+            <span class="badge c">○ Aportado por la comunidad</span>
+          </div>
+          <p>Regla del producto, y buena frase de diapositiva: <strong>«La IA propone. El restaurante confirma. Nunca al revés.»</strong> En alergias, la IA no filtra «esto es seguro para ti»: marca, avisa y remite al restaurante.</p>
+          <p>Y aquí está el truco de negocio: <strong>esa etiqueta es el motivo por el que un restaurante reclama su ficha gratis.</strong> Ver «detectado por IA» sobre sus propios precios y alérgenos pesa más que cualquier email comercial. La honestidad sobre el dato es, literalmente, el canal de captación B2B.</p>
+        </div>
+      </article>
+
+      <article class="dec">
+        <span class="num">7</span>
+        <div class="body">
+          <h3>Las restricciones se declaran; los gustos se aprenden</h3>
+          <p>El perfil gastronómico completo es un cuestionario largo en el peor momento posible: el primer minuto de uso. Divídelo. <strong>En el alta, treinta segundos:</strong> solo alergias, restricciones y presupuesto habitual, porque son seguridad y no se pueden inferir. <strong>Después, en silencio:</strong> los gustos se deducen de lo que puntúas, repites y guardas. Es también una buena historia que contar: la app te conoce mejor cada vez que comes.</p>
+        </div>
+      </article>
+
+      <article class="dec">
+        <span class="num">8</span>
+        <div class="body">
+          <h3>Lanzar un barrio, no un país</h3>
+          <p>Una app social geolocalizada no funciona con diez mil usuarios repartidos por España; funciona con quinientos en un barrio. Densidad local por encima de usuarios totales.</p>
+          <p>Y hay que <strong>sembrar la cobertura de cartas antes de abrir</strong>: en la zona piloto, las cartas principales tienen que estar digitalizadas el día del lanzamiento. La comunidad amplía la cobertura; no puede arrancarla.</p>
+        </div>
+      </article>
+
+      <article class="dec">
+        <span class="num">9</span>
+        <div class="body">
+          <h3>El foso no es la IA — y decirlo en voz alta suma credibilidad</h3>
+          <p>Cualquiera puede llamar a un modelo. Lo que no se copia en un fin de semana es la <strong>base de datos de platos con precios reales</strong> que crece con cada comida registrada, la <strong>densidad del grafo social local</strong> (tus amigos no están en la app del competidor) y las <strong>cartas verificadas</strong> por los propios restaurantes.</p>
+          <p>Reconocer que el modelo es una <em>commodity</em> y señalar dónde está el valor real es exactamente lo que un inversor con criterio quiere oír.</p>
+        </div>
+      </article>
+
+      <article class="dec">
+        <span class="num">10</span>
+        <div class="body">
+          <h3>Monetizar en escalera, y con una línea roja explícita</h3>
+          <p>Cuatro vías de ingreso enseñadas a la vez parecen humo. Presentadas como una secuencia con condiciones de activación, parecen un plan. Y la línea roja conviene enunciarla en la propia diapositiva: <strong>la recomendación personalizada no se vende.</strong> Si el usuario deja de fiarse de ella, el activo entero se evapora — y con él, el negocio B2B que depende de él.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap stack gap-l">
+    <div class="stack gap-m">
+      <span class="eyebrow">03 — Lo que hay que quitar</span>
+      <h2 class="sec serif">Menos superficie, más filo</h2>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th style="width:44%">Elemento actual</th><th>Qué hacer con él</th></tr></thead>
+        <tbody>
+          <tr><td>Perfil gastronómico completo en el alta</td><td>Reducir a restricciones y presupuesto. Los gustos se aprenden solos.</td></tr>
+          <tr><td>Estadísticas del histórico personal</td><td>Excelente para retención, pero es un detalle dentro de la diapositiva social, no una sección propia.</td></tr>
+          <tr><td>«Cuatro elementos del producto»</td><td>No abrir con eso. Abrir con dos momentos: <strong>antes</strong> (dónde vamos) y <strong>dentro</strong> (qué pedimos). Los cuatro elementos son arquitectura interna, no pitch.</td></tr>
+          <tr><td>Lista larga de campos al registrar</td><td>Foto del ticket y puntuación. Todo lo demás, opcional.</td></tr>
+          <tr><td>Modo grupo como una feature más</td><td>Reposicionarlo como el motor de crecimiento.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="narrativa" style="background:var(--surface-2);border-block:1px solid var(--rule);">
+  <div class="wrap stack gap-xl">
+    <div class="stack gap-m">
+      <span class="eyebrow">04 — La narrativa reescrita</span>
+      <h2 class="sec serif">La historia, en seis frases</h2>
+    </div>
+
+    <ol class="narrative">
+      <li><span>Cada semana se repiten dos preguntas: <strong>¿dónde vamos?</strong> y <strong>¿qué pedimos?</strong></span></li>
+      <li><span>Ninguna app responde ninguna de las dos: te dan un 4,2 de gente que no conoces y fotos sin precio.</span></li>
+      <li><span>Lo que sí resuelve la duda es lo que pidió tu amigo, cuánto pagó y si lo repetiría.</span></li>
+      <li><span>Así que construimos la red donde se registra lo que se come: platos, precios y valoración plato a plato.</span></li>
+      <li><span>Con esos datos, la IA lee la carta, conoce las alergias y los gustos de la mesa, y propone el pedido completo con el coste por persona.</span></li>
+      <li><span>Cada comida registrada mejora una base de datos de platos y precios que no tiene nadie — y es la razón por la que los restaurantes acaban queriendo estar dentro.</span></li>
+    </ol>
+
+    <div class="stack gap-m">
+      <h3 class="sub serif">El pitch de treinta segundos</h3>
+      <div class="card">
+        <p style="font-size:1.06rem;">Cuando quedas a comer hay dos preguntas: dónde vamos y qué pedimos. Google te da un 4,2 y ochocientas reseñas de desconocidos. Instagram te da fotos sin precio. Nosotros te enseñamos lo que pidieron tus amigos, cuánto pagaron y qué repetirían. Y cuando ya estás sentado, la IA lee la carta, conoce las alergias y los gustos de toda la mesa, y propone el pedido entero con el precio por persona. Cada comida registrada construye una base de datos de platos y precios reales que hoy no existe.</p>
+      </div>
+    </div>
+
+    <div class="stack gap-m">
+      <h3 class="sub serif">Tagline</h3>
+      <p class="small">La que ya estaba en tu propia descripción es la mejor de todas.</p>
+      <ul class="clean">
+        <li><span><strong>Dónde comen tus amigos. Y qué pedir cuando llegues.</strong> &nbsp;<span class="badge v" style="font-size:.6rem;">recomendada</span></span></li>
+        <li><span>El mundo puntúa restaurantes. Nosotros, platos.</span></li>
+        <li><span>Nunca más «pide tú, que yo no sé».</span></li>
+        <li><span>La carta, resuelta.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="flywheel">
+  <div class="wide stack gap-l">
+    <div class="wrap stack gap-m" style="width:100%;">
+      <span class="eyebrow">05 — El círculo virtuoso</span>
+      <h2 class="sec serif">Cada comida registrada mejora la siguiente</h2>
+      <p class="lede">Esta es la diapositiva 10, y debe ir sin una sola frase de apoyo: solo el titular y el diagrama.</p>
+    </div>
+
+    <div class="figure">
+      <svg viewBox="0 0 700 560" role="img" aria-labelledby="fwtitle fwdesc">
+        <title id="fwtitle">Flywheel del producto</title>
+        <desc id="fwdesc">Ciclo de seis pasos: registras una comida, se generan platos y precios reales, mejora la ficha del restaurante, hay más usuarios activos, se registran más comidas y la IA acierta más, volviendo al inicio.</desc>
+
+        <circle class="fw-ring" cx="350" cy="270" r="165"></circle>
+
+        <!-- arrowheads at the midpoints between nodes, clockwise -->
+        <g class="fw-arrow">
+          <g transform="translate(432.5,127.1) rotate(30)"><path d="M -7 -6 L 7 0 L -7 6 Z"></path></g>
+          <g transform="translate(515,270) rotate(90)"><path d="M -7 -6 L 7 0 L -7 6 Z"></path></g>
+          <g transform="translate(432.5,412.9) rotate(150)"><path d="M -7 -6 L 7 0 L -7 6 Z"></path></g>
+          <g transform="translate(267.5,412.9) rotate(210)"><path d="M -7 -6 L 7 0 L -7 6 Z"></path></g>
+          <g transform="translate(185,270) rotate(270)"><path d="M -7 -6 L 7 0 L -7 6 Z"></path></g>
+          <g transform="translate(267.5,127.1) rotate(330)"><path d="M -7 -6 L 7 0 L -7 6 Z"></path></g>
+        </g>
+
+        <!-- nodes -->
+        <circle class="fw-node" cx="350" cy="105" r="15"></circle>
+        <text class="fw-num" x="350" y="110" text-anchor="middle">1</text>
+        <text class="fw-label" x="350" y="62" text-anchor="middle">Registras</text>
+        <text class="fw-label" x="350" y="81" text-anchor="middle">una comida</text>
+
+        <circle class="fw-node" cx="492.9" cy="187.5" r="15"></circle>
+        <text class="fw-num" x="492.9" y="192.5" text-anchor="middle">2</text>
+        <text class="fw-label" x="519" y="182" text-anchor="start">Platos y precios</text>
+        <text class="fw-label" x="519" y="201" text-anchor="start">reales</text>
+
+        <circle class="fw-node" cx="492.9" cy="352.5" r="15"></circle>
+        <text class="fw-num" x="492.9" y="357.5" text-anchor="middle">3</text>
+        <text class="fw-label" x="519" y="347" text-anchor="start">Mejor ficha de</text>
+        <text class="fw-label" x="519" y="366" text-anchor="start">restaurante</text>
+
+        <circle class="fw-node" cx="350" cy="435" r="15"></circle>
+        <text class="fw-num" x="350" y="440" text-anchor="middle">4</text>
+        <text class="fw-label" x="350" y="478" text-anchor="middle">Más usuarios</text>
+        <text class="fw-label" x="350" y="497" text-anchor="middle">activos</text>
+
+        <circle class="fw-node" cx="207.1" cy="352.5" r="15"></circle>
+        <text class="fw-num" x="207.1" y="357.5" text-anchor="middle">5</text>
+        <text class="fw-label" x="181" y="347" text-anchor="end">Más comidas</text>
+        <text class="fw-label" x="181" y="366" text-anchor="end">registradas</text>
+
+        <circle class="fw-node" cx="207.1" cy="187.5" r="15"></circle>
+        <text class="fw-num" x="207.1" y="192.5" text-anchor="middle">6</text>
+        <text class="fw-label" x="181" y="182" text-anchor="end">La IA acierta</text>
+        <text class="fw-label" x="181" y="201" text-anchor="end">más</text>
+
+        <text class="fw-center" x="350" y="264" text-anchor="middle">MÁS DATOS</text>
+        <text class="fw-center" x="350" y="286" text-anchor="middle">MEJOR PRODUCTO</text>
+      </svg>
+      <p class="figcap">Anillo exterior, en un tono secundario: cuando el volumen es visible, el restaurante quiere gestionar su presencia. Ahí empieza la monetización.</p>
+    </div>
+  </div>
+</section>
+
+<section id="negocio" style="background:var(--surface-2);border-block:1px solid var(--rule);">
+  <div class="wide stack gap-l">
+    <div class="wrap stack gap-m" style="width:100%;">
+      <span class="eyebrow">06 — Modelo de negocio</span>
+      <h2 class="sec serif">Primero la ficha. Después el cliente.</h2>
+      <p class="lede">Cuatro peldaños con condiciones de activación, no cuatro ideas sueltas de ingreso.</p>
+    </div>
+
+    <div class="ladder">
+      <div class="step s1"><span class="lv">Peldaño 1 · hoy</span><span class="nm">Gratis</span><span class="ds">El restaurante reclama y verifica su ficha. Objetivo: datos correctos y relación establecida.</span></div>
+      <div class="step s2"><span class="lv">Peldaño 2</span><span class="nm">Pro</span><span class="ds">Suscripción: gestión de carta y precios, platos fuera de carta, especiales del día, promociones.</span></div>
+      <div class="step s3"><span class="lv">Peldaño 3</span><span class="nm">Destacados</span><span class="ds">Visibilidad patrocinada en el buscador, siempre etiquetada y separada de lo orgánico.</span></div>
+      <div class="step s4"><span class="lv">Peldaño 4</span><span class="nm">Analytics</span><span class="ds">Datos agregados: platos más consultados y guardados, ticket medio de la zona, tendencias.</span></div>
+    </div>
+
+    <div class="wrap" style="width:100%;">
+      <div class="callout">
+        <span class="k">La línea roja, escrita en la diapositiva</span>
+        <p style="font-size:1.05rem;">La recomendación personalizada no se vende. Lo patrocinado se etiqueta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wide stack gap-l">
+    <div class="wrap stack gap-m" style="width:100%;">
+      <span class="eyebrow">07 — El terreno competitivo</span>
+      <h2 class="sec serif">Nadie compite en el momento «ya estoy sentado»</h2>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="min-width:180px"></th>
+            <th>Google Maps</th><th>TripAdvisor</th><th>TheFork</th><th>Instagram</th>
+            <th class="us">Nosotros</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Opinión de quién</td><td class="no">Desconocidos</td><td class="no">Desconocidos</td><td class="no">Clientes</td><td class="no">Influencers</td><td class="us"><strong>Tus amigos</strong></td></tr>
+          <tr><td>Nivel de plato</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">Foto sin datos</td><td class="us"><span class="yes">✓</span> con nota</td></tr>
+          <tr><td>Precio real del ticket</td><td class="no">€€</td><td class="no">€€</td><td class="no">Rango</td><td class="no">—</td><td class="us"><span class="yes">✓</span> exacto</td></tr>
+          <tr><td>Alergias y restricciones</td><td class="no">—</td><td class="no">Filtro básico</td><td class="no">Filtro básico</td><td class="no">—</td><td class="us"><span class="yes">✓</span> por plato</td></tr>
+          <tr><td>Te dice qué pedir</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="us"><span class="yes">✓</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="wrap" style="width:100%;">
+      <div class="pull">El foso no es el modelo de IA. Es la base de datos de platos con precios y el grafo social local.</div>
+    </div>
+  </div>
+</section>
+
+<section id="deck" style="background:var(--surface-2);border-top:1px solid var(--rule);">
+  <div class="wide stack gap-l">
+    <div class="wrap stack gap-m" style="width:100%;">
+      <span class="eyebrow">08 — El guion</span>
+      <h2 class="sec serif">Las quince diapositivas</h2>
+      <p class="lede">Reglas para todas: una idea por diapositiva, titulares de nueve palabras como máximo escritos en forma de afirmación, cero párrafos, un solo elemento visual dominante, y cuerpo mínimo equivalente a 24 pt para que se lea desde el fondo de la sala.</p>
+    </div>
+
+    <div class="stack gap-m">
+
+      <article class="slide">
+        <div class="slide-head"><span class="n">01</span><h3>Portada</h3></div>
+        <p class="msg">En una sola frase se entiende el producto entero.</p>
+        <div class="fields">
+          <div class="field"><span class="k">Contenido</span><p>Nombre, tagline, una línea de categoría («Red social gastronómica con recomendación por IA»), ciudad piloto y fecha.</p></div>
+          <div class="field"><span class="k">Propuesta visual</span><p>Pantalla a sangre, fondo oscuro. A la derecha, un único mockup de móvil con una publicación real del feed, con su ticket y sus precios. Sin collage y sin logos de terceros.</p></div>
+        </div>
+        <div class="onscreen"><span class="k">En pantalla</span><p><strong>[Nombre]</strong> · <em>Dónde comen tus amigos. Y qué pedir cuando llegues.</em> — nueve palabras y un móvil.</p></div>
+      </article>
+
+      <article class="slide">
+        <div class="slide-head"><span class="n">02</span><h3>Dos preguntas que se repiten cada semana</h3></div>
+        <p class="msg">El problema no es encontrar restaurante: es decidir entre varias personas sin saber lo que vas a pagar.</p>
+        <div class="fields">
+          <div class="field"><span class="k">Contenido</span><ul><li>¿Dónde vamos? — cientos de opciones, ninguna de confianza.</li><li>¿Qué pedimos? — 8 personas, 3 restricciones, 60 platos.</li><li>¿Cuánto va a costar? — «€€».</li></ul></div>
+          <div class="field"><span class="k">Propuesta visual</span><p>En el centro, la imagen más reconocible que existe: un grupo de WhatsApp con cuarenta mensajes y ninguna decisión («me da igual», «donde queráis», «yo no como gluten»). Las tres preguntas alrededor, en grande.</p></div>
+        </div>
+        <div class="onscreen"><span class="k">En pantalla</span><p>Tres preguntas enormes y el chat. Ni una frase más.</p></div>
+      </article>
+
+      <article class="slide">
+        <div class="slide-head"><span class="n">03</span><h3>El mundo puntúa restaurantes. La gente recuerda platos.</h3></div>
+        <p class="msg">La unidad de información útil es el plato con su precio, y hoy no está en ninguna base de datos.</p>
+        <div class="fields">
+          <div class="field"><span class="k">Contenido</span><p>Comparación directa entre lo que existe y lo que falta. Sin explicación: el contraste hace todo el trabajo.</p></div>
+          <div class="field"><span class="k">Propuesta visual</span><p>Pantalla partida. Izquierda, apagada y en gris: <em>4,2 ★ · 1.240 reseñas · €€</em>. Derecha, a color: <em>Steak tartar · 18 € · 9/10 · «lo volvería a pedir» — Carlos</em>.</p></div>
+        </div>
+        <div class="onscreen"><span class="k">En pantalla</span><p>El titular y las dos tarjetas. Nada más.</p></div>
+      </article>
+
+      <article class="slide">
+        <div class="slide-head"><span class="n">04</span><h3>Dos momentos, una app</h3></div>
+        <p class="msg">El producto es simple aunque por dentro tenga cuatro capas.</p>
+        <div class="fields">
+          <div class="field"><span class="k">Contenido</span><ul><li><strong>ANTES</strong> → el feed de tus amigos: dónde comieron, qué pidieron y cuánto pagaron.</li><li><strong>DENTRO</strong> → ya estás sentado: la carta digital y la IA te dicen qué pedir.</li></ul></div>
+          <div class="field"><span class="k">Propuesta visual</span><p>Dos columnas simétricas, cada una con su mockup y un icono grande. Una línea horizontal las une, con el rótulo «la misma app».</p></div>
+        </div>
+        <div class="onscreen"><span class="k">En pantalla</span><p>Dos palabras, dos pantallas, una frase.</p></div>
+      </article>
+
+      <article class="slide">
+        <div class="slide-head"><span class="n">05</span><h3>Registrar una comida son quince segundos</h3></div>
+        <p class="msg">La fricción es el enemigo del producto, así que el registro es una foto.</p>
+        <div class="fields">
+          <div class="field"><span class="k">Contenido</span><ul><li>Foto del ticket.</li><li>La IA extrae platos, precios y total.</li><li>Puntúas con un toque.</li><li>Se publica y la ficha del restaurante mejora.</li></ul></div>
+          <div class="field"><span class="k">Propuesta visual</span><p>Flujo horizontal de cuatro pasos. El elemento central es la metamorfosis: el ticket de papel convirtiéndose en tarjetas de plato con su precio y su nota. Si el pase es en vivo, se anima.</p></div>
+        </div>
+        <div class="onscreen"><span class="k">En pantalla</span><p>Cuatro iconos, cuatro palabras y la transformación ticket → datos. Al pie, en pequeño: «El ticket se procesa para extraer platos y precios. No se publica, y no guardamos datos de pago.»</p></div>
+      </article>
+
+      <article class="slide">
+        <div class="slide-head"><span class="n">06</span><h3>El feed que sí te dice algo</h3></div>
+        <p class="msg">Una cena de un amigo vale más que mil reseñas de desconocidos.</p>
+        <div class="fields">
+          <div class="field"><span class="k">Contenido</span><p>La publicación completa de Carlos con su desglose. Alrededor, las acciones: guardar plato, guardar restaurante, añadir a lista. En una esquina, el histórico personal: restaurantes visitados, ticket medio, cocinas favoritas.</p></div>
+          <div class="field"><span class="k">Propuesta visual</span><p>El mockup del post, grande y centrado, con tres llamadas señalando las acciones. El total, en el mayor tamaño tipográfico de la diapositiva.</p></div>
+        </div>
+        <div class="onscreen"><span class="k">En pantalla</span><p>Steak tartar 18 € · 9/10 — Croquetas 10 € · 8/10 — Vino 24 € — <strong>52 € para 2 personas</strong>.</p></div>
+      </article>
+
+      <article class="slide">
+        <div class="slide-head"><span class="n">07</span><h3>De «4,2 estrellas» a «pide esto»</h3></div>
+        <p class="msg">La ficha responde qué pedir, no si el sitio está bien.</p>
+        <div class="fields">
+          <div class="field"><span class="k">Contenido</span><ul><li>Carta con precios.</li><li>Platos mejor valorados.</li><li>Qué pidieron tus amigos.</li><li>Compatibles con tus restricciones.</li><li>Ticket medio real, no un rango de símbolos de euro.</li></ul></div>
+          <div class="field"><span class="k">Propuesta visual</span><p>Mockup de la ficha con tres bandas resaltadas y anotadas: «Tus amigos pidieron», «Compatible contigo», «Top platos». La primera va destacada en color.</p></div>
+        </div>
+        <div class="onscreen"><span class="k">En pantalla</span><p>Una pantalla con tres anotaciones.</p></div>
+      </article>
+
+      <article class="slide">
+        <div class="slide-head"><span class="n">08</span><h3>Ocho personas. Tres restricciones. Pedido resuelto.</h3></div>
+        <p class="msg">Es el momento en el que la gente instala la app. Si el pase es en vivo, esta es la que hay que demostrar.</p>
+        <div class="fields">
+          <div class="field"><span class="k">Contenido</span><p><strong>Entra:</strong> la carta completa, los perfiles de los ocho, alergias, presupuesto. <strong>Sale:</strong> entrantes para compartir, principales que cuadran con cada restricción, cantidades recomendadas, coste total y coste por persona. Una línea al pie: también funciona para uno solo.</p></div>
+          <div class="field"><span class="k">Propuesta visual</span><p>Izquierda: ocho avatares con sus etiquetas visibles (sin gluten, vegetariano, alergia a frutos secos, presupuesto 25 €). Flecha. Derecha: la propuesta presentada como un ticket previo.</p></div>
+        </div>
+        <div class="onscreen"><span class="k">En pantalla</span><p>Entrada → salida. Los ocho avatares y el ticket propuesto, con <strong>≈ 27 € / persona</strong> resaltado.</p></div>
+      </article>
+
+      <article class="slide">
+        <div class="slide-head"><span class="n">09</span><h3>La IA propone. El restaurante confirma.</h3></div>
+        <p class="msg">Resolvemos la cobertura de cartas sin depender de los restaurantes, y somos transparentes sobre el origen de cada dato.</p>
+        <div class="fields">
+          <div class="field"><span class="k">Contenido</span><p>Foto de la carta → la IA detecta categorías, platos, ingredientes, precios y posibles alérgenos → carta digital estructurada. Y las tres etiquetas de origen, siempre visibles.</p></div>
+          <div class="field"><span class="k">Propuesta visual</span><p>Arriba, la fotografía de una carta descomponiéndose en bloques estructurados. Abajo, las tres etiquetas en tres colores distintos.</p></div>
+        </div>
+        <div class="onscreen"><span class="k">En pantalla</span><p>Verificado por el restaurante / Detectado por IA / Aportado por la comunidad — y la frase: «En alergias, una inferencia nunca se presenta como una garantía.» Esta diapositiva vende madurez: no la escondas.</p></div>
+      </article>
+
+      <article class="slide">
+        <div class="slide-head"><span class="n">10</span><h3>Cada comida registrada mejora la siguiente</h3></div>
+        <p class="msg">El producto se vuelve mejor solo, y por eso el dato es el activo.</p>
+        <div class="fields">
+          <div class="field"><span class="k">Contenido</span><p>El círculo: registras una comida → platos y precios reales → mejor ficha → más usuarios activos → más comidas registradas → la IA acierta más → vuelta a empezar. Anillo exterior: cuando el volumen es visible, el restaurante quiere gestionar su presencia.</p></div>
+          <div class="field"><span class="k">Propuesta visual</span><p>Diagrama circular limpio, seis nodos, flechas de sentido. En el centro, «MÁS DATOS · MEJOR PRODUCTO». El anillo B2B por fuera, en tono secundario.</p></div>
+        </div>
+        <div class="onscreen"><span class="k">En pantalla</span><p>Solo el titular y el diagrama. Cero texto de apoyo.</p></div>
+      </article>
+
+      <article class="slide">
+        <div class="slide-head"><span class="n">11</span><h3>Útil el primer día, con cero amigos</h3></div>
+        <p class="msg">Sabemos por qué mueren las apps sociales y el producto está diseñado en contra de eso. Es la diapositiva que responde a la primera objeción de cualquier inversor.</p>
+        <div class="fields">
+          <div class="field"><span class="k">Contenido</span><ul><li>«¿Qué pido?» funciona en solitario, sin red social.</li><li>Lanzamos un barrio con las cartas ya sembradas, no un país entero.</li><li>Cada cena en grupo invita a siete personas.</li></ul></div>
+          <div class="field"><span class="k">Propuesta visual</span><p>Izquierda: un mapa de la ciudad con una única mancha de densidad concentrada, frente a un mapa de puntos dispersos, tachado. Derecha: el bucle de invitación, 1 organizador → 7 invitados.</p></div>
+        </div>
+        <div class="onscreen"><span class="k">En pantalla</span><p>Tres titulares cortos y el mapa.</p></div>
+      </article>
+
+      <article class="slide">
+        <div class="slide-head"><span class="n">12</span><h3>Lo que construimos, y lo que no</h3></div>
+        <p class="msg">Alcance disciplinado y una versión 1 que cabe en un equipo pequeño.</p>
+        <div class="fields">
+          <div class="field"><span class="k">Contenido</span>
+            <ul>
+              <li><strong>Fase 0 — útil sin red:</strong> alta y perfil · restricciones y alergias · buscador y ficha · carta digitalizada por foto · «¿Qué pido?» individual.</li>
+              <li><strong>Fase 1 — la capa social:</strong> amigos y seguidores · feed · registro por foto de ticket · valoración por plato · «¿Qué pedimos?» en grupo.</li>
+              <li><strong class="strike">Ahora no:</strong> <span class="strike">delivery · reservas · pagos · dividir la cuenta · fidelización · chat · stories · TPV</span>.</li>
+            </ul>
+          </div>
+          <div class="field"><span class="k">Propuesta visual</span><p>Tres columnas. Las dos primeras en positivo, con marca de verificación. La tercera en gris y tachada.</p></div>
+        </div>
+        <div class="onscreen"><span class="k">En pantalla</span><p>Listas de palabras sueltas. La columna tachada es la que más confianza genera.</p></div>
+      </article>
+
+      <article class="slide">
+        <div class="slide-head"><span class="n">13</span><h3>Primero la ficha. Después el cliente.</h3></div>
+        <p class="msg">Los restaurantes entran gratis porque necesitan corregir sus propios datos, y ahí empieza el negocio.</p>
+        <div class="fields">
+          <div class="field"><span class="k">Contenido</span><p>La escalera de cuatro peldaños: Gratis (reclamar y verificar) → Pro (carta, precios, especiales, promociones) → Destacados patrocinados, siempre etiquetados → Analytics (platos más consultados y guardados, ticket medio, tendencias).</p></div>
+          <div class="field"><span class="k">Propuesta visual</span><p>Cuatro peldaños ascendentes, cada uno con un icono y tres palabras. Bajo la escalera, una franja con la línea roja escrita.</p></div>
+        </div>
+        <div class="onscreen"><span class="k">En pantalla</span><p>Los cuatro peldaños y: <strong>«La recomendación personalizada no se vende. Lo patrocinado se etiqueta.»</strong></p></div>
+      </article>
+
+      <article class="slide">
+        <div class="slide-head"><span class="n">14</span><h3>Nadie compite en el momento «ya estoy sentado»</h3></div>
+        <p class="msg">Las alternativas resuelven descubrimiento o reserva; ninguna resuelve la decisión dentro del restaurante.</p>
+        <div class="fields">
+          <div class="field"><span class="k">Contenido</span><p>Tabla comparativa con Google Maps, TripAdvisor, TheFork, Instagram y nosotros, por filas: opinión de quién · nivel de plato · precio real del ticket · restricciones y alergias · te dice qué pedir.</p></div>
+          <div class="field"><span class="k">Propuesta visual</span><p>Tabla sobria con marcas de verificación. Todas las columnas apagadas menos la nuestra. La fila «te dice qué pedir» queda vacía en todas menos en la última.</p></div>
+        </div>
+        <div class="onscreen"><span class="k">En pantalla</span><p>La tabla y, debajo, una sola frase: «El foso no es el modelo de IA. Es la base de datos de platos con precios y el grafo social local.»</p></div>
+      </article>
+
+      <article class="slide">
+        <div class="slide-head"><span class="n">15</span><h3>La capa de datos de lo que se come</h3></div>
+        <p class="msg">Empezamos resolviendo la cena del sábado y acabamos siendo la referencia de platos y precios.</p>
+        <div class="fields">
+          <div class="field"><span class="k">Contenido</span><p>Tres saltos: un barrio → las ciudades donde se sale a comer → la base de datos de referencia de platos, precios y gustos. Cierre con el tagline y con lo que pides: socios, restaurantes piloto o inversión, según a quién se lo enseñes.</p></div>
+          <div class="field"><span class="k">Propuesta visual</span><p>La frase de cierre a pantalla completa, tipografía enorme, casi nada más. Tres hitos discretos abajo y los datos de contacto.</p></div>
+        </div>
+        <div class="onscreen"><span class="k">En pantalla</span><p><em>Dónde comen tus amigos. Y qué pedir cuando llegues.</em> Y qué necesitas.</p></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="anexos">
+  <div class="wrap stack gap-xl">
+    <div class="stack gap-m">
+      <span class="eyebrow">09 — Anexos</span>
+      <h2 class="sec serif">Reserva, recortes y datos que faltan</h2>
+    </div>
+
+    <div class="stack gap-m">
+      <h3 class="sub serif">Diapositivas de reserva</h3>
+      <p class="small">Fuera del pase principal. Se sacan solo si alguien pregunta.</p>
+      <ul class="clean">
+        <li><span><strong>Riesgos y cómo los afrontamos.</strong> Fricción del registro → foto del ticket. Arranque en frío → modo individual y lanzamiento por barrio. Exactitud de las cartas → etiquetas de origen. Adopción por restaurantes → entrada gratuita para corregir datos. Responsabilidad en alérgenos → la IA nunca certifica.</span></li>
+        <li><span><strong>Roadmap a 18 meses.</strong> Fase 0, fase 1, segunda ciudad, panel de restaurante.</span></li>
+        <li><span><strong>Métricas.</strong> Comidas registradas por usuario activo al mes · % de registros con foto de ticket · cobertura de cartas en la zona piloto · uso de «¿Qué pedimos?» por cena · invitados por grupo creado · fichas reclamadas.</span></li>
+        <li><span><strong>Mercado.</strong> Con datos reales, cuando los tengas.</span></li>
+        <li><span><strong>Equipo y petición.</strong></span></li>
+      </ul>
+    </div>
+
+    <div class="stack gap-m">
+      <h3 class="sub serif">Cómo pasar de 15 a 12 diapositivas</h3>
+      <p>Si el pase tiene que ser más corto: fusiona la <strong>7</strong> dentro de la <strong>6</strong>, la <strong>9</strong> dentro de la <strong>5</strong>, y manda la <strong>11</strong> al anexo. Quedan doce y la historia sigue en pie.</p>
+    </div>
+
+    <div class="stack gap-m">
+      <h3 class="sub serif">Los cinco datos que faltan</h3>
+      <p>No inventes ninguna cifra. Estos son los que sostienen el pitch, y todos son públicos o medibles por ti:</p>
+      <ol class="narrative">
+        <li><span><strong>Gasto de los hogares en restauración</strong> en España — INE, Encuesta de Presupuestos Familiares.</span></li>
+        <li><span><strong>Número de establecimientos de restauración</strong> en el país y en la ciudad piloto — INE / DIRCE y el directorio municipal.</span></li>
+        <li><span><strong>Tamaño y evolución del sector</strong> — informes anuales de Hostelería de España.</span></li>
+        <li><span><strong>Cuántos locales tienen carta digital estructurada</strong> — mídelo tú con una muestra de 100 restaurantes de tu barrio. Un dato propio en un deck vale más que uno de un informe.</span></li>
+        <li><span><strong>Frecuencia de comidas en grupo y tamaño medio del grupo</strong> — encuesta propia a 100–200 personas. Barato, rápido y directamente relevante para la funcionalidad estrella.</span></li>
+      </ol>
+    </div>
+
+    <div class="stack gap-m">
+      <h3 class="sub serif">Sobre el nombre</h3>
+      <p>La portada necesita uno. Cuatro direcciones como punto de partida: algo alrededor de la <strong>sobremesa</strong> (muy español y cálido, pero difícil de registrar), algo alrededor del <strong>ticket o la cuenta</strong> (coherente con el posicionamiento de precio real), algo alrededor de <strong>pedir</strong> (directo al caso de uso), o un nombre corto y neutro pronunciable en varios idiomas si la ambición es salir de España.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap stack gap-s">
+    <span class="eyebrow">Siguiente paso</span>
+    <p class="lede">Con esta estructura aprobada, el paso siguiente es el diseño visual de las quince diapositivas.</p>
+  </div>
+</footer>
