@@ -1,0 +1,3 @@
+# Artefactos de build: se regeneran con fetch_fonts.py y build.py
+fonts.css
+.shots/
