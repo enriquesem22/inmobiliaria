@@ -5,7 +5,7 @@
 Este documento tiene dos partes:
 
 1. **Análisis crítico de la idea** y reordenación de la narrativa (lo que hay que cambiar antes de diseñar nada).
-2. **Guion de la presentación**: 15 diapositivas con título, mensaje, contenido, propuesta visual y qué aparece en pantalla.
+2. **Guion de la presentación**: 16 diapositivas con título, mensaje, contenido, propuesta visual y qué aparece en pantalla.
 
 No hay cifras de mercado inventadas. Al final hay una lista de los datos que sí conviene conseguir y de dónde.
 
@@ -30,7 +30,7 @@ Titular de trabajo para todo el deck: **el mundo puntúa restaurantes; la gente 
 
 ---
 
-### Las diez decisiones que cambian el pitch
+### Las once decisiones que cambian el pitch
 
 #### 1. El plato es la unidad, no el restaurante
 
@@ -63,7 +63,26 @@ Esto también reduce el alcance del MVP: menos pantallas de formulario, más cá
 
 *Nota de privacidad, y conviene decirla en el deck porque da credibilidad:* el ticket se procesa para extraer platos y precios, no se publica tal cual, y nunca se guardan datos de pago.
 
-#### 4. La app tiene que ser útil con cero amigos
+#### 4. La tarjeta para compartir es el motor del producto, no un extra
+
+Un Strava de la comida: haces la foto (del plato, de la mesa, de la gente) y la app la convierte en una tarjeta con el restaurante, cuántos erais, qué pedisteis y las estadísticas que quedan bien. Luego la publicas donde quieras.
+
+Esto no es una funcionalidad más. **Es lo que resuelve el mayor riesgo del punto anterior.** Hasta ahora, la razón para registrar una comida era altruista: "mis amigos lo verán en la app" — lo cual no funciona el primer día, cuando no tienes amigos dentro. La tarjeta da una recompensa inmediata y egoísta: registras porque te llevas algo que te apetece enseñar. Es exactamente el mecanismo de Strava, y por eso Strava tiene datos y las demás apps de running no.
+
+Y encima resuelve la distribución: **Instagram deja de ser un competidor y pasa a ser el reparto.** Millones de personas ya fotografían su comida y la publican sin ningún dato. Nosotros les damos la capa que falta, y cada publicación lleva nuestro nombre dentro. Es adquisición gratuita en el contexto perfecto.
+
+Tres decisiones de diseño que hay que tomar bien, porque de ellas depende que funcione:
+
+**a) Los datos salen del GPS y del ticket, no de la cara de la gente.**
+La tentación es "la IA cuenta cuántos sois en la foto". No lo hagas. Detectar caras es tratamiento de datos biométricos y en Europa eso te mete en una categoría de riesgo que no quieres tocar en una v1, además de fallar la mitad de las veces. La versión fiable y aburrida es mejor: el restaurante lo sabe el móvil por geolocalización (estás allí), y el número de personas y los platos salen del ticket, que ya estás fotografiando. Reconocer el plato por visión sí es razonable como ayuda, no como fuente de verdad.
+
+**b) Las medallas son de sitios, no de dinero.**
+Es la adaptación no obvia. En Strava presumes de kilómetros y de ritmo, y eso es socialmente seguro. Presumir de cuánto te has gastado en una cena no lo es: según el número, quedas de pijo o de rata. Así que las estadísticas que se lucen tienen que ir de **descubrimiento y colección**, no de gasto: "restaurante nº 37 del año", "primera vez en Chamberí", "tercera visita, ya eres del barrio", "cinco semanas seguidas probando sitio nuevo". Eso convierte comer fuera en algo que se colecciona, que es exactamente el gancho de Strava.
+
+**c) El precio, fuera de la app, es opcional.**
+Dentro de la app el precio es el producto entero y va siempre. En la tarjeta que sale a Instagram, el usuario decide antes de publicar. Sin esa opción, mucha gente no compartirá nunca, y perderás el canal por no haber puesto un interruptor.
+
+#### 5. La app tiene que ser útil con cero amigos
 
 Es el problema clásico de toda app social: el primer usuario abre un feed vacío y se va. Instagram lo resolvió con los filtros (útil solo), Strava con el GPS (útil solo).
 
@@ -71,13 +90,13 @@ Aquí la versión "single-player" ya existe dentro de la idea, solo hay que asce
 
 Ordenar así el producto es además un argumento muy sólido en una reunión con inversores: **"la app aporta valor antes de tener red social"**.
 
-#### 5. El modo grupo no es una funcionalidad: es el canal de adquisición
+#### 6. El modo grupo no es una funcionalidad: es el canal de adquisición
 
 Para crear la cena de 8, hay que invitar a 7 personas. Cada cena en grupo es una invitación a siete instalaciones, en un contexto en el que la gente sí instala (están sentados, con hambre y decidiendo).
 
 Es el bucle viral más barato del producto y ahora mismo aparece como una feature más. Debe aparecer **en la diapositiva de crecimiento**, con nombre propio.
 
-#### 6. Las etiquetas de origen del dato son posicionamiento, no letra pequeña
+#### 7. Las etiquetas de origen del dato son posicionamiento, no letra pequeña
 
 La intuición sobre alérgenos es correcta y hay que convertirla en ventaja competitiva visible. Tres etiquetas, siempre a la vista, en cada dato:
 
@@ -89,7 +108,7 @@ Regla del producto, y queda muy bien como frase de diapositiva: **"La IA propone
 
 Y aquí está el truco de negocio: **esa etiqueta es el motivo por el que un restaurante reclama su ficha gratis.** Ver "detectado por IA" sobre sus propios precios y alérgenos es un incentivo mucho más fuerte que cualquier email comercial. La honestidad sobre el dato es, literalmente, el canal de adquisición B2B.
 
-#### 7. Las restricciones se declaran; los gustos se aprenden
+#### 8. Las restricciones se declaran; los gustos se aprenden
 
 El perfil gastronómico descrito (comidas favoritas, ingredientes que gustan, ingredientes que no, tipos de cocina, presupuesto, restricciones) es un cuestionario largo en el peor momento posible: el primer minuto de uso.
 
@@ -98,13 +117,13 @@ Dividirlo:
 - **En el alta (30 segundos):** solo alergias y restricciones, porque son seguridad y no se pueden inferir. Más presupuesto habitual, que es un toque.
 - **Después, en silencio:** los gustos se deducen de las valoraciones, de lo que repites y de lo que guardas. El perfil se rellena solo y esa es una buena historia que contar ("la app te conoce mejor cada vez que comes").
 
-#### 8. Lanzar un barrio, no un país
+#### 9. Lanzar un barrio, no un país
 
 Una app social geolocalizada no funciona con 10.000 usuarios repartidos por España; funciona con 500 en un barrio. Densidad local por encima de usuarios totales.
 
 Además, hay que **sembrar la cobertura de cartas antes de abrir**: en la zona piloto, las cartas de los restaurantes principales tienen que estar ya digitalizadas el día del lanzamiento, para que "¿Qué pido?" funcione desde el primer momento. La comunidad amplía la cobertura; no se puede depender de ella para arrancarla.
 
-#### 9. El foso no es la IA, y decirlo en voz alta suma credibilidad
+#### 10. El foso no es la IA, y decirlo en voz alta suma credibilidad
 
 Cualquiera puede llamar a un modelo. Lo que no se copia en un fin de semana:
 
@@ -114,7 +133,7 @@ Cualquiera puede llamar a un modelo. Lo que no se copia en un fin de semana:
 
 Reconocer que el modelo es una commodity y señalar dónde está el valor real es exactamente lo que un inversor con criterio quiere oír.
 
-#### 10. Monetizar en escalera, y con una línea roja explícita
+#### 11. Monetizar en escalera, y con una línea roja explícita
 
 Enseñar cuatro vías de ingreso a la vez parece humo. Presentarlas como una secuencia con condiciones de activación parece un plan:
 
@@ -165,7 +184,7 @@ Y la línea roja, que conviene enunciar en la propia diapositiva: **la recomenda
 
 ## Parte 2 — Estructura de la presentación
 
-15 diapositivas. Reglas de estilo para todas:
+16 diapositivas. Reglas de estilo para todas:
 
 - **Una idea por diapositiva.** Si hay dos, son dos diapositivas.
 - **Titulares de 9 palabras como máximo**, escritos como afirmación, no como etiqueta ("El mundo puntúa restaurantes" en lugar de "Insight de mercado").
@@ -216,7 +235,15 @@ Y la línea roja, que conviene enunciar en la propia diapositiva: **la recomenda
 - **En pantalla:** cuatro iconos, cuatro palabras, y la transformación ticket → datos.
 - *Añadir en pequeño, abajo:* "El ticket se procesa para extraer platos y precios. No se publica, y no guardamos datos de pago."
 
-### 6 · Experiencia social
+### 6 · Un Strava de la comida
+
+- **Título:** Un Strava de la comida
+- **Mensaje principal:** la recompensa por registrar la cena no está dentro de la app; es la tarjeta que te apetece publicar.
+- **Contenido:** haces la foto, la app le pone el restaurante (por GPS), las personas y los platos (del ticket) y una medalla de descubrimiento. Tres reglas: los datos vienen del móvil y del ticket, las medallas son de sitios y no de dinero, y el precio fuera de la app lo enseñas si quieres.
+- **Propuesta visual:** la tarjeta vertical formato *story* a la izquierda, con la foto y los datos sobreimpresos como en Strava. A la derecha, las tres reglas y una fila de medallas de ejemplo.
+- **En pantalla:** la tarjeta, cuatro medallas y una frase: *"Instagram deja de ser el competidor y pasa a ser el reparto."*
+
+### 7 · Experiencia social
 
 - **Título:** El feed que sí te dice algo
 - **Mensaje principal:** una cena de un amigo vale más que mil reseñas de desconocidos.
@@ -224,7 +251,7 @@ Y la línea roja, que conviene enunciar en la propia diapositiva: **la recomenda
 - **Propuesta visual:** el mockup del post, grande y centrado, con tres llamadas señalando las acciones. El total, en el tamaño de tipografía más grande de la diapositiva.
 - **En pantalla:** una publicación real, legible desde el fondo de la sala.
 
-### 7 · Ficha de restaurante
+### 8 · Ficha de restaurante
 
 - **Título:** De "4,2 estrellas" a "pide esto"
 - **Mensaje principal:** la ficha responde qué pedir, no si el sitio está bien.
@@ -232,7 +259,7 @@ Y la línea roja, que conviene enunciar en la propia diapositiva: **la recomenda
 - **Propuesta visual:** un mockup de la ficha con tres bandas resaltadas y anotadas: "Tus amigos pidieron", "Compatible contigo", "Top platos".
 - **En pantalla:** una pantalla con tres anotaciones. La banda de "tus amigos" es la que va destacada en color.
 
-### 8 · IA "¿Qué pedimos?"
+### 9 · IA "¿Qué pedimos?"
 
 - **Título:** Ocho personas. Tres restricciones. Pedido resuelto.
 - **Mensaje principal:** es el momento en el que la gente instala la app.
@@ -240,7 +267,7 @@ Y la línea roja, que conviene enunciar en la propia diapositiva: **la recomenda
 - **Propuesta visual:** izquierda, ocho avatares con sus etiquetas visibles (sin gluten, vegetariano, alergia a frutos secos, presupuesto 25 €). Flecha. Derecha, la propuesta de pedido presentada como un ticket previo, con el total y el "≈ 27 € / persona" resaltados.
 - **En pantalla:** entrada → salida. Los ocho avatares y el ticket propuesto. Es la diapositiva que hay que poder demostrar en vivo.
 
-### 9 · Cartas digitales y confianza
+### 10 · Cartas digitales y confianza
 
 - **Título:** La IA propone. El restaurante confirma.
 - **Mensaje principal:** resolvemos la cobertura de cartas sin depender de los restaurantes, y somos transparentes sobre el origen de cada dato.
@@ -248,15 +275,15 @@ Y la línea roja, que conviene enunciar en la propia diapositiva: **la recomenda
 - **Propuesta visual:** arriba, la fotografía de una carta descomponiéndose en bloques estructurados. Abajo, tres etiquetas con tres colores distintos: **Verificado por el restaurante** / **Detectado por IA** / **Aportado por la comunidad**.
 - **En pantalla:** las tres etiquetas y una frase: *"En alergias, una inferencia nunca se presenta como una garantía."* Esta diapositiva vende madurez; no hay que esconderla.
 
-### 10 · Flywheel
+### 11 · Flywheel
 
 - **Título:** Cada comida registrada mejora la siguiente
 - **Mensaje principal:** el producto se vuelve mejor solo, y por eso el dato es el activo.
-- **Contenido:** el círculo — registras una comida → platos y precios reales → mejor ficha de restaurante → más usuarios activos → más comidas registradas → la IA acierta más → vuelta a empezar. Un anillo exterior: cuando el volumen es visible, el restaurante quiere gestionar su presencia, y ahí aparece la monetización.
+- **Contenido:** el círculo — registras una comida → platos y precios reales → mejor ficha de restaurante → más usuarios activos → más comidas registradas → la IA acierta más → vuelta a empezar. Y dos círculos más por fuera: cada tarjeta publicada en Instagram trae gente que no nos conocía, y cuando el volumen se hace visible el restaurante quiere gestionar su presencia — ahí aparece la monetización.
 - **Propuesta visual:** un diagrama circular limpio con seis nodos y flechas de sentido. En el centro: "MÁS DATOS · MEJOR PRODUCTO". El anillo B2B, en un tono secundario por fuera.
 - **En pantalla:** solo el titular y el diagrama. Cero texto de apoyo.
 
-### 11 · Arranque
+### 12 · Arranque
 
 - **Título:** Útil el primer día, con cero amigos
 - **Mensaje principal:** sabemos por qué mueren las apps sociales y el producto está diseñado en contra de eso.
@@ -264,18 +291,18 @@ Y la línea roja, que conviene enunciar en la propia diapositiva: **la recomenda
 - **Propuesta visual:** a la izquierda, un mapa de la ciudad con una única mancha de densidad concentrada (frente a un mapa de puntos dispersos, tachado). A la derecha, el bucle de invitación: 1 organizador → 7 invitados.
 - **En pantalla:** tres titulares cortos y el mapa. Esta es la diapositiva que responde a la primera objeción de cualquier inversor.
 
-### 12 · MVP
+### 13 · MVP
 
 - **Título:** Lo que construimos, y lo que no
 - **Mensaje principal:** alcance disciplinado y una versión 1 que cabe en un equipo pequeño.
 - **Contenido:**
   - **Fase 0 — útil sin red:** alta y perfil · restricciones y alergias · buscador y ficha de restaurante · carta digitalizada por foto · **"¿Qué pido?" individual**.
-  - **Fase 1 — la capa social:** amigos y seguidores · feed · registro de comidas por foto de ticket · valoración por plato · **"¿Qué pedimos?" en grupo**.
+  - **Fase 1 — la capa social:** amigos y seguidores · feed · registro de comidas por foto de ticket · valoración por plato · **tarjeta para compartir fuera** · **"¿Qué pedimos?" en grupo**.
   - **Ahora no:** delivery · reservas · pagos · dividir la cuenta · fidelización · chat · stories · integración con TPV.
 - **Propuesta visual:** tres columnas. Las dos primeras en positivo, con marca de verificación. La tercera en gris y tachada.
 - **En pantalla:** listas cortas de palabras sueltas. La columna tachada es la que más confianza genera.
 
-### 13 · Restaurantes y modelo de negocio
+### 14 · Restaurantes y modelo de negocio
 
 - **Título:** Primero la ficha. Después el cliente.
 - **Mensaje principal:** los restaurantes entran gratis porque necesitan corregir sus propios datos, y ahí empieza el negocio.
@@ -283,15 +310,16 @@ Y la línea roja, que conviene enunciar en la propia diapositiva: **la recomenda
 - **Propuesta visual:** cuatro peldaños ascendentes, cada uno con un icono y tres palabras. Bajo la escalera, una franja con la línea roja escrita.
 - **En pantalla:** los cuatro peldaños y la frase: **"La recomendación personalizada no se vende. Lo patrocinado se etiqueta."**
 
-### 14 · Ventajas competitivas
+### 15 · Ventajas competitivas
 
 - **Título:** Nadie compite en el momento "ya estoy sentado"
 - **Mensaje principal:** las alternativas resuelven descubrimiento o reserva; ninguna resuelve la decisión dentro del restaurante.
 - **Contenido:** tabla comparativa con Google Maps, TripAdvisor, TheFork, Instagram y nosotros, por filas: *opinión de quién · nivel de plato · precio real del ticket · restricciones y alergias · te dice qué pedir*.
 - **Propuesta visual:** tabla sobria con marcas de verificación. Todas las columnas apagadas menos la nuestra, encendida. La fila "te dice qué pedir" queda vacía en todas menos en la última.
+- *Ojo con la coherencia:* en la tabla Instagram aparece como alternativa, pero en la diapositiva 6 lo hemos llamado canal de distribución. No es contradictorio y conviene decirlo si alguien lo pregunta: como fuente de información para el que va a comer, Instagram no compite; como sitio donde la gente ya publica su comida, es nuestro reparto.
 - **En pantalla:** la tabla y, debajo, una sola frase sobre el foso: *"El foso no es el modelo de IA. Es la base de datos de platos con precios y el grafo social local."*
 
-### 15 · Visión y cierre
+### 16 · Visión y cierre
 
 - **Título:** La capa de datos de lo que se come
 - **Mensaje principal:** empezamos resolviendo la cena del sábado y acabamos siendo la referencia de platos y precios.
@@ -307,13 +335,13 @@ Y la línea roja, que conviene enunciar en la propia diapositiva: **la recomenda
 
 - **A · Riesgos y cómo los afrontamos.** Fricción del registro → foto del ticket. Arranque en frío → modo individual y lanzamiento por barrio. Exactitud de las cartas → etiquetas de origen y verificación del restaurante. Adopción por restaurantes → entrada gratuita para corregir datos. Responsabilidad en alérgenos → la IA nunca certifica.
 - **B · Roadmap a 18 meses.** Fase 0, fase 1, apertura de segunda ciudad, panel de restaurante.
-- **C · Métricas que vamos a mirar.** Comidas registradas por usuario activo al mes; % de comidas registradas con foto de ticket; cobertura de cartas en la zona piloto; uso de "¿Qué pedimos?" por cena; invitados por grupo creado; fichas reclamadas por restaurantes.
+- **C · Métricas que vamos a mirar.** Comidas registradas por usuario activo al mes; % de comidas registradas con foto de ticket; **% de comidas que se comparten fuera de la app**; cobertura de cartas en la zona piloto; uso de "¿Qué pedimos?" por cena; invitados por grupo creado; fichas reclamadas por restaurantes.
 - **D · Mercado.** Con datos reales, cuando los tengas (ver abajo).
 - **E · Equipo y petición.**
 
-### Cómo pasar de 15 a 12 diapositivas
+### Cómo pasar de 16 a 12 diapositivas
 
-Si el pase tiene que ser más corto: fusiona la 7 dentro de la 6, fusiona la 9 dentro de la 5, y manda la 11 al anexo. Quedan 12 y la historia sigue en pie.
+Si el pase tiene que ser más corto: fusiona la 8 dentro de la 7, la 10 dentro de la 5 y la 6 dentro de la 7, y manda la 12 al anexo. Quedan 12 y la historia sigue en pie. La 6 (la tarjeta) es la última que conviene tocar: es el argumento de crecimiento.
 
 ### Datos que faltan y de dónde sacarlos
 

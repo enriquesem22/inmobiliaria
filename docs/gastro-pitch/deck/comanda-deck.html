@@ -111,6 +111,26 @@ ul.b li::before{content:"—";color:var(--accent);font-family:"JetBrains Mono",m
 .cover .brand{font-family:"Instrument Serif",Georgia,serif;font-size:118px;line-height:.9;letter-spacing:-.03em;}
 .cover .tl{font-size:33px;line-height:1.3;color:var(--ink);}
 
+/* ---------- tarjeta para compartir ---------- */
+.storycard{
+  width:224px;height:398px;border-radius:16px;overflow:hidden;position:relative;flex:none;
+  background:linear-gradient(158deg,#1F5049 0%,#356048 44%,#7A5C1B 100%);
+  border:1px solid var(--rule);
+  display:flex;flex-direction:column;justify-content:space-between;padding:13px;
+}
+.storycard .scrim{position:absolute;inset:auto 0 0 0;height:62%;
+  background:linear-gradient(rgba(6,12,11,0) 0%, rgba(6,12,11,.55) 45%, rgba(6,12,11,.93) 100%);}
+.storycard .top{position:relative;display:flex;justify-content:space-between;align-items:flex-start;gap:8px;}
+.storycard .mark{font-family:"Instrument Serif",Georgia,serif;font-size:17px;color:#EEF3F0;line-height:1;}
+.storycard .ach{font-family:"JetBrains Mono",monospace;font-size:8.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:#0C1211;background:#DDAF57;border-radius:99px;padding:4px 8px;text-align:right;}
+.storycard .data{position:relative;display:flex;flex-direction:column;gap:5px;color:#EEF3F0;}
+.storycard .rn{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#8FD3C4;}
+.storycard .who{font-size:16px;line-height:1.2;}
+.storycard .dl{display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-size:13px;border-top:1px solid rgba(238,243,240,.18);padding-top:5px;}
+.storycard .dl .n{font-family:"JetBrains Mono",monospace;font-size:11px;color:#8FD3C4;}
+.storycard .pp2{font-family:"JetBrains Mono",monospace;font-size:15px;font-weight:700;color:#DDAF57;}
+
 /* ---------- chat ---------- */
 .chat{background:var(--surface-2);border:1px solid var(--rule);border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:8px;width:404px;}
 .bub{font-size:15px;line-height:1.3;padding:8px 11px;border-radius:11px;max-width:80%;background:var(--surface);border:1px solid var(--rule-2);}
@@ -316,7 +336,7 @@ tbody tr:last-child td{border-bottom:none;}
       <div class="arrow">→</div>
       <div class="step"><span class="n">03</span><span class="h">Puntúas</span><span class="t">Un toque por plato y marcas lo que repetirías.</span></div>
       <div class="arrow">→</div>
-      <div class="step"><span class="n">04</span><span class="h">Se publica</span><span class="t">Tus amigos lo ven y la ficha del restaurante mejora.</span></div>
+      <div class="step"><span class="n">04</span><span class="h">Te llevas la tarjeta</span><span class="t">Para Instagram si quieres. Y de paso, tus amigos lo ven y la ficha mejora.</span></div>
     </div>
   </div>
   <div style="display:flex;gap:20px;align-items:center;padding-bottom:14px;">
@@ -326,7 +346,48 @@ tbody tr:last-child td{border-bottom:none;}
   <div class="foot"><span>Comanda · concepto en validación</span><span>05</span></div>
 </section>
 
-<!-- ══════════════ 06 · FEED ══════════════ -->
+<!-- ══════════════ 06 · TARJETA / STRAVA ══════════════ -->
+<section class="slide">
+  <div class="head">
+    <span class="eyebrow">Compartir fuera</span>
+    <h2 class="title">Un Strava de la comida</h2>
+    <p class="lead">La recompensa por registrar la cena no está dentro de la app: es la tarjeta que te apetece publicar.</p>
+  </div>
+  <div class="grow" style="gap:44px;align-items:center;">
+    <div class="storycard">
+      <div class="scrim"></div>
+      <div class="top">
+        <span class="mark">Comanda</span>
+        <span class="ach">Nº 37 del año</span>
+      </div>
+      <div class="data">
+        <span class="rn">Casa Ventura · Malasaña</span>
+        <span class="who">Sábado · 4 personas</span>
+        <div class="dl"><span>Steak tartar</span><span class="n">9/10</span></div>
+        <div class="dl"><span>Croquetas</span><span class="n">8/10</span></div>
+        <div class="dl"><span>Por persona</span><span class="pp2">34 €</span></div>
+      </div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:20px;">
+      <p style="font-size:26px;line-height:1.25;">Ya haces la foto. Lo que le falta es todo lo demás.</p>
+      <ul class="b" style="font-size:18px;">
+        <li><span><strong>El restaurante lo pone el móvil</strong>, no tú: estás allí. Las personas y los platos salen del ticket.</span></li>
+        <li><span><strong>Las medallas son de sitios, no de dinero.</strong> En Strava se presumen kilómetros; aquí, restaurantes nuevos y barrios pisados.</span></li>
+        <li><span><strong>El precio lo enseñas si quieres.</strong> Dentro de la app siempre está; fuera, decides tú antes de publicar.</span></li>
+      </ul>
+      <div style="display:flex;flex-wrap:wrap;gap:7px;">
+        <span class="chip g">Nº 37 del año</span>
+        <span class="chip g">Primera vez en Chamberí</span>
+        <span class="chip g">3ª visita · ya eres del barrio</span>
+        <span class="chip g">5 semanas probando sitio nuevo</span>
+      </div>
+      <div class="band">Instagram deja de ser el competidor y pasa a ser el reparto: cada tarjeta publicada es un anuncio con nuestro nombre dentro.</div>
+    </div>
+  </div>
+  <div class="foot"><span>Comanda · concepto en validación</span><span>06</span></div>
+</section>
+
+<!-- ══════════════ 07 · FEED ══════════════ -->
 <section class="slide">
   <div class="head">
     <span class="eyebrow">La experiencia social</span>
@@ -361,7 +422,7 @@ tbody tr:last-child td{border-bottom:none;}
       </div>
     </div>
   </div>
-  <div class="foot"><span>Comanda · concepto en validación</span><span>06</span></div>
+  <div class="foot"><span>Comanda · concepto en validación</span><span>07</span></div>
 </section>
 
 <!-- ══════════════ 07 · FICHA DE RESTAURANTE ══════════════ -->
@@ -402,7 +463,7 @@ tbody tr:last-child td{border-bottom:none;}
       </ul>
     </div>
   </div>
-  <div class="foot"><span>Comanda · concepto en validación</span><span>07</span></div>
+  <div class="foot"><span>Comanda · concepto en validación</span><span>08</span></div>
 </section>
 
 <!-- ══════════════ 08 · IA ══════════════ -->
@@ -448,7 +509,7 @@ tbody tr:last-child td{border-bottom:none;}
       <div class="tf" style="padding-top:8px;">Sin frutos secos en toda la mesa · confirma con el restaurante</div>
     </div>
   </div>
-  <div class="foot"><span>Comanda · concepto en validación</span><span>08</span></div>
+  <div class="foot"><span>Comanda · concepto en validación</span><span>09</span></div>
 </section>
 
 <!-- ══════════════ 09 · CARTAS DIGITALES ══════════════ -->
@@ -485,7 +546,7 @@ tbody tr:last-child td{border-bottom:none;}
     </div>
   </div>
   <div class="band warn" style="margin-bottom:14px;"><strong>En alergias, una inferencia nunca se presenta como una garantía.</strong> La IA marca y avisa; la confirmación siempre es del restaurante.</div>
-  <div class="foot"><span>Comanda · concepto en validación</span><span>09</span></div>
+  <div class="foot"><span>Comanda · concepto en validación</span><span>10</span></div>
 </section>
 
 <!-- ══════════════ 10 · FLYWHEEL ══════════════ -->
@@ -525,12 +586,13 @@ tbody tr:last-child td{border-bottom:none;}
         <text x="350" y="245">MÁS DATOS</text><text x="350" y="268">MEJOR PRODUCTO</text>
       </g>
     </svg>
-    <div style="width:270px;display:flex;flex-direction:column;gap:16px;">
-      <p style="font-size:20px;line-height:1.4;">El producto se vuelve mejor solo. Por eso el activo no es la app: son los datos.</p>
-      <div class="band">Y cuando el volumen se hace visible, el restaurante quiere gestionar su presencia. Ahí empieza el negocio.</div>
+    <div style="width:290px;display:flex;flex-direction:column;gap:14px;">
+      <p style="font-size:19px;line-height:1.4;">El producto se vuelve mejor solo. Por eso el activo no es la app: son los datos.</p>
+      <div class="band" style="font-size:17px;"><strong>Y hay un segundo círculo, por fuera:</strong> cada tarjeta que alguien publica en Instagram trae gente que no nos conocía, y esa gente registra más comidas.</div>
+      <div class="band" style="font-size:17px;"><strong>Y un tercero:</strong> cuando el volumen se hace visible, el restaurante quiere gestionar su presencia. Ahí empieza el negocio.</div>
     </div>
   </div>
-  <div class="foot"><span>Comanda · concepto en validación</span><span>10</span></div>
+  <div class="foot"><span>Comanda · concepto en validación</span><span>11</span></div>
 </section>
 
 <!-- ══════════════ 11 · ARRANQUE ══════════════ -->
@@ -582,7 +644,8 @@ tbody tr:last-child td{border-bottom:none;}
       </div>
     </div>
   </div>
-  <div class="foot"><span>Comanda · concepto en validación</span><span>11</span></div>
+  <div class="band" style="margin-bottom:14px;">Y por encima de las tres, la tarjeta de la página 6: cada comida publicada en Instagram nos presenta a gente que no nos había oído nombrar.</div>
+  <div class="foot"><span>Comanda · concepto en validación</span><span>12</span></div>
 </section>
 
 <!-- ══════════════ 12 · MVP ══════════════ -->
@@ -612,6 +675,7 @@ tbody tr:last-child td{border-bottom:none;}
           <li><span>Feed</span></li>
           <li><span>Registrar comida por foto del ticket</span></li>
           <li><span>Valoración plato a plato</span></li>
+          <li><span><strong>Tarjeta para compartir fuera</strong></span></li>
           <li><span>Listas y guardados</span></li>
           <li><span><strong>«¿Qué pedimos?» en grupo</strong></span></li>
           <li><span>Histórico personal</span></li>
@@ -632,7 +696,7 @@ tbody tr:last-child td{border-bottom:none;}
     </div>
   </div>
   <div class="band" style="margin-bottom:14px;">La columna de la derecha es la importante: cada cosa que no está ahí es tiempo que sí se dedica a que el registro y la recomendación funcionen bien.</div>
-  <div class="foot"><span>Comanda · concepto en validación</span><span>12</span></div>
+  <div class="foot"><span>Comanda · concepto en validación</span><span>13</span></div>
 </section>
 
 <!-- ══════════════ 13 · NEGOCIO ══════════════ -->
@@ -651,7 +715,7 @@ tbody tr:last-child td{border-bottom:none;}
     </div>
   </div>
   <div class="band warn" style="margin-bottom:14px;"><strong>La línea roja:</strong> la recomendación personalizada no se vende. Si dejas de fiarte de ella, no queda producto — y tampoco queda negocio.</div>
-  <div class="foot"><span>Comanda · concepto en validación</span><span>13</span></div>
+  <div class="foot"><span>Comanda · concepto en validación</span><span>14</span></div>
 </section>
 
 <!-- ══════════════ 14 · COMPETENCIA ══════════════ -->
@@ -675,7 +739,7 @@ tbody tr:last-child td{border-bottom:none;}
     </div>
   </div>
   <div class="band" style="margin-bottom:14px;">Y el foso no es la IA, que la tiene cualquiera: es la base de datos de platos con precios reales y la densidad de amigos en tu barrio.</div>
-  <div class="foot"><span>Comanda · concepto en validación</span><span>14</span></div>
+  <div class="foot"><span>Comanda · concepto en validación</span><span>15</span></div>
 </section>
 
 <!-- ══════════════ 15 · RIESGOS ══════════════ -->
@@ -694,7 +758,7 @@ tbody tr:last-child td{border-bottom:none;}
       <div style="grid-column:span 2;"><h4 class="serif" style="font-size:24px;">Los alérgenos son un asunto serio</h4><p style="font-size:17px;color:var(--ink-2);line-height:1.4;">Una app no puede garantizar que un plato sea seguro. La IA marca y avisa; la confirmación es siempre del restaurante, y eso se dice en pantalla, no en la letra pequeña.</p></div>
     </div>
   </div>
-  <div class="foot"><span>Comanda · concepto en validación</span><span>15</span></div>
+  <div class="foot"><span>Comanda · concepto en validación</span><span>16</span></div>
 </section>
 
 <!-- ══════════════ 16 · VISIÓN ══════════════ -->
@@ -711,26 +775,27 @@ tbody tr:last-child td{border-bottom:none;}
       <div class="card"><span class="cap">Al final</span><p style="font-size:19px;">La base de datos de referencia de platos, precios y gustos. Algo que hoy no tiene nadie.</p></div>
     </div>
   </div>
-  <div class="foot"><span>Comanda · concepto en validación</span><span>16</span></div>
+  <div class="foot"><span>Comanda · concepto en validación</span><span>17</span></div>
 </section>
 
 <!-- ══════════════ 17 · PREGUNTAS ══════════════ -->
 <section class="slide dark">
   <div class="head">
     <span class="eyebrow">Lo que te pido</span>
-    <h2 class="title">¿Me contestas a cinco preguntas?</h2>
+    <h2 class="title">¿Me contestas a seis preguntas?</h2>
     <p class="lead">Decirme «está guay» no me sirve de nada. Esto sí:</p>
   </div>
-  <div class="grow" style="flex-direction:column;justify-content:center;gap:20px;">
+  <div class="grow" style="flex-direction:column;justify-content:center;gap:17px;">
     <div class="q"><span class="qn">01</span><span class="qt">¿Te has visto en la conversación de la página 2 <em>este mes</em>?</span></div>
     <div class="q"><span class="qn">02</span><span class="qt">Al pedir la cuenta, ¿harías una foto del ticket para registrar la cena? Sé sincero.</span></div>
-    <div class="q"><span class="qn">03</span><span class="qt">¿Te daría reparo que tus amigos vean lo que has pedido y lo que has pagado?</span></div>
-    <div class="q"><span class="qn">04</span><span class="qt">De todo lo que has visto, ¿qué es lo único que usarías de verdad? ¿Y qué te sobra?</span></div>
-    <div class="q"><span class="qn">05</span><span class="qt">¿Qué es lo que no te crees de todo esto?</span></div>
+    <div class="q"><span class="qn">03</span><span class="qt">La tarjeta de la página 6, ¿la publicarías en tu Instagram? ¿Con el precio o sin él?</span></div>
+    <div class="q"><span class="qn">04</span><span class="qt">¿Te daría reparo que tus amigos vean lo que has pedido y lo que has pagado?</span></div>
+    <div class="q"><span class="qn">05</span><span class="qt">De todo lo que has visto, ¿qué es lo único que usarías de verdad? ¿Y qué te sobra?</span></div>
+    <div class="q"><span class="qn">06</span><span class="qt">¿Qué es lo que no te crees de todo esto?</span></div>
   </div>
   <div style="display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:14px;">
     <p class="serif" style="font-size:30px;">Gracias. Comanda · Madrid</p>
     <p class="small" style="width:400px;text-align:right;font-size:13px;">Restaurantes, platos, precios y personas de estas páginas son ejemplos ilustrativos, no datos reales.</p>
   </div>
-  <div class="foot"><span>Comanda · concepto en validación</span><span>17</span></div>
+  <div class="foot"><span>Comanda · concepto en validación</span><span>18</span></div>
 </section>
