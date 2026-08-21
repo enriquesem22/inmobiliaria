@@ -5,7 +5,7 @@
 Este documento tiene dos partes:
 
 1. **Análisis crítico de la idea** y reordenación de la narrativa (lo que hay que cambiar antes de diseñar nada).
-2. **Guion de la presentación**: 16 diapositivas con título, mensaje, contenido, propuesta visual y qué aparece en pantalla.
+2. **Guion de la presentación**: 18 diapositivas con título, mensaje, contenido, propuesta visual y qué aparece en pantalla.
 
 No hay cifras de mercado inventadas. Al final hay una lista de los datos que sí conviene conseguir y de dónde.
 
@@ -81,6 +81,15 @@ Es la adaptación no obvia. En Strava presumes de kilómetros y de ritmo, y eso 
 
 **c) El precio, fuera de la app, es opcional.**
 Dentro de la app el precio es el producto entero y va siempre. En la tarjeta que sale a Instagram, el usuario decide antes de publicar. Sin esa opción, mucha gente no compartirá nunca, y perderás el canal por no haber puesto un interruptor.
+
+**d) La plantilla la pone el sitio, y ahí está el mejor argumento comercial del proyecto.**
+Como la app sabe dónde estás, la tarjeta puede salir ya con la identidad del local. Sin ficha reclamada, una plantilla neutra con el nombre; con la ficha verificada, su logo, sus colores y sus marcos.
+
+Esto convierte "reclama tu ficha" en una propuesta mucho más apetecible que "corrige tus datos": **un restaurante mete su marca en las stories de sus clientes, en el momento de máximo entusiasmo y sin pagar publicidad.** Probablemente sea lo primero por lo que un local pagaría, por encima de la gestión de la carta — es marketing, no administración. Conviene ponerlo el primero en la descripción de Pro.
+
+Con una condición no negociable, que es justo donde fallan los ejemplos que circulan: **el logo va pequeño, siempre, y nunca es el elemento principal.** Si la tarjeta parece un anuncio del restaurante, el usuario no la publica, y entonces no le sirve a nadie — tampoco al restaurante. Lo que manda en la tarjeta es el momento del usuario y sus números; la marca del local es contexto.
+
+*Detalle de ejecución que se nota:* los datos van en el tercio inferior, fuera de las zonas que Instagram tapa con su propia interfaz, y siempre sobre un degradado oscuro. Así la foto se ve y el texto se lee, sea cual sea la foto. Datos en mitad de la imagen, encima de las caras y sin degradado es el error más común.
 
 #### 5. La app tiene que ser útil con cero amigos
 
@@ -184,7 +193,7 @@ Y la línea roja, que conviene enunciar en la propia diapositiva: **la recomenda
 
 ## Parte 2 — Estructura de la presentación
 
-16 diapositivas. Reglas de estilo para todas:
+18 diapositivas. Reglas de estilo para todas:
 
 - **Una idea por diapositiva.** Si hay dos, son dos diapositivas.
 - **Titulares de 9 palabras como máximo**, escritos como afirmación, no como etiqueta ("El mundo puntúa restaurantes" en lugar de "Insight de mercado").
@@ -243,7 +252,15 @@ Y la línea roja, que conviene enunciar en la propia diapositiva: **la recomenda
 - **Propuesta visual:** la tarjeta vertical formato *story* a la izquierda, con la foto y los datos sobreimpresos como en Strava. A la derecha, las tres reglas y una fila de medallas de ejemplo.
 - **En pantalla:** la tarjeta, cuatro medallas y una frase: *"Instagram deja de ser el competidor y pasa a ser el reparto."*
 
-### 7 · Experiencia social
+### 7 · La plantilla del sitio
+
+- **Título:** Cada sitio tiene la suya
+- **Mensaje principal:** estás allí, así que la app ya sabe dónde: la tarjeta sale con la identidad del local puesta.
+- **Contenido:** lo del local cambia (logo, nombre, colores); lo nuestro no cambia nunca (estructura de datos, medallas, firma). Sin reclamar la ficha, plantilla neutra con el nombre; con la ficha verificada, su marca. Y el logo siempre pequeño.
+- **Propuesta visual:** el mismo formato de tarjeta en tres locales distintos, uno al lado del otro — un chiringuito de playa, una taberna oscura, una terraza de noche. Se ve de un vistazo que es el mismo sistema.
+- **En pantalla:** tres tarjetas y una frase: *"un restaurante mete su marca en las stories de sus clientes, en el momento de máximo entusiasmo y sin pagar publicidad."*
+
+### 8 · Experiencia social
 
 - **Título:** El feed que sí te dice algo
 - **Mensaje principal:** una cena de un amigo vale más que mil reseñas de desconocidos.
@@ -251,7 +268,7 @@ Y la línea roja, que conviene enunciar en la propia diapositiva: **la recomenda
 - **Propuesta visual:** el mockup del post, grande y centrado, con tres llamadas señalando las acciones. El total, en el tamaño de tipografía más grande de la diapositiva.
 - **En pantalla:** una publicación real, legible desde el fondo de la sala.
 
-### 8 · Ficha de restaurante
+### 9 · Ficha de restaurante
 
 - **Título:** De "4,2 estrellas" a "pide esto"
 - **Mensaje principal:** la ficha responde qué pedir, no si el sitio está bien.
@@ -259,7 +276,7 @@ Y la línea roja, que conviene enunciar en la propia diapositiva: **la recomenda
 - **Propuesta visual:** un mockup de la ficha con tres bandas resaltadas y anotadas: "Tus amigos pidieron", "Compatible contigo", "Top platos".
 - **En pantalla:** una pantalla con tres anotaciones. La banda de "tus amigos" es la que va destacada en color.
 
-### 9 · IA "¿Qué pedimos?"
+### 10 · IA "¿Qué pedimos?"
 
 - **Título:** Ocho personas. Tres restricciones. Pedido resuelto.
 - **Mensaje principal:** es el momento en el que la gente instala la app.
@@ -267,7 +284,7 @@ Y la línea roja, que conviene enunciar en la propia diapositiva: **la recomenda
 - **Propuesta visual:** izquierda, ocho avatares con sus etiquetas visibles (sin gluten, vegetariano, alergia a frutos secos, presupuesto 25 €). Flecha. Derecha, la propuesta de pedido presentada como un ticket previo, con el total y el "≈ 27 € / persona" resaltados.
 - **En pantalla:** entrada → salida. Los ocho avatares y el ticket propuesto. Es la diapositiva que hay que poder demostrar en vivo.
 
-### 10 · Cartas digitales y confianza
+### 11 · Cartas digitales y confianza
 
 - **Título:** La IA propone. El restaurante confirma.
 - **Mensaje principal:** resolvemos la cobertura de cartas sin depender de los restaurantes, y somos transparentes sobre el origen de cada dato.
@@ -275,7 +292,15 @@ Y la línea roja, que conviene enunciar en la propia diapositiva: **la recomenda
 - **Propuesta visual:** arriba, la fotografía de una carta descomponiéndose en bloques estructurados. Abajo, tres etiquetas con tres colores distintos: **Verificado por el restaurante** / **Detectado por IA** / **Aportado por la comunidad**.
 - **En pantalla:** las tres etiquetas y una frase: *"En alergias, una inferencia nunca se presenta como una garantía."* Esta diapositiva vende madurez; no hay que esconderla.
 
-### 11 · Flywheel
+### 12 · Un vistazo a la app
+
+- **Título:** Así se vería
+- **Mensaje principal:** el concepto ya tiene forma de producto.
+- **Contenido:** cinco pantallas — el feed, la ficha de un restaurante, la propuesta de la IA para la mesa, el buscador con filtros de restricciones y el perfil con las estadísticas del año.
+- **Propuesta visual:** los cinco móviles en fila, con su rótulo debajo. Sin flechas ni explicación: es una galería, no un flujo.
+- **En pantalla:** cinco pantallas y sus nombres. Todo lo que se ve sale de comidas registradas, y conviene decirlo.
+
+### 13 · Flywheel
 
 - **Título:** Cada comida registrada mejora la siguiente
 - **Mensaje principal:** el producto se vuelve mejor solo, y por eso el dato es el activo.
@@ -283,7 +308,7 @@ Y la línea roja, que conviene enunciar en la propia diapositiva: **la recomenda
 - **Propuesta visual:** un diagrama circular limpio con seis nodos y flechas de sentido. En el centro: "MÁS DATOS · MEJOR PRODUCTO". El anillo B2B, en un tono secundario por fuera.
 - **En pantalla:** solo el titular y el diagrama. Cero texto de apoyo.
 
-### 12 · Arranque
+### 14 · Arranque
 
 - **Título:** Útil el primer día, con cero amigos
 - **Mensaje principal:** sabemos por qué mueren las apps sociales y el producto está diseñado en contra de eso.
@@ -291,7 +316,7 @@ Y la línea roja, que conviene enunciar en la propia diapositiva: **la recomenda
 - **Propuesta visual:** a la izquierda, un mapa de la ciudad con una única mancha de densidad concentrada (frente a un mapa de puntos dispersos, tachado). A la derecha, el bucle de invitación: 1 organizador → 7 invitados.
 - **En pantalla:** tres titulares cortos y el mapa. Esta es la diapositiva que responde a la primera objeción de cualquier inversor.
 
-### 13 · MVP
+### 15 · MVP
 
 - **Título:** Lo que construimos, y lo que no
 - **Mensaje principal:** alcance disciplinado y una versión 1 que cabe en un equipo pequeño.
@@ -302,7 +327,7 @@ Y la línea roja, que conviene enunciar en la propia diapositiva: **la recomenda
 - **Propuesta visual:** tres columnas. Las dos primeras en positivo, con marca de verificación. La tercera en gris y tachada.
 - **En pantalla:** listas cortas de palabras sueltas. La columna tachada es la que más confianza genera.
 
-### 14 · Restaurantes y modelo de negocio
+### 16 · Restaurantes y modelo de negocio
 
 - **Título:** Primero la ficha. Después el cliente.
 - **Mensaje principal:** los restaurantes entran gratis porque necesitan corregir sus propios datos, y ahí empieza el negocio.
@@ -310,7 +335,7 @@ Y la línea roja, que conviene enunciar en la propia diapositiva: **la recomenda
 - **Propuesta visual:** cuatro peldaños ascendentes, cada uno con un icono y tres palabras. Bajo la escalera, una franja con la línea roja escrita.
 - **En pantalla:** los cuatro peldaños y la frase: **"La recomendación personalizada no se vende. Lo patrocinado se etiqueta."**
 
-### 15 · Ventajas competitivas
+### 17 · Ventajas competitivas
 
 - **Título:** Nadie compite en el momento "ya estoy sentado"
 - **Mensaje principal:** las alternativas resuelven descubrimiento o reserva; ninguna resuelve la decisión dentro del restaurante.
@@ -319,7 +344,7 @@ Y la línea roja, que conviene enunciar en la propia diapositiva: **la recomenda
 - *Ojo con la coherencia:* en la tabla Instagram aparece como alternativa, pero en la diapositiva 6 lo hemos llamado canal de distribución. No es contradictorio y conviene decirlo si alguien lo pregunta: como fuente de información para el que va a comer, Instagram no compite; como sitio donde la gente ya publica su comida, es nuestro reparto.
 - **En pantalla:** la tabla y, debajo, una sola frase sobre el foso: *"El foso no es el modelo de IA. Es la base de datos de platos con precios y el grafo social local."*
 
-### 16 · Visión y cierre
+### 18 · Visión y cierre
 
 - **Título:** La capa de datos de lo que se come
 - **Mensaje principal:** empezamos resolviendo la cena del sábado y acabamos siendo la referencia de platos y precios.
@@ -339,7 +364,7 @@ Y la línea roja, que conviene enunciar en la propia diapositiva: **la recomenda
 - **D · Mercado.** Con datos reales, cuando los tengas (ver abajo).
 - **E · Equipo y petición.**
 
-### Cómo pasar de 16 a 12 diapositivas
+### Cómo pasar de 18 a 12 diapositivas
 
 Si el pase tiene que ser más corto: fusiona la 8 dentro de la 7, la 10 dentro de la 5 y la 6 dentro de la 7, y manda la 12 al anexo. Quedan 12 y la historia sigue en pie. La 6 (la tarjeta) es la última que conviene tocar: es el argumento de crecimiento.
 

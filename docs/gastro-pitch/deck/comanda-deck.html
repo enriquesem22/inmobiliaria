@@ -131,6 +131,87 @@ ul.b li::before{content:"—";color:var(--accent);font-family:"JetBrains Mono",m
 .storycard .dl .n{font-family:"JetBrains Mono",monospace;font-size:11px;color:#8FD3C4;}
 .storycard .pp2{font-family:"JetBrains Mono",monospace;font-size:15px;font-weight:700;color:#DDAF57;}
 
+/* ---------- marcadores de foto (sustituir por fotos reales) ---------- */
+.ph{position:absolute;inset:0;}
+.ph.playa{background:
+  radial-gradient(120% 55% at 72% 12%, rgba(255,246,214,.6), transparent 62%),
+  linear-gradient(180deg,#79B2D4 0%,#A6CEE1 27%,#2F6D7C 35%,#C8B48B 41%,#DFCBA4 62%,#CBB289 100%);}
+.ph.taberna{background:
+  radial-gradient(85% 55% at 28% 22%, rgba(255,196,110,.5), transparent 66%),
+  linear-gradient(180deg,#3D2C1F 0%,#6A492E 42%,#412B1B 72%,#241710 100%);}
+.ph.terraza{background:
+  radial-gradient(75% 45% at 78% 18%, rgba(255,206,142,.42), transparent 62%),
+  linear-gradient(180deg,#1D2A49 0%,#39456492 38%,#2A3350 55%,#12172A 100%);}
+.ph.mesa{background:
+  radial-gradient(100% 60% at 50% 8%, rgba(255,238,200,.5), transparent 60%),
+  linear-gradient(180deg,#C9B291 0%,#A98A63 40%,#6E5236 74%,#3F2E1E 100%);}
+
+/* ---------- tarjeta 9:16 para compartir ---------- */
+.card9{position:relative;border-radius:18px;overflow:hidden;flex:none;
+  border:1px solid var(--rule);display:flex;flex-direction:column;justify-content:space-between;}
+.card9 .scrim{position:absolute;inset:auto 0 0 0;height:56%;
+  background:linear-gradient(rgba(5,9,12,0) 0%, rgba(5,9,12,.38) 36%, rgba(5,9,12,.9) 100%);}
+.card9 .zt,.card9 .zb{position:relative;display:flex;color:#F2F5F3;}
+.card9 .zt{justify-content:space-between;align-items:flex-start;gap:8px;padding:13px 13px 0;}
+.card9 .zb{flex-direction:column;gap:8px;padding:0 13px 14px;}
+.venue{display:flex;align-items:center;gap:7px;}
+.venue .lg{width:22px;height:22px;border:1.4px solid rgba(242,245,243,.85);border-radius:5px;
+  display:flex;align-items:center;justify-content:center;font-family:"Instrument Serif",Georgia,serif;
+  font-size:12px;line-height:1;color:#F2F5F3;flex:none;}
+.venue .vn{font-family:"JetBrains Mono",monospace;font-size:7.5px;letter-spacing:.11em;text-transform:uppercase;line-height:1.35;min-width:0;}
+.venue .vn b,.venue .vn span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;}
+.venue .vn b{font-weight:700;display:block;}
+.venue .vn span{opacity:.7;}
+.medal{font-family:"JetBrains Mono",monospace;font-size:8px;letter-spacing:.09em;text-transform:uppercase;
+  color:#0C1211;background:#E6BC63;border-radius:99px;padding:4px 8px;text-align:right;flex:none;}
+.card9 .lbl{font-family:"JetBrains Mono",monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:#9FD8C9;}
+.card9 .dish{font-family:"Instrument Serif",Georgia,serif;font-size:25px;line-height:1;display:flex;align-items:baseline;gap:8px;}
+.card9 .dish .sc9{font-family:"JetBrains Mono",monospace;font-size:13px;font-weight:700;color:#E6BC63;}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;
+  border-top:1px solid rgba(242,245,243,.22);border-bottom:1px solid rgba(242,245,243,.22);padding:8px 0;}
+.stats .s{display:flex;flex-direction:column;gap:1px;}
+.stats .sv{font-family:"JetBrains Mono",monospace;font-size:16px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums;}
+.stats .sv.big{color:#E6BC63;}
+.stats .sk{font-family:"JetBrains Mono",monospace;font-size:7.5px;letter-spacing:.12em;text-transform:uppercase;opacity:.72;}
+.card9 .more{display:flex;flex-wrap:wrap;gap:4px;}
+.card9 .mc{font-family:"JetBrains Mono",monospace;font-size:8px;letter-spacing:.05em;
+  border:1px solid rgba(242,245,243,.32);border-radius:99px;padding:2.5px 7px;}
+.card9 .sig{display:flex;justify-content:space-between;align-items:baseline;gap:8px;}
+.card9 .sig .wm{font-family:"Instrument Serif",Georgia,serif;font-size:14px;}
+.card9 .sig .dt{font-family:"JetBrains Mono",monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;opacity:.68;}
+
+/* ---------- pantallas de app ---------- */
+.scr{border:2px solid var(--rule);border-radius:20px;background:var(--surface);flex:none;
+  padding:9px;display:flex;flex-direction:column;gap:6px;overflow:hidden;}
+.scr .nb{height:3.5px;width:40px;background:var(--rule);border-radius:4px;margin:1px auto 3px;flex:none;}
+.sk8{font-family:"JetBrains Mono",monospace;font-size:8px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);}
+.sh{font-family:"Instrument Serif",Georgia,serif;font-size:16px;line-height:1;}
+.mini{border:1px solid var(--rule-2);border-radius:6px;padding:6px 7px;display:flex;flex-direction:column;gap:3px;background:var(--paper);}
+.mini.on{border-color:var(--accent);background:var(--accent-soft);}
+.mini.gold{border-color:var(--gold);background:var(--gold-soft);}
+.rw{display:flex;justify-content:space-between;align-items:baseline;gap:6px;}
+.t12{font-size:11.5px;line-height:1.2;}
+.t10{font-size:9.5px;line-height:1.3;color:var(--ink-2);}
+.pr{font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:700;color:var(--gold);}
+.nt{font-family:"JetBrains Mono",monospace;font-size:9px;color:var(--accent);}
+.vf{flex:1;border-radius:9px;position:relative;overflow:hidden;background:#161C1A;min-height:60px;}
+.vf .cn{position:absolute;width:15px;height:15px;border:2px solid #E6BC63;}
+.vf .tk{position:absolute;inset:22% 26%;background:#EFEDE4;border-radius:2px;
+  display:flex;flex-direction:column;gap:3px;padding:6px 5px;}
+.vf .tl2{height:2.5px;background:#B9B4A4;border-radius:2px;}
+.btn{border-radius:99px;padding:6px 9px;text-align:center;font-family:"JetBrains Mono",monospace;
+  font-size:8.5px;letter-spacing:.11em;text-transform:uppercase;background:var(--accent);color:var(--paper);flex:none;}
+.btn.o{background:transparent;border:1px solid var(--rule);color:var(--ink-2);}
+.tog{display:flex;justify-content:space-between;align-items:center;gap:6px;font-size:10.5px;}
+.sw{width:24px;height:14px;border-radius:99px;background:var(--accent);position:relative;flex:none;}
+.sw::after{content:"";position:absolute;top:2px;right:2px;width:10px;height:10px;border-radius:99px;background:var(--paper);}
+.sw.off{background:var(--rule);}
+.sw.off::after{right:auto;left:2px;}
+.gallery{display:flex;gap:14px;align-items:flex-start;justify-content:center;width:100%;}
+.av8{width:15px;height:15px;border-radius:99px;border:1px solid var(--accent);color:var(--accent);background:var(--accent-soft);font-family:"JetBrains Mono",monospace;font-size:7.5px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none;}
+.gcap{font-family:"JetBrains Mono",monospace;font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--accent);text-align:center;padding-top:8px;}
+
 /* ---------- chat ---------- */
 .chat{background:var(--surface-2);border:1px solid var(--rule);border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:8px;width:404px;}
 .bub{font-size:15px;line-height:1.3;padding:8px 11px;border-radius:11px;max-width:80%;background:var(--surface);border:1px solid var(--rule-2);}
@@ -326,17 +407,91 @@ tbody tr:last-child td{border-bottom:none;}
   <div class="head">
     <span class="eyebrow">Cómo funciona</span>
     <h2 class="title">Registrar una comida son quince segundos</h2>
-    <p class="lead">Nadie rellena un formulario después de cenar. Por eso el registro empieza y casi termina con una foto.</p>
+    <p class="lead">Nadie rellena un formulario después de cenar. Por eso el registro es una foto.</p>
   </div>
   <div class="grow" style="align-items:center;">
-    <div class="steps" style="width:100%;">
-      <div class="step"><span class="n">01</span><span class="h">Foto del ticket</span><span class="t">Al pedir la cuenta, una foto. Nada más.</span></div>
-      <div class="arrow">→</div>
-      <div class="step"><span class="n">02</span><span class="h">La IA lo lee</span><span class="t">Extrae restaurante, platos, precio de cada uno y total.</span></div>
-      <div class="arrow">→</div>
-      <div class="step"><span class="n">03</span><span class="h">Puntúas</span><span class="t">Un toque por plato y marcas lo que repetirías.</span></div>
-      <div class="arrow">→</div>
-      <div class="step"><span class="n">04</span><span class="h">Te llevas la tarjeta</span><span class="t">Para Instagram si quieres. Y de paso, tus amigos lo ven y la ficha mejora.</span></div>
+    <div style="display:flex;align-items:center;gap:14px;width:100%;justify-content:center;">
+
+      <div style="display:flex;flex-direction:column;">
+        <div class="scr" style="width:214px;height:306px;">
+          <div class="nb"></div>
+          <span class="sk8">Registrar comida</span>
+          <div class="vf">
+            <div class="cn" style="top:8px;left:8px;border-right:0;border-bottom:0;"></div>
+            <div class="cn" style="top:8px;right:8px;border-left:0;border-bottom:0;"></div>
+            <div class="cn" style="bottom:8px;left:8px;border-right:0;border-top:0;"></div>
+            <div class="cn" style="bottom:8px;right:8px;border-left:0;border-top:0;"></div>
+            <div class="tk">
+              <div class="tl2" style="width:70%;margin:0 auto 3px;"></div>
+              <div class="tl2"></div><div class="tl2" style="width:82%;"></div>
+              <div class="tl2"></div><div class="tl2" style="width:64%;"></div>
+              <div class="tl2" style="width:88%;"></div>
+              <div class="tl2" style="width:46%;margin-top:3px;background:#8A8474;"></div>
+            </div>
+          </div>
+          <div class="btn">Hacer la foto</div>
+        </div>
+        <span class="gcap">01 · Foto del ticket</span>
+      </div>
+
+      <div class="arrow" style="font-size:22px;">→</div>
+
+      <div style="display:flex;flex-direction:column;">
+        <div class="scr" style="width:214px;height:306px;">
+          <div class="nb"></div>
+          <div class="rw"><span class="sh">Casa Ventura</span><span class="sk8">21:40</span></div>
+          <span class="sk8">Detectado · revísalo</span>
+          <div class="mini"><div class="rw"><span class="t12">Steak tartar</span><span class="pr">18,00</span></div></div>
+          <div class="mini"><div class="rw"><span class="t12">Croquetas</span><span class="pr">10,00</span></div></div>
+          <div class="mini"><div class="rw"><span class="t12">Presa ibérica</span><span class="pr">19,00</span></div></div>
+          <div class="mini"><div class="rw"><span class="t12">Vino de la casa</span><span class="pr">24,00</span></div></div>
+          <div class="mini gold"><div class="rw"><span class="t12"><strong>Total · 4 personas</strong></span><span class="pr">71,00</span></div></div>
+        </div>
+        <span class="gcap">02 · La IA lo lee</span>
+      </div>
+
+      <div class="arrow" style="font-size:22px;">→</div>
+
+      <div style="display:flex;flex-direction:column;">
+        <div class="scr" style="width:214px;height:306px;">
+          <div class="nb"></div>
+          <span class="sk8">¿Qué tal estaba?</span>
+          <div class="mini on"><div class="rw"><span class="t12">Steak tartar</span><span class="nt">9/10</span></div><div class="tog"><span class="t10">Lo repetiría</span><span class="sw"></span></div></div>
+          <div class="mini"><div class="rw"><span class="t12">Croquetas</span><span class="nt">8/10</span></div><div class="tog"><span class="t10">Lo repetiría</span><span class="sw"></span></div></div>
+          <div class="mini"><div class="rw"><span class="t12">Presa ibérica</span><span class="nt">6/10</span></div><div class="tog"><span class="t10">Lo repetiría</span><span class="sw off"></span></div></div>
+          <div class="btn">Guardar</div>
+        </div>
+        <span class="gcap">03 · Un toque por plato</span>
+      </div>
+
+      <div class="arrow" style="font-size:22px;">→</div>
+
+      <div style="display:flex;flex-direction:column;">
+        <div class="scr" style="width:214px;height:306px;">
+          <div class="nb"></div>
+          <span class="sk8">Tu tarjeta</span>
+          <div class="card9" style="flex:1;border-radius:10px;">
+            <div class="ph mesa"></div><div class="scrim"></div>
+            <div class="zt" style="padding:9px 9px 0;">
+              <div class="venue"><span class="lg" style="width:17px;height:17px;font-size:10px;">C</span><span class="vn"><b>Casa Ventura</b><span>Malasaña</span></span></div>
+            </div>
+            <div class="zb" style="padding:0 9px 10px;gap:6px;">
+              <span class="dish" style="font-size:17px;">Steak tartar <span class="sc9" style="font-size:10px;">9,0</span></span>
+              <div class="stats" style="padding:6px 0;gap:4px;">
+                <div class="s"><span class="sv" style="font-size:12px;">4</span><span class="sk" style="font-size:6.5px;">personas</span></div>
+                <div class="s"><span class="sv" style="font-size:12px;">71 €</span><span class="sk" style="font-size:6.5px;">total</span></div>
+                <div class="s"><span class="sv big" style="font-size:12px;">18 €</span><span class="sk" style="font-size:6.5px;">p/persona</span></div>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;gap:5px;">
+            <span class="btn" style="flex:1;">Compartir</span>
+            <span class="btn o" style="flex:1;">Publicar</span>
+          </div>
+        </div>
+        <span class="gcap">04 · Y te la llevas</span>
+      </div>
+
     </div>
   </div>
   <div style="display:flex;gap:20px;align-items:center;padding-bottom:14px;">
@@ -351,43 +506,132 @@ tbody tr:last-child td{border-bottom:none;}
   <div class="head">
     <span class="eyebrow">Compartir fuera</span>
     <h2 class="title">Un Strava de la comida</h2>
-    <p class="lead">La recompensa por registrar la cena no está dentro de la app: es la tarjeta que te apetece publicar.</p>
+    <p class="lead">La recompensa por registrar no está dentro de la app: es la tarjeta que quieres publicar.</p>
   </div>
   <div class="grow" style="gap:44px;align-items:center;">
-    <div class="storycard">
+    <div class="card9" style="width:253px;height:450px;">
+      <div class="ph playa"></div>
       <div class="scrim"></div>
-      <div class="top">
-        <span class="mark">Comanda</span>
-        <span class="ach">Nº 37 del año</span>
+      <div class="zt">
+        <div class="venue">
+          <span class="lg">T</span>
+          <span class="vn"><b>Chiringuito El Tabla</b><span>Zahara de los Atunes</span></span>
+        </div>
+        <span class="medal">Nº 37 del año</span>
       </div>
-      <div class="data">
-        <span class="rn">Casa Ventura · Malasaña</span>
-        <span class="who">Sábado · 4 personas</span>
-        <div class="dl"><span>Steak tartar</span><span class="n">9/10</span></div>
-        <div class="dl"><span>Croquetas</span><span class="n">8/10</span></div>
-        <div class="dl"><span>Por persona</span><span class="pp2">34 €</span></div>
+      <div class="zb">
+        <span class="lbl">Lo mejor de la mesa</span>
+        <span class="dish">Espetos de sardinas <span class="sc9">9,4</span></span>
+        <div class="stats">
+          <div class="s"><span class="sv">8</span><span class="sk">Personas</span></div>
+          <div class="s"><span class="sv">120 €</span><span class="sk">Total</span></div>
+          <div class="s"><span class="sv big">15 €</span><span class="sk">Por persona</span></div>
+        </div>
+        <div class="more">
+          <span class="mc">Ensaladilla 8,1</span><span class="mc">Jamón 8,8</span><span class="mc">+2 más</span>
+        </div>
+        <div class="sig">
+          <span class="wm">Comanda</span>
+          <span class="dt">14 ago · 2 h de sobremesa</span>
+        </div>
       </div>
     </div>
-    <div style="flex:1;display:flex;flex-direction:column;gap:20px;">
-      <p style="font-size:26px;line-height:1.25;">Ya haces la foto. Lo que le falta es todo lo demás.</p>
-      <ul class="b" style="font-size:18px;">
-        <li><span><strong>El restaurante lo pone el móvil</strong>, no tú: estás allí. Las personas y los platos salen del ticket.</span></li>
+    <div style="flex:1;display:flex;flex-direction:column;gap:16px;">
+      <p style="font-size:25px;line-height:1.25;">Ya haces la foto. Lo que le falta es todo lo demás.</p>
+      <ul class="b" style="font-size:17px;">
+        <li><span><strong>Los datos los pone el móvil y el ticket</strong>, no tú: el sitio lo sabe por dónde estás; las personas y los platos, por la cuenta.</span></li>
+        <li><span><strong>Los números que importan van juntos:</strong> cuántos erais, cuánto salió y <em>cuánto por cabeza</em>. Ese último no lo tiene nadie más.</span></li>
         <li><span><strong>Las medallas son de sitios, no de dinero.</strong> En Strava se presumen kilómetros; aquí, restaurantes nuevos y barrios pisados.</span></li>
-        <li><span><strong>El precio lo enseñas si quieres.</strong> Dentro de la app siempre está; fuera, decides tú antes de publicar.</span></li>
+        <li><span><strong>El precio lo enseñas si quieres.</strong> Dentro siempre está; fuera, decides tú antes de publicar.</span></li>
       </ul>
-      <div style="display:flex;flex-wrap:wrap;gap:7px;">
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
         <span class="chip g">Nº 37 del año</span>
         <span class="chip g">Primera vez en Chamberí</span>
         <span class="chip g">3ª visita · ya eres del barrio</span>
         <span class="chip g">5 semanas probando sitio nuevo</span>
       </div>
-      <div class="band">Instagram deja de ser el competidor y pasa a ser el reparto: cada tarjeta publicada es un anuncio con nuestro nombre dentro.</div>
+      <div class="band" style="font-size:18px;">Instagram deja de ser el competidor y pasa a ser el reparto: cada tarjeta publicada es un anuncio con nuestro nombre dentro.</div>
     </div>
   </div>
   <div class="foot"><span>Comanda · concepto en validación</span><span>06</span></div>
 </section>
 
-<!-- ══════════════ 07 · FEED ══════════════ -->
+<!-- ══════════════ 07 · PLANTILLA DEL SITIO ══════════════ -->
+<section class="slide">
+  <div class="head">
+    <span class="eyebrow">La plantilla</span>
+    <h2 class="title">Cada sitio tiene la suya</h2>
+    <p class="lead">Estás allí, así que la app ya sabe dónde: la tarjeta sale con la identidad del local puesta. Cambia el sitio, cambia la plantilla.</p>
+  </div>
+  <div class="grow" style="gap:30px;align-items:center;">
+
+    <div style="display:flex;gap:13px;flex:none;">
+      <div class="card9" style="width:190px;height:338px;">
+        <div class="ph playa"></div><div class="scrim"></div>
+        <div class="zt" style="padding:10px 10px 0;">
+          <div class="venue"><span class="lg" style="width:18px;height:18px;font-size:10px;">T</span><span class="vn" style="font-size:7px;"><b>Chiringuito El Tabla</b><span>Zahara</span></span></div>
+          <span class="medal" style="font-size:6.5px;padding:3px 6px;">Nº 37 del año</span>
+        </div>
+        <div class="zb" style="padding:0 10px 11px;gap:6px;">
+          <span class="dish" style="font-size:18px;">Espetos <span class="sc9" style="font-size:10px;">9,4</span></span>
+          <div class="stats" style="padding:6px 0;gap:4px;">
+            <div class="s"><span class="sv" style="font-size:12px;">8</span><span class="sk" style="font-size:6px;">Personas</span></div>
+            <div class="s"><span class="sv" style="font-size:12px;">120 €</span><span class="sk" style="font-size:6px;">Total</span></div>
+            <div class="s"><span class="sv big" style="font-size:12px;">15 €</span><span class="sk" style="font-size:6px;">P/persona</span></div>
+          </div>
+          <div class="sig"><span class="wm" style="font-size:11px;">Comanda</span><span class="dt" style="font-size:6.5px;">14 ago</span></div>
+        </div>
+      </div>
+
+      <div class="card9" style="width:190px;height:338px;">
+        <div class="ph taberna"></div><div class="scrim"></div>
+        <div class="zt" style="padding:10px 10px 0;">
+          <div class="venue"><span class="lg" style="width:18px;height:18px;font-size:10px;border-radius:99px;">M</span><span class="vn" style="font-size:7px;"><b>Taberna Los Milagros</b><span>Lavapiés</span></span></div>
+          <span class="medal" style="font-size:6.5px;padding:3px 6px;">3ª visita</span>
+        </div>
+        <div class="zb" style="padding:0 10px 11px;gap:6px;">
+          <span class="dish" style="font-size:18px;">Tortilla <span class="sc9" style="font-size:10px;">9,1</span></span>
+          <div class="stats" style="padding:6px 0;gap:4px;">
+            <div class="s"><span class="sv" style="font-size:12px;">3</span><span class="sk" style="font-size:6px;">Personas</span></div>
+            <div class="s"><span class="sv" style="font-size:12px;">61 €</span><span class="sk" style="font-size:6px;">Total</span></div>
+            <div class="s"><span class="sv big" style="font-size:12px;">20 €</span><span class="sk" style="font-size:6px;">P/persona</span></div>
+          </div>
+          <div class="sig"><span class="wm" style="font-size:11px;">Comanda</span><span class="dt" style="font-size:6.5px;">2 sep</span></div>
+        </div>
+      </div>
+
+      <div class="card9" style="width:190px;height:338px;">
+        <div class="ph terraza"></div><div class="scrim"></div>
+        <div class="zt" style="padding:10px 10px 0;">
+          <div class="venue"><span class="lg" style="width:18px;height:18px;font-size:10px;border-radius:2px;">V</span><span class="vn" style="font-size:7px;"><b>Casa Ventura</b><span>Malasaña</span></span></div>
+          <span class="medal" style="font-size:6.5px;padding:3px 6px;">Barrio nuevo</span>
+        </div>
+        <div class="zb" style="padding:0 10px 11px;gap:6px;">
+          <span class="dish" style="font-size:18px;">Steak tartar <span class="sc9" style="font-size:10px;">9,0</span></span>
+          <div class="stats" style="padding:6px 0;gap:4px;">
+            <div class="s"><span class="sv" style="font-size:12px;">2</span><span class="sk" style="font-size:6px;">Personas</span></div>
+            <div class="s"><span class="sv" style="font-size:12px;">52 €</span><span class="sk" style="font-size:6px;">Total</span></div>
+            <div class="s"><span class="sv big" style="font-size:12px;">26 €</span><span class="sk" style="font-size:6px;">P/persona</span></div>
+          </div>
+          <div class="sig"><span class="wm" style="font-size:11px;">Comanda</span><span class="dt" style="font-size:6.5px;">21 sep</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="flex:1;display:flex;flex-direction:column;gap:15px;">
+      <ul class="b" style="font-size:17px;">
+        <li><span><strong>Lo del local cambia; lo nuestro, no.</strong> El logo y el nombre son suyos. La estructura de datos, las medallas y la firma son siempre iguales: así se reconoce la app de un vistazo.</span></li>
+        <li><span><strong>Sin reclamar la ficha:</strong> plantilla neutra con el nombre del sitio. <strong>Ficha verificada:</strong> su logo, sus colores y sus marcos.</span></li>
+        <li><span><strong>El logo va pequeño. Siempre.</strong> Si la tarjeta parece un anuncio, nadie la publica — y entonces no le sirve a nadie, tampoco al restaurante.</span></li>
+      </ul>
+      <div class="band" style="font-size:17px;"><strong>Aquí está el mejor argumento comercial de todo el proyecto:</strong> un restaurante mete su marca en las stories de sus clientes, en el momento de máximo entusiasmo y sin pagar publicidad. Es lo primero por lo que querría pagar.</div>
+      <p class="small" style="font-size:14px;">Los datos se colocan en el tercio inferior, fuera de las zonas que Instagram tapa con su propia interfaz, y siempre sobre un degradado: la foto se ve y el texto se lee, sea cual sea la foto.</p>
+    </div>
+  </div>
+  <div class="foot"><span>Comanda · concepto en validación</span><span>07</span></div>
+</section>
+
+<!-- ══════════════ 08 · FEED ══════════════ -->
 <section class="slide">
   <div class="head">
     <span class="eyebrow">La experiencia social</span>
@@ -422,10 +666,10 @@ tbody tr:last-child td{border-bottom:none;}
       </div>
     </div>
   </div>
-  <div class="foot"><span>Comanda · concepto en validación</span><span>07</span></div>
+  <div class="foot"><span>Comanda · concepto en validación</span><span>08</span></div>
 </section>
 
-<!-- ══════════════ 07 · FICHA DE RESTAURANTE ══════════════ -->
+<!-- ══════════════ 09 · FICHA DE RESTAURANTE ══════════════ -->
 <section class="slide">
   <div class="head">
     <span class="eyebrow">La ficha del restaurante</span>
@@ -463,10 +707,10 @@ tbody tr:last-child td{border-bottom:none;}
       </ul>
     </div>
   </div>
-  <div class="foot"><span>Comanda · concepto en validación</span><span>08</span></div>
+  <div class="foot"><span>Comanda · concepto en validación</span><span>09</span></div>
 </section>
 
-<!-- ══════════════ 08 · IA ══════════════ -->
+<!-- ══════════════ 10 · IA ══════════════ -->
 <section class="slide dark">
   <div class="head">
     <span class="eyebrow">La función estrella · «¿Qué pedimos?»</span>
@@ -509,10 +753,10 @@ tbody tr:last-child td{border-bottom:none;}
       <div class="tf" style="padding-top:8px;">Sin frutos secos en toda la mesa · confirma con el restaurante</div>
     </div>
   </div>
-  <div class="foot"><span>Comanda · concepto en validación</span><span>09</span></div>
+  <div class="foot"><span>Comanda · concepto en validación</span><span>10</span></div>
 </section>
 
-<!-- ══════════════ 09 · CARTAS DIGITALES ══════════════ -->
+<!-- ══════════════ 11 · CARTAS DIGITALES ══════════════ -->
 <section class="slide">
   <div class="head">
     <span class="eyebrow">Las cartas</span>
@@ -546,10 +790,130 @@ tbody tr:last-child td{border-bottom:none;}
     </div>
   </div>
   <div class="band warn" style="margin-bottom:14px;"><strong>En alergias, una inferencia nunca se presenta como una garantía.</strong> La IA marca y avisa; la confirmación siempre es del restaurante.</div>
-  <div class="foot"><span>Comanda · concepto en validación</span><span>10</span></div>
+  <div class="foot"><span>Comanda · concepto en validación</span><span>11</span></div>
 </section>
 
-<!-- ══════════════ 10 · FLYWHEEL ══════════════ -->
+<!-- ══════════════ 12 · UN VISTAZO A LA APP ══════════════ -->
+<section class="slide">
+  <div class="head">
+    <span class="eyebrow">Un vistazo</span>
+    <h2 class="title">Así se vería</h2>
+    <p class="lead">Cinco pantallas para hacerse una idea. Todo lo que se ve aquí sale de comidas registradas.</p>
+  </div>
+  <div class="grow" style="align-items:center;">
+    <div class="gallery">
+
+      <div style="display:flex;flex-direction:column;">
+        <div class="scr" style="width:200px;height:302px;">
+          <div class="nb"></div>
+          <div class="rw"><span class="sh">Tus amigos</span><span class="sk8">Hoy</span></div>
+          <div class="mini">
+            <span class="sk8">Carlos · Casa Ventura</span>
+            <div class="rw"><span class="t12">Steak tartar</span><span class="nt">9/10</span></div>
+            <div class="rw"><span class="t12">Croquetas</span><span class="nt">8/10</span></div>
+            <div class="rw"><span class="t10">2 personas</span><span class="pr">52 €</span></div>
+          </div>
+          <div class="mini">
+            <span class="sk8">Marta · Taberna Los Milagros</span>
+            <div class="rw"><span class="t12">Tortilla poco hecha</span><span class="nt">9/10</span></div>
+            <div class="rw"><span class="t10">3 personas</span><span class="pr">61 €</span></div>
+          </div>
+          <div class="mini">
+            <span class="sk8">Javi · Chiringuito El Tabla</span>
+            <div class="rw"><span class="t12">Espetos de sardinas</span><span class="nt">9/10</span></div>
+            <div class="rw"><span class="t10">8 personas</span><span class="pr">120 €</span></div>
+          </div>
+        </div>
+        <span class="gcap">El feed</span>
+      </div>
+
+      <div style="display:flex;flex-direction:column;">
+        <div class="scr" style="width:200px;height:302px;">
+          <div class="nb"></div>
+          <div><span class="sh">Casa Ventura</span><div class="sk8" style="padding-top:2px;">Malasaña · ticket medio 27 €</div></div>
+          <div class="mini on">
+            <span class="sk8">Tus amigos pidieron</span>
+            <div class="rw"><span class="t12">Steak tartar</span><span class="pr">18 €</span></div>
+            <div class="rw"><span class="t12">Croquetas</span><span class="pr">10 €</span></div>
+          </div>
+          <div class="mini">
+            <span class="sk8">Compatible contigo · sin gluten</span>
+            <div class="rw"><span class="t12">Merluza a la bilbaína</span><span class="pr">21 €</span></div>
+          </div>
+          <div class="mini">
+            <span class="sk8">Top de la casa</span>
+            <div class="rw"><span class="t12">Presa ibérica · 8,7</span><span class="pr">19 €</span></div>
+          </div>
+          <div class="btn">Ver la carta</div>
+        </div>
+        <span class="gcap">La ficha del sitio</span>
+      </div>
+
+      <div style="display:flex;flex-direction:column;">
+        <div class="scr" style="width:200px;height:302px;">
+          <div class="nb"></div>
+          <span class="sk8">¿Qué pedimos? · 8 personas</span>
+          <div style="display:flex;gap:3px;">
+            <span class="av8">C</span><span class="av8">M</span><span class="av8">L</span><span class="av8">J</span><span class="av8">A</span><span class="av8">P</span><span class="av8">N</span><span class="av8">D</span>
+          </div>
+          <div class="mini">
+            <span class="sk8">Para compartir</span>
+            <div class="rw"><span class="t12">Croquetas ×2</span><span class="pr">20 €</span></div>
+            <div class="rw"><span class="t12">Padrón ×2 · sin gluten</span><span class="pr">14 €</span></div>
+          </div>
+          <div class="mini">
+            <span class="sk8">Principales</span>
+            <div class="rw"><span class="t12">Presa ×2</span><span class="pr">38 €</span></div>
+            <div class="rw"><span class="t12">Berenjena ×2 · veg</span><span class="pr">24 €</span></div>
+          </div>
+          <div class="mini gold"><div class="rw"><span class="t12"><strong>26,75 €</strong> por persona</span><span class="pr">214 €</span></div></div>
+        </div>
+        <span class="gcap">La IA de la mesa</span>
+      </div>
+
+      <div style="display:flex;flex-direction:column;">
+        <div class="scr" style="width:200px;height:302px;">
+          <div class="nb"></div>
+          <span class="sk8">Buscar cerca</span>
+          <div style="display:flex;gap:4px;flex-wrap:wrap;">
+            <span class="chip v" style="font-size:8px;padding:3px 6px;">Sin gluten</span>
+            <span class="chip" style="font-size:8px;padding:3px 6px;">Hasta 25 €</span>
+            <span class="chip" style="font-size:8px;padding:3px 6px;">Abierto</span>
+          </div>
+          <div class="mini"><div class="rw"><span class="t12">Casa Ventura</span><span class="pr">27 €</span></div><span class="t10">3 amigos han estado · 6 platos aptos</span></div>
+          <div class="mini"><div class="rw"><span class="t12">Taberna Los Milagros</span><span class="pr">20 €</span></div><span class="t10">1 amigo · 4 platos aptos</span></div>
+          <div class="mini"><div class="rw"><span class="t12">El Rincón de Bea</span><span class="pr">18 €</span></div><span class="t10">Carta sin verificar</span></div>
+          <div class="mini"><div class="rw"><span class="t12">Bar Tirso</span><span class="pr">15 €</span></div><span class="t10">2 amigos · 3 platos aptos</span></div>
+        </div>
+        <span class="gcap">Buscar</span>
+      </div>
+
+      <div style="display:flex;flex-direction:column;">
+        <div class="scr" style="width:200px;height:302px;">
+          <div class="nb"></div>
+          <div class="rw"><span class="sh">Tu año</span><span class="sk8">2026</span></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;">
+            <div class="mini"><span class="pr" style="font-size:16px;">37</span><span class="t10">restaurantes</span></div>
+            <div class="mini"><span class="pr" style="font-size:16px;">24 €</span><span class="t10">ticket medio</span></div>
+            <div class="mini"><span class="pr" style="font-size:16px;">9</span><span class="t10">barrios</span></div>
+            <div class="mini"><span class="pr" style="font-size:16px;">Vasca</span><span class="t10">tu cocina</span></div>
+          </div>
+          <span class="sk8">Medallas</span>
+          <div style="display:flex;flex-direction:column;gap:4px;">
+            <span class="chip g" style="font-size:8px;padding:4px 7px;">Primera vez en Chamberí</span>
+            <span class="chip g" style="font-size:8px;padding:4px 7px;">5 semanas de racha</span>
+            <span class="chip g" style="font-size:8px;padding:4px 7px;">Habitual de Casa Ventura</span>
+          </div>
+        </div>
+        <span class="gcap">Tu perfil</span>
+      </div>
+
+    </div>
+  </div>
+  <div class="foot"><span>Comanda · concepto en validación</span><span>12</span></div>
+</section>
+
+<!-- ══════════════ 13 · FLYWHEEL ══════════════ -->
 <section class="slide dark">
   <div class="head">
     <span class="eyebrow">El círculo virtuoso</span>
@@ -592,10 +956,10 @@ tbody tr:last-child td{border-bottom:none;}
       <div class="band" style="font-size:17px;"><strong>Y un tercero:</strong> cuando el volumen se hace visible, el restaurante quiere gestionar su presencia. Ahí empieza el negocio.</div>
     </div>
   </div>
-  <div class="foot"><span>Comanda · concepto en validación</span><span>11</span></div>
+  <div class="foot"><span>Comanda · concepto en validación</span><span>13</span></div>
 </section>
 
-<!-- ══════════════ 11 · ARRANQUE ══════════════ -->
+<!-- ══════════════ 14 · ARRANQUE ══════════════ -->
 <section class="slide">
   <div class="head">
     <span class="eyebrow">El arranque</span>
@@ -645,10 +1009,10 @@ tbody tr:last-child td{border-bottom:none;}
     </div>
   </div>
   <div class="band" style="margin-bottom:14px;">Y por encima de las tres, la tarjeta de la página 6: cada comida publicada en Instagram nos presenta a gente que no nos había oído nombrar.</div>
-  <div class="foot"><span>Comanda · concepto en validación</span><span>12</span></div>
+  <div class="foot"><span>Comanda · concepto en validación</span><span>14</span></div>
 </section>
 
-<!-- ══════════════ 12 · MVP ══════════════ -->
+<!-- ══════════════ 15 · MVP ══════════════ -->
 <section class="slide">
   <div class="head">
     <span class="eyebrow">Primera versión</span>
@@ -696,10 +1060,10 @@ tbody tr:last-child td{border-bottom:none;}
     </div>
   </div>
   <div class="band" style="margin-bottom:14px;">La columna de la derecha es la importante: cada cosa que no está ahí es tiempo que sí se dedica a que el registro y la recomendación funcionen bien.</div>
-  <div class="foot"><span>Comanda · concepto en validación</span><span>13</span></div>
+  <div class="foot"><span>Comanda · concepto en validación</span><span>15</span></div>
 </section>
 
-<!-- ══════════════ 13 · NEGOCIO ══════════════ -->
+<!-- ══════════════ 16 · NEGOCIO ══════════════ -->
 <section class="slide">
   <div class="head">
     <span class="eyebrow">Cómo se monetizaría</span>
@@ -709,16 +1073,16 @@ tbody tr:last-child td{border-bottom:none;}
   <div class="grow" style="align-items:flex-end;padding-bottom:18px;">
     <div class="ladder">
       <div class="rung r1"><span class="lv">Peldaño 1 · desde el día uno</span><span class="nm">Gratis</span><span class="ds">Reclama y verifica su ficha. Datos correctos y relación establecida.</span></div>
-      <div class="rung r2"><span class="lv">Peldaño 2</span><span class="nm">Pro</span><span class="ds">Suscripción: gestión de carta y precios, platos fuera de carta, especiales del día, promociones.</span></div>
+      <div class="rung r2"><span class="lv">Peldaño 2</span><span class="nm">Pro</span><span class="ds">Su plantilla de marca en las tarjetas de sus clientes. Y gestión de carta, precios, especiales del día y promociones.</span></div>
       <div class="rung r3"><span class="lv">Peldaño 3</span><span class="nm">Destacados</span><span class="ds">Visibilidad patrocinada en el buscador, siempre etiquetada y separada de lo orgánico.</span></div>
       <div class="rung r4"><span class="lv">Peldaño 4</span><span class="nm">Analytics</span><span class="ds">Datos agregados: platos más consultados y guardados, ticket medio de la zona, tendencias de consumo.</span></div>
     </div>
   </div>
   <div class="band warn" style="margin-bottom:14px;"><strong>La línea roja:</strong> la recomendación personalizada no se vende. Si dejas de fiarte de ella, no queda producto — y tampoco queda negocio.</div>
-  <div class="foot"><span>Comanda · concepto en validación</span><span>14</span></div>
+  <div class="foot"><span>Comanda · concepto en validación</span><span>16</span></div>
 </section>
 
-<!-- ══════════════ 14 · COMPETENCIA ══════════════ -->
+<!-- ══════════════ 17 · COMPETENCIA ══════════════ -->
 <section class="slide">
   <div class="head">
     <span class="eyebrow">Por qué no lo resuelve nadie</span>
@@ -739,10 +1103,10 @@ tbody tr:last-child td{border-bottom:none;}
     </div>
   </div>
   <div class="band" style="margin-bottom:14px;">Y el foso no es la IA, que la tiene cualquiera: es la base de datos de platos con precios reales y la densidad de amigos en tu barrio.</div>
-  <div class="foot"><span>Comanda · concepto en validación</span><span>15</span></div>
+  <div class="foot"><span>Comanda · concepto en validación</span><span>17</span></div>
 </section>
 
-<!-- ══════════════ 15 · RIESGOS ══════════════ -->
+<!-- ══════════════ 18 · RIESGOS ══════════════ -->
 <section class="slide dark">
   <div class="head">
     <span class="eyebrow">Sin vender la moto</span>
@@ -758,10 +1122,10 @@ tbody tr:last-child td{border-bottom:none;}
       <div style="grid-column:span 2;"><h4 class="serif" style="font-size:24px;">Los alérgenos son un asunto serio</h4><p style="font-size:17px;color:var(--ink-2);line-height:1.4;">Una app no puede garantizar que un plato sea seguro. La IA marca y avisa; la confirmación es siempre del restaurante, y eso se dice en pantalla, no en la letra pequeña.</p></div>
     </div>
   </div>
-  <div class="foot"><span>Comanda · concepto en validación</span><span>16</span></div>
+  <div class="foot"><span>Comanda · concepto en validación</span><span>18</span></div>
 </section>
 
-<!-- ══════════════ 16 · VISIÓN ══════════════ -->
+<!-- ══════════════ 19 · VISIÓN ══════════════ -->
 <section class="slide">
   <div class="head">
     <span class="eyebrow">A dónde puede llegar</span>
@@ -775,10 +1139,10 @@ tbody tr:last-child td{border-bottom:none;}
       <div class="card"><span class="cap">Al final</span><p style="font-size:19px;">La base de datos de referencia de platos, precios y gustos. Algo que hoy no tiene nadie.</p></div>
     </div>
   </div>
-  <div class="foot"><span>Comanda · concepto en validación</span><span>17</span></div>
+  <div class="foot"><span>Comanda · concepto en validación</span><span>19</span></div>
 </section>
 
-<!-- ══════════════ 17 · PREGUNTAS ══════════════ -->
+<!-- ══════════════ 20 · PREGUNTAS ══════════════ -->
 <section class="slide dark">
   <div class="head">
     <span class="eyebrow">Lo que te pido</span>
@@ -797,5 +1161,5 @@ tbody tr:last-child td{border-bottom:none;}
     <p class="serif" style="font-size:30px;">Gracias. Comanda · Madrid</p>
     <p class="small" style="width:400px;text-align:right;font-size:13px;">Restaurantes, platos, precios y personas de estas páginas son ejemplos ilustrativos, no datos reales.</p>
   </div>
-  <div class="foot"><span>Comanda · concepto en validación</span><span>18</span></div>
+  <div class="foot"><span>Comanda · concepto en validación</span><span>20</span></div>
 </section>
