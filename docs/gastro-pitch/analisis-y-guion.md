@@ -91,6 +91,8 @@ Con una condición no negociable, que es justo donde fallan los ejemplos que cir
 
 *Detalle de ejecución que se nota:* los datos van en el tercio inferior, fuera de las zonas que Instagram tapa con su propia interfaz, y siempre sobre un degradado oscuro. Así la foto se ve y el texto se lee, sea cual sea la foto. Datos en mitad de la imagen, encima de las caras y sin degradado es el error más común.
 
+Y la maquetación importa tanto como el dato: composición centrada, el nombre del local arriba, las cifras apiladas y grandes abajo —personas, total y precio por cabeza— y un sello redondo en la esquina que lleva dentro el nombre de la app y la medalla. Con dos cosas juntas: se lee bien y apetece publicarlo. Una tarjeta que solo cumple lo primero no se comparte, y una que solo cumple lo segundo no se entiende.
+
 #### 5. La app tiene que ser útil con cero amigos
 
 Es el problema clásico de toda app social: el primer usuario abre un feed vacío y se va. Instagram lo resolvió con los filtros (útil solo), Strava con el GPS (útil solo).

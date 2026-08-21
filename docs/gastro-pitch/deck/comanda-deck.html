@@ -131,54 +131,41 @@ ul.b li::before{content:"—";color:var(--accent);font-family:"JetBrains Mono",m
 .storycard .dl .n{font-family:"JetBrains Mono",monospace;font-size:11px;color:#8FD3C4;}
 .storycard .pp2{font-family:"JetBrains Mono",monospace;font-size:15px;font-weight:700;color:#DDAF57;}
 
-/* ---------- marcadores de foto (sustituir por fotos reales) ---------- */
-.ph{position:absolute;inset:0;}
-.ph.playa{background:
-  radial-gradient(120% 55% at 72% 12%, rgba(255,246,214,.6), transparent 62%),
-  linear-gradient(180deg,#79B2D4 0%,#A6CEE1 27%,#2F6D7C 35%,#C8B48B 41%,#DFCBA4 62%,#CBB289 100%);}
-.ph.taberna{background:
-  radial-gradient(85% 55% at 28% 22%, rgba(255,196,110,.5), transparent 66%),
-  linear-gradient(180deg,#3D2C1F 0%,#6A492E 42%,#412B1B 72%,#241710 100%);}
-.ph.terraza{background:
-  radial-gradient(75% 45% at 78% 18%, rgba(255,206,142,.42), transparent 62%),
-  linear-gradient(180deg,#1D2A49 0%,#39456492 38%,#2A3350 55%,#12172A 100%);}
-.ph.mesa{background:
-  radial-gradient(100% 60% at 50% 8%, rgba(255,238,200,.5), transparent 60%),
-  linear-gradient(180deg,#C9B291 0%,#A98A63 40%,#6E5236 74%,#3F2E1E 100%);}
-
-/* ---------- tarjeta 9:16 para compartir ---------- */
-.card9{position:relative;border-radius:18px;overflow:hidden;flex:none;
-  border:1px solid var(--rule);display:flex;flex-direction:column;justify-content:space-between;}
-.card9 .scrim{position:absolute;inset:auto 0 0 0;height:56%;
-  background:linear-gradient(rgba(5,9,12,0) 0%, rgba(5,9,12,.38) 36%, rgba(5,9,12,.9) 100%);}
-.card9 .zt,.card9 .zb{position:relative;display:flex;color:#F2F5F3;}
-.card9 .zt{justify-content:space-between;align-items:flex-start;gap:8px;padding:13px 13px 0;}
-.card9 .zb{flex-direction:column;gap:8px;padding:0 13px 14px;}
-.venue{display:flex;align-items:center;gap:7px;}
-.venue .lg{width:22px;height:22px;border:1.4px solid rgba(242,245,243,.85);border-radius:5px;
-  display:flex;align-items:center;justify-content:center;font-family:"Instrument Serif",Georgia,serif;
-  font-size:12px;line-height:1;color:#F2F5F3;flex:none;}
-.venue .vn{font-family:"JetBrains Mono",monospace;font-size:7.5px;letter-spacing:.11em;text-transform:uppercase;line-height:1.35;min-width:0;}
-.venue .vn b,.venue .vn span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;}
-.venue .vn b{font-weight:700;display:block;}
-.venue .vn span{opacity:.7;}
-.medal{font-family:"JetBrains Mono",monospace;font-size:8px;letter-spacing:.09em;text-transform:uppercase;
-  color:#0C1211;background:#E6BC63;border-radius:99px;padding:4px 8px;text-align:right;flex:none;}
-.card9 .lbl{font-family:"JetBrains Mono",monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:#9FD8C9;}
-.card9 .dish{font-family:"Instrument Serif",Georgia,serif;font-size:25px;line-height:1;display:flex;align-items:baseline;gap:8px;}
-.card9 .dish .sc9{font-family:"JetBrains Mono",monospace;font-size:13px;font-weight:700;color:#E6BC63;}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;
-  border-top:1px solid rgba(242,245,243,.22);border-bottom:1px solid rgba(242,245,243,.22);padding:8px 0;}
-.stats .s{display:flex;flex-direction:column;gap:1px;}
-.stats .sv{font-family:"JetBrains Mono",monospace;font-size:16px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums;}
-.stats .sv.big{color:#E6BC63;}
-.stats .sk{font-family:"JetBrains Mono",monospace;font-size:7.5px;letter-spacing:.12em;text-transform:uppercase;opacity:.72;}
-.card9 .more{display:flex;flex-wrap:wrap;gap:4px;}
-.card9 .mc{font-family:"JetBrains Mono",monospace;font-size:8px;letter-spacing:.05em;
-  border:1px solid rgba(242,245,243,.32);border-radius:99px;padding:2.5px 7px;}
-.card9 .sig{display:flex;justify-content:space-between;align-items:baseline;gap:8px;}
-.card9 .sig .wm{font-family:"Instrument Serif",Georgia,serif;font-size:14px;}
-.card9 .sig .dt{font-family:"JetBrains Mono",monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;opacity:.68;}
+/* ---------- tarjeta 9:16 para compartir (maquetacion tipo poster) ----------
+   Las escenas son ilustraciones de marcador de posicion. Para usar una foto
+   real basta con sustituir el svg .ph de cada tarjeta por una etiqueta img
+   con la misma clase: el object-fit ya esta puesto.                        */
+.card9{position:relative;border-radius:18px;overflow:hidden;flex:none;--cs:1;
+  border:1px solid var(--rule);color:#F4F6F4;
+  display:flex;flex-direction:column;justify-content:space-between;}
+.card9 .ph{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;}
+.card9 .veil{position:absolute;inset:0;background:
+  linear-gradient(rgba(8,10,12,.5) 0%, rgba(8,10,12,0) 19%),
+  linear-gradient(rgba(8,10,12,0) 42%, rgba(8,10,12,.34) 56%, rgba(8,10,12,.78) 76%, rgba(8,10,12,.91) 100%),
+  radial-gradient(130% 80% at 50% 30%, rgba(8,10,12,0) 46%, rgba(8,10,12,.34) 100%);}
+.c-top{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;
+  gap:calc(var(--cs)*3px);padding:calc(var(--cs)*14px) calc(var(--cs)*12px) 0;}
+.v-mark{width:calc(var(--cs)*30px);height:calc(var(--cs)*30px);display:block;}
+.v-l1{font-family:"JetBrains Mono",monospace;font-size:calc(var(--cs)*7.5px);
+  letter-spacing:.24em;text-transform:uppercase;opacity:.92;line-height:1.4;}
+.v-l2{font-family:"Instrument Serif",Georgia,serif;font-size:calc(var(--cs)*21px);line-height:1;}
+.c-bot{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;
+  gap:calc(var(--cs)*6px);padding:0 calc(var(--cs)*12px) calc(var(--cs)*18px);}
+.c-lbl{font-family:"JetBrains Mono",monospace;font-size:calc(var(--cs)*6.5px);
+  letter-spacing:.26em;text-transform:uppercase;color:#A9DFCE;}
+.c-dish{font-family:"Instrument Serif",Georgia,serif;font-size:calc(var(--cs)*21px);line-height:1.04;}
+.c-dish i{font-style:normal;font-family:"JetBrains Mono",monospace;
+  font-size:calc(var(--cs)*11px);font-weight:700;color:#E9C270;}
+.c-nums{display:flex;flex-direction:column;gap:calc(var(--cs)*9px);padding-top:calc(var(--cs)*3px);}
+.c-n b{display:block;font-family:"JetBrains Mono",monospace;font-weight:700;
+  font-size:calc(var(--cs)*27px);line-height:.9;font-variant-numeric:tabular-nums;}
+.c-n span{display:block;font-family:"JetBrains Mono",monospace;font-size:calc(var(--cs)*6.5px);
+  letter-spacing:.22em;text-transform:uppercase;opacity:.8;padding-top:calc(var(--cs)*3px);}
+.c-n.gold b{color:#E9C270;}
+.c-date{font-family:"JetBrains Mono",monospace;font-size:calc(var(--cs)*6.5px);
+  letter-spacing:.18em;text-transform:uppercase;opacity:.7;padding-top:calc(var(--cs)*4px);}
+.seal{position:absolute;right:calc(var(--cs)*10px);bottom:calc(var(--cs)*10px);
+  width:calc(var(--cs)*46px);height:calc(var(--cs)*46px);}
 
 /* ---------- pantallas de app ---------- */
 .scr{border:2px solid var(--rule);border-radius:20px;background:var(--surface);flex:none;
@@ -264,6 +251,45 @@ tbody tr:last-child td{border-bottom:none;}
 .mh{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.2em;color:var(--ink-3);text-transform:uppercase;}
 .dot-map{display:flex;gap:26px;align-items:flex-start;}
 </style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <linearGradient id="gCielo" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#6FA8CC"/><stop offset=".4" stop-color="#A9CFE2"/><stop offset="1" stop-color="#DCEAF0"/>
+  </linearGradient>
+  <linearGradient id="gArena" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#DCC79E"/><stop offset="1" stop-color="#AE8F65"/>
+  </linearGradient>
+  <linearGradient id="gTab" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#7A5531"/><stop offset=".5" stop-color="#4C3320"/><stop offset="1" stop-color="#2A1B11"/>
+  </linearGradient>
+  <linearGradient id="gNoche" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#2B3A5E"/><stop offset=".45" stop-color="#1E2842"/><stop offset="1" stop-color="#141B2E"/>
+  </linearGradient>
+  <radialGradient id="gSol"><stop offset="0" stop-color="#FFF8E4" stop-opacity=".85"/><stop offset=".55" stop-color="#FFF1CE" stop-opacity=".35"/><stop offset="1" stop-color="#FFF1CE" stop-opacity="0"/></radialGradient>
+  <path id="ringp" d="M50 50 m-37 0 a37 37 0 1 1 74 0 a37 37 0 1 1 -74 0"/>
+  <symbol id="grupo" viewBox="0 0 300 200"><g fill="currentColor">
+    <g transform="translate(92,44) scale(.70)">
+      <path d="M-19 60 C-19 33 -11 24 0 24 C11 24 19 33 19 60 Z"/><circle cx="0" cy="10" r="12"/></g>
+    <g transform="translate(140,36) scale(.74)">
+      <path d="M-13 8 C-13 -8 13 -8 13 8 L13 36 L-13 36 Z"/>
+      <path d="M-19 60 C-19 33 -11 24 0 24 C11 24 19 33 19 60 Z"/><circle cx="0" cy="10" r="12"/></g>
+    <g transform="translate(190,42) scale(.70)">
+      <path d="M-19 60 C-19 33 -11 24 0 24 C11 24 19 33 19 60 Z"/>
+      <circle cx="0" cy="10" r="12"/><circle cx="0" cy="-5" r="6"/></g>
+    <g transform="translate(40,58) scale(.86)">
+      <path d="M-19 62 C-19 34 -11 24 0 24 C11 24 19 34 19 62 Z"/><circle cx="0" cy="10" r="12"/>
+      <path d="M13 33 L26 13" stroke="currentColor" stroke-width="6" stroke-linecap="round" fill="none"/>
+      <circle cx="28" cy="9" r="5"/></g>
+    <g transform="translate(252,54) scale(.88)">
+      <path d="M-13 8 C-13 -8 13 -8 13 8 L13 34 L-13 34 Z"/>
+      <path d="M-19 62 C-19 34 -11 24 0 24 C11 24 19 34 19 62 Z"/><circle cx="0" cy="10" r="12"/></g>
+    <g transform="translate(80,104) scale(1.05)">
+      <path d="M-22 70 C-22 38 -12 26 0 26 C12 26 22 38 22 70 Z"/>
+      <circle cx="0" cy="10" r="13"/><circle cx="0" cy="-6" r="6.5"/></g>
+    <g transform="translate(214,110) scale(1.08)">
+      <path d="M-22 70 C-22 38 -12 26 0 26 C12 26 22 38 22 70 Z"/><circle cx="0" cy="10" r="13"/></g>
+  </g></symbol>
+</defs></svg>
 
 <!-- ══════════════ 01 · PORTADA ══════════════ -->
 <section class="slide dark cover">
@@ -470,20 +496,7 @@ tbody tr:last-child td{border-bottom:none;}
         <div class="scr" style="width:214px;height:306px;">
           <div class="nb"></div>
           <span class="sk8">Tu tarjeta</span>
-          <div class="card9" style="flex:1;border-radius:10px;">
-            <div class="ph mesa"></div><div class="scrim"></div>
-            <div class="zt" style="padding:9px 9px 0;">
-              <div class="venue"><span class="lg" style="width:17px;height:17px;font-size:10px;">C</span><span class="vn"><b>Casa Ventura</b><span>Malasaña</span></span></div>
-            </div>
-            <div class="zb" style="padding:0 9px 10px;gap:6px;">
-              <span class="dish" style="font-size:17px;">Steak tartar <span class="sc9" style="font-size:10px;">9,0</span></span>
-              <div class="stats" style="padding:6px 0;gap:4px;">
-                <div class="s"><span class="sv" style="font-size:12px;">4</span><span class="sk" style="font-size:6.5px;">personas</span></div>
-                <div class="s"><span class="sv" style="font-size:12px;">71 €</span><span class="sk" style="font-size:6.5px;">total</span></div>
-                <div class="s"><span class="sv big" style="font-size:12px;">18 €</span><span class="sk" style="font-size:6.5px;">p/persona</span></div>
-              </div>
-            </div>
-          </div>
+          <div class="card9" style="flex:1;border-radius:10px;--cs:.6;"><svg class="ph" viewBox="0 0 300 533" preserveAspectRatio="xMidYMid slice"><rect width="300" height="533" fill="url(#gNoche)"/><path d="M-10 28 Q78 72 150 44 Q222 16 310 55" stroke="#5A647F" stroke-width="1.4" fill="none"/><circle cx="16" cy="42" r="9" fill="#FFD79A" opacity=".17"/><circle cx="16" cy="42" r="2.8" fill="#FFE3B6"/><circle cx="52" cy="56" r="9" fill="#FFD79A" opacity=".17"/><circle cx="52" cy="56" r="2.8" fill="#FFE3B6"/><circle cx="88" cy="62" r="9" fill="#FFD79A" opacity=".17"/><circle cx="88" cy="62" r="2.8" fill="#FFE3B6"/><circle cx="124" cy="56" r="9" fill="#FFD79A" opacity=".17"/><circle cx="124" cy="56" r="2.8" fill="#FFE3B6"/><circle cx="158" cy="44" r="9" fill="#FFD79A" opacity=".17"/><circle cx="158" cy="44" r="2.8" fill="#FFE3B6"/><circle cx="194" cy="33" r="9" fill="#FFD79A" opacity=".17"/><circle cx="194" cy="33" r="2.8" fill="#FFE3B6"/><circle cx="228" cy="29" r="9" fill="#FFD79A" opacity=".17"/><circle cx="228" cy="29" r="2.8" fill="#FFE3B6"/><circle cx="262" cy="36" r="9" fill="#FFD79A" opacity=".17"/><circle cx="262" cy="36" r="2.8" fill="#FFE3B6"/><circle cx="296" cy="49" r="9" fill="#FFD79A" opacity=".17"/><circle cx="296" cy="49" r="2.8" fill="#FFE3B6"/><rect y="152" width="300" height="381" fill="#18203A"/><rect x="20" y="80" width="46" height="72" rx="2" fill="#2B3454" opacity=".85"/><rect x="234" y="86" width="46" height="66" rx="2" fill="#2B3454" opacity=".85"/><path d="M46 266 H254 L282 330 H18 Z" fill="#2C3550"/><path d="M46 266 H254 L259 275 H41 Z" fill="#3C4770"/><ellipse cx="150" cy="290" rx="33" ry="10" fill="#DCE3EE"/><ellipse cx="80" cy="307" rx="20" ry="6.5" fill="#D2DAE8"/><ellipse cx="220" cy="307" rx="20" ry="6.5" fill="#D2DAE8"/><use href="#grupo" x="-12" y="98" width="324" height="216" style="color:#0C1122" opacity=".95"/></svg><div class="veil"></div><div class="c-top"><svg class="v-mark" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.6" y="2.6" width="34.8" height="34.8" rx="3"/><path d="M11 30v-9a9 9 0 0 1 18 0v9"/><path d="M8 30h24"/><path d="M20 30v-6"/></svg><span class="v-l1">Casa</span><span class="v-l2">Ventura</span></div><div class="c-bot"><span class="c-dish">Steak tartar <i>9,0</i></span><div class="c-nums"><div class="c-n"><b>4</b><span>Personas</span></div><div class="c-n"><b>71 €</b><span>Total</span></div><div class="c-n gold"><b>18 €</b><span>P/persona</span></div></div></div><svg class="seal" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="none" stroke="#F4F6F4" stroke-width="1.4" opacity=".8"/><circle cx="50" cy="50" r="31" fill="none" stroke="#F4F6F4" stroke-width=".8" opacity=".45"/><text font-family="JetBrains Mono, monospace" font-size="8.5" letter-spacing="2.2" fill="#F4F6F4" opacity=".9"><textPath href="#ringp" startOffset="25%" text-anchor="middle">COMANDA · MADRID</textPath></text><text x="50" y="52" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="21" font-weight="700" fill="#E9C270">+1</text><text x="50" y="65" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" letter-spacing="1.6" fill="#F4F6F4" opacity=".85">BARRIO</text></svg></div>
           <div style="display:flex;gap:5px;">
             <span class="btn" style="flex:1;">Compartir</span>
             <span class="btn o" style="flex:1;">Publicar</span>
@@ -509,33 +522,7 @@ tbody tr:last-child td{border-bottom:none;}
     <p class="lead">La recompensa por registrar no está dentro de la app: es la tarjeta que quieres publicar.</p>
   </div>
   <div class="grow" style="gap:44px;align-items:center;">
-    <div class="card9" style="width:253px;height:450px;">
-      <div class="ph playa"></div>
-      <div class="scrim"></div>
-      <div class="zt">
-        <div class="venue">
-          <span class="lg">T</span>
-          <span class="vn"><b>Chiringuito El Tabla</b><span>Zahara de los Atunes</span></span>
-        </div>
-        <span class="medal">Nº 37 del año</span>
-      </div>
-      <div class="zb">
-        <span class="lbl">Lo mejor de la mesa</span>
-        <span class="dish">Espetos de sardinas <span class="sc9">9,4</span></span>
-        <div class="stats">
-          <div class="s"><span class="sv">8</span><span class="sk">Personas</span></div>
-          <div class="s"><span class="sv">120 €</span><span class="sk">Total</span></div>
-          <div class="s"><span class="sv big">15 €</span><span class="sk">Por persona</span></div>
-        </div>
-        <div class="more">
-          <span class="mc">Ensaladilla 8,1</span><span class="mc">Jamón 8,8</span><span class="mc">+2 más</span>
-        </div>
-        <div class="sig">
-          <span class="wm">Comanda</span>
-          <span class="dt">14 ago · 2 h de sobremesa</span>
-        </div>
-      </div>
-    </div>
+    <div class="card9" style="width:253px;height:450px;--cs:1;"><svg class="ph" viewBox="0 0 300 533" preserveAspectRatio="xMidYMid slice"><rect width="300" height="533" fill="url(#gCielo)"/><circle cx="228" cy="100" r="66" fill="url(#gSol)"/><rect y="150" width="300" height="20" fill="#2E7C87"/><rect y="170" width="300" height="363" fill="url(#gArena)"/><path d="M0 0 H300 V26 Q225 44 150 32 Q75 20 0 38 Z" fill="#E7D8B4"/><rect width="300" height="11" fill="#D3C299"/><rect y="163" width="300" height="4" fill="#8C6C48" opacity=".55"/><path d="M50 268 H250 L280 330 H20 Z" fill="#7B5634"/><path d="M50 268 H250 L255 277 H45 Z" fill="#966C42"/><ellipse cx="150" cy="292" rx="33" ry="10" fill="#F1EADD"/><ellipse cx="82" cy="308" rx="21" ry="7" fill="#EBE2D2"/><ellipse cx="218" cy="308" rx="21" ry="7" fill="#EBE2D2"/><use href="#grupo" x="-12" y="98" width="324" height="216" style="color:#2B1D14" opacity=".95"/></svg><div class="veil"></div><div class="c-top"><svg class="v-mark" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.6" y="2.6" width="34.8" height="34.8" rx="3"/><circle cx="27" cy="13" r="4"/><path d="M8 22q4-3 8 0t8 0t8 0"/><path d="M8 28q4-3 8 0t8 0t8 0"/></svg><span class="v-l1">Chiringuito</span><span class="v-l2">El Tabla</span></div><div class="c-bot"><span class="c-lbl">Lo mejor de la mesa</span><span class="c-dish">Espetos de sardinas <i>9,4</i></span><div class="c-nums"><div class="c-n"><b>8</b><span>Personas</span></div><div class="c-n"><b>120 €</b><span>Total</span></div><div class="c-n gold"><b>15 €</b><span>Por persona</span></div></div><span class="c-date">14 ago · Zahara</span></div><svg class="seal" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="none" stroke="#F4F6F4" stroke-width="1.4" opacity=".8"/><circle cx="50" cy="50" r="31" fill="none" stroke="#F4F6F4" stroke-width=".8" opacity=".45"/><text font-family="JetBrains Mono, monospace" font-size="8.5" letter-spacing="2.2" fill="#F4F6F4" opacity=".9"><textPath href="#ringp" startOffset="25%" text-anchor="middle">COMANDA · MADRID</textPath></text><text x="50" y="52" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="21" font-weight="700" fill="#E9C270">37</text><text x="50" y="65" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" letter-spacing="1.6" fill="#F4F6F4" opacity=".85">DEL AÑO</text></svg></div>
     <div style="flex:1;display:flex;flex-direction:column;gap:16px;">
       <p style="font-size:25px;line-height:1.25;">Ya haces la foto. Lo que le falta es todo lo demás.</p>
       <ul class="b" style="font-size:17px;">
@@ -566,58 +553,10 @@ tbody tr:last-child td{border-bottom:none;}
   <div class="grow" style="gap:30px;align-items:center;">
 
     <div style="display:flex;gap:13px;flex:none;">
-      <div class="card9" style="width:190px;height:338px;">
-        <div class="ph playa"></div><div class="scrim"></div>
-        <div class="zt" style="padding:10px 10px 0;">
-          <div class="venue"><span class="lg" style="width:18px;height:18px;font-size:10px;">T</span><span class="vn" style="font-size:7px;"><b>Chiringuito El Tabla</b><span>Zahara</span></span></div>
-          <span class="medal" style="font-size:6.5px;padding:3px 6px;">Nº 37 del año</span>
-        </div>
-        <div class="zb" style="padding:0 10px 11px;gap:6px;">
-          <span class="dish" style="font-size:18px;">Espetos <span class="sc9" style="font-size:10px;">9,4</span></span>
-          <div class="stats" style="padding:6px 0;gap:4px;">
-            <div class="s"><span class="sv" style="font-size:12px;">8</span><span class="sk" style="font-size:6px;">Personas</span></div>
-            <div class="s"><span class="sv" style="font-size:12px;">120 €</span><span class="sk" style="font-size:6px;">Total</span></div>
-            <div class="s"><span class="sv big" style="font-size:12px;">15 €</span><span class="sk" style="font-size:6px;">P/persona</span></div>
-          </div>
-          <div class="sig"><span class="wm" style="font-size:11px;">Comanda</span><span class="dt" style="font-size:6.5px;">14 ago</span></div>
-        </div>
-      </div>
-
-      <div class="card9" style="width:190px;height:338px;">
-        <div class="ph taberna"></div><div class="scrim"></div>
-        <div class="zt" style="padding:10px 10px 0;">
-          <div class="venue"><span class="lg" style="width:18px;height:18px;font-size:10px;border-radius:99px;">M</span><span class="vn" style="font-size:7px;"><b>Taberna Los Milagros</b><span>Lavapiés</span></span></div>
-          <span class="medal" style="font-size:6.5px;padding:3px 6px;">3ª visita</span>
-        </div>
-        <div class="zb" style="padding:0 10px 11px;gap:6px;">
-          <span class="dish" style="font-size:18px;">Tortilla <span class="sc9" style="font-size:10px;">9,1</span></span>
-          <div class="stats" style="padding:6px 0;gap:4px;">
-            <div class="s"><span class="sv" style="font-size:12px;">3</span><span class="sk" style="font-size:6px;">Personas</span></div>
-            <div class="s"><span class="sv" style="font-size:12px;">61 €</span><span class="sk" style="font-size:6px;">Total</span></div>
-            <div class="s"><span class="sv big" style="font-size:12px;">20 €</span><span class="sk" style="font-size:6px;">P/persona</span></div>
-          </div>
-          <div class="sig"><span class="wm" style="font-size:11px;">Comanda</span><span class="dt" style="font-size:6.5px;">2 sep</span></div>
-        </div>
-      </div>
-
-      <div class="card9" style="width:190px;height:338px;">
-        <div class="ph terraza"></div><div class="scrim"></div>
-        <div class="zt" style="padding:10px 10px 0;">
-          <div class="venue"><span class="lg" style="width:18px;height:18px;font-size:10px;border-radius:2px;">V</span><span class="vn" style="font-size:7px;"><b>Casa Ventura</b><span>Malasaña</span></span></div>
-          <span class="medal" style="font-size:6.5px;padding:3px 6px;">Barrio nuevo</span>
-        </div>
-        <div class="zb" style="padding:0 10px 11px;gap:6px;">
-          <span class="dish" style="font-size:18px;">Steak tartar <span class="sc9" style="font-size:10px;">9,0</span></span>
-          <div class="stats" style="padding:6px 0;gap:4px;">
-            <div class="s"><span class="sv" style="font-size:12px;">2</span><span class="sk" style="font-size:6px;">Personas</span></div>
-            <div class="s"><span class="sv" style="font-size:12px;">52 €</span><span class="sk" style="font-size:6px;">Total</span></div>
-            <div class="s"><span class="sv big" style="font-size:12px;">26 €</span><span class="sk" style="font-size:6px;">P/persona</span></div>
-          </div>
-          <div class="sig"><span class="wm" style="font-size:11px;">Comanda</span><span class="dt" style="font-size:6.5px;">21 sep</span></div>
-        </div>
-      </div>
+      <div class="card9" style="width:190px;height:338px;--cs:.74;"><svg class="ph" viewBox="0 0 300 533" preserveAspectRatio="xMidYMid slice"><rect width="300" height="533" fill="url(#gCielo)"/><circle cx="228" cy="100" r="66" fill="url(#gSol)"/><rect y="150" width="300" height="20" fill="#2E7C87"/><rect y="170" width="300" height="363" fill="url(#gArena)"/><path d="M0 0 H300 V26 Q225 44 150 32 Q75 20 0 38 Z" fill="#E7D8B4"/><rect width="300" height="11" fill="#D3C299"/><rect y="163" width="300" height="4" fill="#8C6C48" opacity=".55"/><path d="M50 268 H250 L280 330 H20 Z" fill="#7B5634"/><path d="M50 268 H250 L255 277 H45 Z" fill="#966C42"/><ellipse cx="150" cy="292" rx="33" ry="10" fill="#F1EADD"/><ellipse cx="82" cy="308" rx="21" ry="7" fill="#EBE2D2"/><ellipse cx="218" cy="308" rx="21" ry="7" fill="#EBE2D2"/><use href="#grupo" x="-12" y="98" width="324" height="216" style="color:#2B1D14" opacity=".95"/></svg><div class="veil"></div><div class="c-top"><svg class="v-mark" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.6" y="2.6" width="34.8" height="34.8" rx="3"/><circle cx="27" cy="13" r="4"/><path d="M8 22q4-3 8 0t8 0t8 0"/><path d="M8 28q4-3 8 0t8 0t8 0"/></svg><span class="v-l1">Chiringuito</span><span class="v-l2">El Tabla</span></div><div class="c-bot"><span class="c-dish">Espetos <i>9,4</i></span><div class="c-nums"><div class="c-n"><b>8</b><span>Personas</span></div><div class="c-n"><b>120 €</b><span>Total</span></div><div class="c-n gold"><b>15 €</b><span>P/persona</span></div></div><span class="c-date">14 ago</span></div><svg class="seal" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="none" stroke="#F4F6F4" stroke-width="1.4" opacity=".8"/><circle cx="50" cy="50" r="31" fill="none" stroke="#F4F6F4" stroke-width=".8" opacity=".45"/><text font-family="JetBrains Mono, monospace" font-size="8.5" letter-spacing="2.2" fill="#F4F6F4" opacity=".9"><textPath href="#ringp" startOffset="25%" text-anchor="middle">COMANDA · MADRID</textPath></text><text x="50" y="52" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="21" font-weight="700" fill="#E9C270">37</text><text x="50" y="65" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" letter-spacing="1.6" fill="#F4F6F4" opacity=".85">DEL AÑO</text></svg></div>
+      <div class="card9" style="width:190px;height:338px;--cs:.74;"><svg class="ph" viewBox="0 0 300 533" preserveAspectRatio="xMidYMid slice"><rect width="300" height="533" fill="url(#gTab)"/><circle cx="150" cy="52" r="86" fill="#FFC978" opacity=".3"/><path d="M150 0 V18" stroke="#241708" stroke-width="3"/><path d="M129 18 H171 L164 37 H136 Z" fill="#33210F"/><circle cx="150" cy="42" r="7" fill="#FFDCA6"/><rect x="14" y="112" width="54" height="80" rx="3" fill="#2A1B0E" opacity=".5"/><rect x="232" y="112" width="54" height="80" rx="3" fill="#2A1B0E" opacity=".5"/><path d="M46 266 H254 L282 330 H18 Z" fill="#4B3320"/><path d="M46 266 H254 L259 275 H41 Z" fill="#654630"/><ellipse cx="150" cy="290" rx="33" ry="10" fill="#EADEC8"/><ellipse cx="80" cy="307" rx="20" ry="6.5" fill="#E2D5BE"/><ellipse cx="220" cy="307" rx="20" ry="6.5" fill="#E2D5BE"/><use href="#grupo" x="-12" y="96" width="324" height="216" style="color:#170E06" opacity=".93"/></svg><div class="veil"></div><div class="c-top"><svg class="v-mark" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.6" y="2.6" width="34.8" height="34.8" rx="3"/><path d="M14 10h12l-1 7a5 5 0 0 1-10 0z"/><path d="M20 24v6"/><path d="M15 30h10"/></svg><span class="v-l1">Taberna</span><span class="v-l2">Los Milagros</span></div><div class="c-bot"><span class="c-dish">Tortilla <i>9,1</i></span><div class="c-nums"><div class="c-n"><b>3</b><span>Personas</span></div><div class="c-n"><b>61 €</b><span>Total</span></div><div class="c-n gold"><b>20 €</b><span>P/persona</span></div></div><span class="c-date">2 sep</span></div><svg class="seal" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="none" stroke="#F4F6F4" stroke-width="1.4" opacity=".8"/><circle cx="50" cy="50" r="31" fill="none" stroke="#F4F6F4" stroke-width=".8" opacity=".45"/><text font-family="JetBrains Mono, monospace" font-size="8.5" letter-spacing="2.2" fill="#F4F6F4" opacity=".9"><textPath href="#ringp" startOffset="25%" text-anchor="middle">COMANDA · MADRID</textPath></text><text x="50" y="52" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="21" font-weight="700" fill="#E9C270">3ª</text><text x="50" y="65" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" letter-spacing="1.6" fill="#F4F6F4" opacity=".85">VISITA</text></svg></div>
+      <div class="card9" style="width:190px;height:338px;--cs:.74;"><svg class="ph" viewBox="0 0 300 533" preserveAspectRatio="xMidYMid slice"><rect width="300" height="533" fill="url(#gNoche)"/><path d="M-10 28 Q78 72 150 44 Q222 16 310 55" stroke="#5A647F" stroke-width="1.4" fill="none"/><circle cx="16" cy="42" r="9" fill="#FFD79A" opacity=".17"/><circle cx="16" cy="42" r="2.8" fill="#FFE3B6"/><circle cx="52" cy="56" r="9" fill="#FFD79A" opacity=".17"/><circle cx="52" cy="56" r="2.8" fill="#FFE3B6"/><circle cx="88" cy="62" r="9" fill="#FFD79A" opacity=".17"/><circle cx="88" cy="62" r="2.8" fill="#FFE3B6"/><circle cx="124" cy="56" r="9" fill="#FFD79A" opacity=".17"/><circle cx="124" cy="56" r="2.8" fill="#FFE3B6"/><circle cx="158" cy="44" r="9" fill="#FFD79A" opacity=".17"/><circle cx="158" cy="44" r="2.8" fill="#FFE3B6"/><circle cx="194" cy="33" r="9" fill="#FFD79A" opacity=".17"/><circle cx="194" cy="33" r="2.8" fill="#FFE3B6"/><circle cx="228" cy="29" r="9" fill="#FFD79A" opacity=".17"/><circle cx="228" cy="29" r="2.8" fill="#FFE3B6"/><circle cx="262" cy="36" r="9" fill="#FFD79A" opacity=".17"/><circle cx="262" cy="36" r="2.8" fill="#FFE3B6"/><circle cx="296" cy="49" r="9" fill="#FFD79A" opacity=".17"/><circle cx="296" cy="49" r="2.8" fill="#FFE3B6"/><rect y="152" width="300" height="381" fill="#18203A"/><rect x="20" y="80" width="46" height="72" rx="2" fill="#2B3454" opacity=".85"/><rect x="234" y="86" width="46" height="66" rx="2" fill="#2B3454" opacity=".85"/><path d="M46 266 H254 L282 330 H18 Z" fill="#2C3550"/><path d="M46 266 H254 L259 275 H41 Z" fill="#3C4770"/><ellipse cx="150" cy="290" rx="33" ry="10" fill="#DCE3EE"/><ellipse cx="80" cy="307" rx="20" ry="6.5" fill="#D2DAE8"/><ellipse cx="220" cy="307" rx="20" ry="6.5" fill="#D2DAE8"/><use href="#grupo" x="-12" y="98" width="324" height="216" style="color:#0C1122" opacity=".95"/></svg><div class="veil"></div><div class="c-top"><svg class="v-mark" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.6" y="2.6" width="34.8" height="34.8" rx="3"/><path d="M11 30v-9a9 9 0 0 1 18 0v9"/><path d="M8 30h24"/><path d="M20 30v-6"/></svg><span class="v-l1">Casa</span><span class="v-l2">Ventura</span></div><div class="c-bot"><span class="c-dish">Steak tartar <i>9,0</i></span><div class="c-nums"><div class="c-n"><b>2</b><span>Personas</span></div><div class="c-n"><b>52 €</b><span>Total</span></div><div class="c-n gold"><b>26 €</b><span>P/persona</span></div></div><span class="c-date">21 sep</span></div><svg class="seal" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="none" stroke="#F4F6F4" stroke-width="1.4" opacity=".8"/><circle cx="50" cy="50" r="31" fill="none" stroke="#F4F6F4" stroke-width=".8" opacity=".45"/><text font-family="JetBrains Mono, monospace" font-size="8.5" letter-spacing="2.2" fill="#F4F6F4" opacity=".9"><textPath href="#ringp" startOffset="25%" text-anchor="middle">COMANDA · MADRID</textPath></text><text x="50" y="52" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="21" font-weight="700" fill="#E9C270">+1</text><text x="50" y="65" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="7" letter-spacing="1.6" fill="#F4F6F4" opacity=".85">BARRIO</text></svg></div>
     </div>
-
     <div style="flex:1;display:flex;flex-direction:column;gap:15px;">
       <ul class="b" style="font-size:17px;">
         <li><span><strong>Lo del local cambia; lo nuestro, no.</strong> El logo y el nombre son suyos. La estructura de datos, las medallas y la firma son siempre iguales: así se reconoce la app de un vistazo.</span></li>
